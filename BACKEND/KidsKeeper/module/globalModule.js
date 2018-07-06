@@ -1,5 +1,4 @@
-const errorConfig =  require('../config/error');
-const pool = require('../config/dbPool');
+const pool = require('../config/db_pool');
 
 let connect = function (callback) {
     pool.getConnection(function (err, connection) {

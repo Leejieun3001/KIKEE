@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".AdultLoginActivity" />
         <activity android:name=".Adult.AdultHome.AdultHomeActivity" />
-        <activity android:name=".Adult.Camera.CameraActivity"></activity>
+        <activity android:name=".Adult.Camera.CameraActivity" />
+        <activity android:name=".Kids.ConnectActivity"></activity>
     </application>
 
 </manifest>

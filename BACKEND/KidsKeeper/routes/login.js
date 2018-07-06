@@ -1,8 +1,8 @@
-const pool = require('../config/dbPool');
+const pool = require('../config/db_pool');
 const router = require('express').Router();
 const bcrypt = require('bcrypt-nodejs');
 const async = require('async');
-const jwtModule = require('../module/jwtModule');
+//const jwtModule = require('../module/jwtModule');
 const globalModule = require('../module/globalModule');
 
 
