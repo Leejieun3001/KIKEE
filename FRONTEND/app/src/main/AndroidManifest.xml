@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AdultLoginActivity" />
-        <activity android:name=".Adult.AdultHome.AdultHomeActivity"></activity>
+        <activity android:name=".Adult.AdultHome.AdultHomeActivity" />
+        <activity android:name=".Adult.Camera.CameraActivity"></activity>
     </application>
 
 </manifest>
