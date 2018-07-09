@@ -1,20 +1,40 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Adult.Camera.CameraActivity;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class AdultHomeActivity extends AppCompatActivity {
 
-    @BindView(R.id.adultHome_button_camera)
-    Button buttonCamera;
+    //    @BindView(R.id.adultHome_button_camera)
+//    Button buttonCamera;
+
+    @BindView(R.id.adultHome_viewpager_viewpager)
+    ViewPager viewPager;
+    @BindView(R.id.adultHome_tablayout_tablayout)
+    TabLayout tabLayout;
+
+    String TAG = "AdultHomeActivity";
+
+    private final long FINISH_INTERVAL_TIME = 2000;
+    private long backPressedTime = 0;
+
+    private final int ADULTHOME = 0;
+    private final int SETTING = 1;
+    private final int MYPAGE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +42,98 @@ public class AdultHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_adult_home);
         ButterKnife.bind(this);
 
-        clickEvent();
-    }
+        setupViewPager();
+        tabLayout.setupWithViewPager(viewPager);
+        // setupTabIcons();
 
-    void clickEvent() {
+        //    clickEvent();
 
-        buttonCamera.setOnClickListener(new View.OnClickListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
-                startActivity(intent);
-                finish();
+            public void onTabSelected(TabLayout.Tab tab) {
+                int drawable;
+                switch (tab.getPosition()) {
+                    case ADULTHOME:
+
+                }
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
 
+    }
+
+//    void clickEvent() {
+//
+//        buttonCamera.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//
+//    }
+
+//    private void setupTabIcons() {
+//        tabLayout.getTabAt(LANDMARK).setIcon(R.drawable.navigation_button_landmark_on).setCustomView(R.layout.item_custom_icon);
+//        tabLayout.getTabAt(RANKING).setIcon(R.drawable.navigation_button_ranking_off).setCustomView(R.layout.item_custom_icon);
+//        tabLayout.getTabAt(MYPAGE).setIcon(R.drawable.navigation_button_mypage_off).setCustomView(R.layout.item_custom_icon);
+//    }
+
+    private void setupViewPager() {
+        ViewPagerAapter adapter = new ViewPagerAapter(getSupportFragmentManager());
+        adapter.addFrag(new AdultHomeFragment());
+        adapter.addFrag(new SettingFragment());
+        adapter.addFrag(new MyPageFragment());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backPressedTime;
+
+        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+            super.onBackPressed();
+        } else {
+            this.backPressedTime = tempTime;
+            Toast.makeText(getApplicationContext(), "뒤로 가기 키를 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    class ViewPagerAapter extends FragmentPagerAdapter {
+        private final List<Fragment> fragmentsList = new ArrayList<>();
+
+        private ViewPagerAapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragmentsList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragmentsList.size();
+        }
+
+        private void addFrag(Fragment fragment) {
+            fragmentsList.add(fragment);
+        }
     }
 }
