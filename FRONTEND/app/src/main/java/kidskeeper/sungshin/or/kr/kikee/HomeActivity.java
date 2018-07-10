@@ -8,9 +8,9 @@ import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kidskeeper.sungshin.or.kr.kikee.Adult.LoginJoin.AdultLoginActivity;
 
 public class HomeActivity extends AppCompatActivity {
-
 
     @BindView(R.id.home_button_go_adult)
     Button buttonGoAdult;

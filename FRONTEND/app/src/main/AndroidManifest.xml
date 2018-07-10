@@ -16,11 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdultLoginActivity" />
         <activity android:name=".Adult.AdultHome.AdultHomeActivity" />
         <activity android:name=".Adult.Camera.CameraActivity" />
         <activity android:name=".Kids.ConnectActivity" />
-        <activity android:name=".Adult.Voice.VoiceActivity"></activity>
+        <activity android:name=".Adult.Voice.VoiceActivity" />
+        <activity android:name=".Adult.LoginJoin.AdultLoginActivity" />
+        <activity android:name=".Adult.LoginJoin.JoinActivity"></activity>
     </application>
 
 </manifest>

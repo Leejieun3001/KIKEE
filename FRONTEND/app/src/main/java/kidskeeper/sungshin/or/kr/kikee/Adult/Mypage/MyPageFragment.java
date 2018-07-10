@@ -1,4 +1,4 @@
-package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
+package kidskeeper.sungshin.or.kr.kikee.Adult.Mypage;
 
 import android.content.Context;
 import android.net.Uri;

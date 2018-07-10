@@ -1,4 +1,4 @@
-package kidskeeper.sungshin.or.kr.kikee;
+package kidskeeper.sungshin.or.kr.kikee.Adult.LoginJoin;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,17 +10,18 @@ import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome.AdultHomeActivity;
+import kidskeeper.sungshin.or.kr.kikee.HomeActivity;
+import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class AdultLoginActivity extends AppCompatActivity {
-
     @BindView(R.id.adultlogin_edittext_id)
     EditText editTextId;
     @BindView(R.id.adultlogin_edittext_pw)
     EditText editTextPw;
     @BindView(R.id.adultlogin_button_login)
     Button buttonLogin;
-    @BindView(R.id.adultlogin_button_back)
-    Button buttonback;
+    @BindView(R.id.adultlogin_button_join)
+    Button buttonJoin;
 
 
     @Override
@@ -41,10 +42,10 @@ public class AdultLoginActivity extends AppCompatActivity {
             }
         });
 
-        buttonback.setOnClickListener(new View.OnClickListener() {
+        buttonJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intentBack = new Intent(getApplicationContext(), JoinActivity.class);
                 startActivity(intentBack);
                 finish();
 

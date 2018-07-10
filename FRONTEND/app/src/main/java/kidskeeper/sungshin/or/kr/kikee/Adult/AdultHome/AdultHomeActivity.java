@@ -16,6 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Community.CommunityFragment;
+import kidskeeper.sungshin.or.kr.kikee.Adult.Mypage.MyPageFragment;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class AdultHomeActivity extends AppCompatActivity {
