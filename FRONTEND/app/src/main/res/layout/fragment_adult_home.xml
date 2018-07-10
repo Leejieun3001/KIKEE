@@ -1,7 +1,8 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome.AdultHomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,21 +14,28 @@
 
         <Button
             android:id="@+id/adultHome_button_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="카메라" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="30dp"
+            android:background="@drawable/camera" />
 
         <Button
             android:id="@+id/adultHome_button_voice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="음성 송출" />
-
-        <Button
-            android:id="@+id/adultHome_button_community"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="커뮤니티" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="30dp"
+            android:background="@drawable/recorder" />
     </LinearLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="인기글" />
+    </LinearLayout>
+</LinearLayout>

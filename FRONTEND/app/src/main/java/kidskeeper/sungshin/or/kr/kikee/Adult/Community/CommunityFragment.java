@@ -1,4 +1,4 @@
-package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
+package kidskeeper.sungshin.or.kr.kikee.Adult.Community;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 
-public class SettingFragment extends Fragment {
+public class CommunityFragment extends Fragment {
 
 
-    public SettingFragment() {
+    public CommunityFragment() {
         // Required empty public constructor
     }
 

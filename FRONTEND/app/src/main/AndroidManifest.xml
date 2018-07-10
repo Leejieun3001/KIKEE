@@ -19,7 +19,8 @@
         <activity android:name=".AdultLoginActivity" />
         <activity android:name=".Adult.AdultHome.AdultHomeActivity" />
         <activity android:name=".Adult.Camera.CameraActivity" />
-        <activity android:name=".Kids.ConnectActivity"></activity>
+        <activity android:name=".Kids.ConnectActivity" />
+        <activity android:name=".Adult.Voice.VoiceActivity"></activity>
     </application>
 
 </manifest>

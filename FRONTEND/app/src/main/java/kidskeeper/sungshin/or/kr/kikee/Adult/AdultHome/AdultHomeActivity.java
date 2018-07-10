@@ -15,6 +15,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kidskeeper.sungshin.or.kr.kikee.Adult.Community.CommunityFragment;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class AdultHomeActivity extends AppCompatActivity {
@@ -94,7 +95,7 @@ public class AdultHomeActivity extends AppCompatActivity {
     private void setupViewPager() {
         ViewPagerAapter adapter = new ViewPagerAapter(getSupportFragmentManager());
         adapter.addFrag(new AdultHomeFragment());
-        adapter.addFrag(new SettingFragment());
+        adapter.addFrag(new CommunityFragment());
         adapter.addFrag(new MyPageFragment());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
