@@ -21,7 +21,6 @@ const upload = multer({
 });
 
 
-
 /**
  * api 목적        : iotNum 체크
  * request params : { string iotNumber: "아이디" }
@@ -35,9 +34,10 @@ router.get('/check_iotNumber', function (req, res) {
             } else {
                 if (rows.length !== 0) {
                     res.status(200).send({message: "SUCCESS"});
-                     callback("NOT_VAILD", connection, "api : /login/iotNumber");
+                    callback(null, connection, "api : /login/iotNumber");
+
                 } else {
-                    res.status(200).send({message: "not_vaild"});
+                    res.status(200).send({message: "NOT_VAILD"});
                     callback(null, connection, "api : /login/iotNumber");
                 }
             }
