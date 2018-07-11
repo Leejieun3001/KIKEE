@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../FRONTEND.iml" filepath="$PROJECT_DIR$/../FRONTEND.iml" />
+      <module fileurl="file://C:\Users\LG\Desktop\ProjectRepository\2018sungshinSWContest\SourceCode\KIKEE\FRONTEND\FRONTEND.iml" filepath="C:\Users\LG\Desktop\ProjectRepository\2018sungshinSWContest\SourceCode\KIKEE\FRONTEND\FRONTEND.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://C:\Users\LG\Desktop\ProjectRepository\2018sungshinSWContest\SourceCode\KIKEE\FRONTEND\app\app.iml" filepath="C:\Users\LG\Desktop\ProjectRepository\2018sungshinSWContest\SourceCode\KIKEE\FRONTEND\app\app.iml" />
     </modules>
   </component>
 </project>
