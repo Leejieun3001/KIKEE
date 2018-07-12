@@ -10,7 +10,8 @@ import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome.AdultHomeActivity;
-import kidskeeper.sungshin.or.kr.kikee.HomeActivity;
+import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
+import kidskeeper.sungshin.or.kr.kikee.Network.NetworkService;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class AdultLoginActivity extends AppCompatActivity {
@@ -24,11 +25,15 @@ public class AdultLoginActivity extends AppCompatActivity {
     Button buttonJoin;
 
 
+   private NetworkService service;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adult_login);
+
         ButterKnife.bind(this);
+
         clickEvent();
     }
 
@@ -36,6 +41,7 @@ public class AdultLoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //service.getLoginResult();
                 Intent intent = new Intent(getApplicationContext(), AdultHomeActivity.class);
                 startActivity(intent);
                 finish();

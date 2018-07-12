@@ -1,6 +1,5 @@
 package kidskeeper.sungshin.or.kr.kikee.Network;
 
-
 import android.app.Activity;
 import android.app.Application;
 
@@ -14,13 +13,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by LG on 2018-07-11.
+ * Created by kwonhyeon-a on 2018. 3. 28..
  */
 
 public class ApplicationController extends Application {
     private static ApplicationController instance;
     private static String baseUrl = "http://13.125.124.239:3000";
-
 
     private static volatile Activity currentActivity = null;
     private NetworkService networkService;
@@ -42,6 +40,7 @@ public class ApplicationController extends Application {
 
         ApplicationController.instance = this; //인스턴스 객체 초기화
         buildService();
+
     }
 
     public void buildService() {
@@ -72,5 +71,24 @@ public class ApplicationController extends Application {
                 .build();
 
         networkService = retrofit.create(NetworkService.class);
+    }
+
+    public static ApplicationController getGlobalApplicationContext() {
+        return instance;
+    }
+
+    public static Activity getCurrentActivity() {
+        return currentActivity;
+    }
+
+    // Activity가 올라올때마다 Activity의 onCreate에서 호출해줘야한다.
+    public static void setCurrentActivity(Activity currentActivity) {
+        instance.currentActivity = currentActivity;
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        instance = null;
     }
 }
