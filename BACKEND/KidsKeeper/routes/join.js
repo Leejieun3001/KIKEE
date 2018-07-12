@@ -97,7 +97,7 @@ router.post('/', function (req, res) {
 
 /**
  * api 목적        : iotNum 체크
- * request params : { string iotNumber: "아이디" }
+ * request params : { string iotNumber: "로봇 번호" }
  */
 router.get('/check_iotNumber', function (req, res) {
 
@@ -126,28 +126,19 @@ router.get('/check_iotNumber', function (req, res) {
 });
 
 /**
- * api 목적        : 아이디 중복체크
- * request params : { string id: "아이디" }
+ * api 목적        : 이메일 중복체크
+ * request params : { string email: "이메일" }
  */
 router.get('/check_dupplicate', function (req, res) {
-    let checkValid = function (connection, callback) {
-        let result = globalModule.checkBasicValid(req.query);
 
-        if (result !== "OK") {
-            res.status(200).send(result);
-            callback("ALREADY_SEND_MESSAGE", connection, "api : /join/check_dupplicate");
-        } else {
-            callback(null, connection);
-        }
-    }
 
     let checkID = function (connection, callback) {
-        connection.query('select * from User where id = ?', req.query.id, function (error, rows) {
+        connection.query('select * from User where email = ?', req.query.email, function (error, rows) {
             if (error) {
                 callback(error, connection, "Select query Error : ", res);
             } else {
                 if (rows.length !== 0) {
-                    res.status(200).send(errorConfig.ALREADY_JOIN);
+                    res.status(200).send({ message: "ALREAY_JOIN" });
                     callback("ALREADY_SEND_MESSAGE", connection, "api : /join/check_dupplicate");
                 } else {
                     res.status(200).send({ message: "SUCCESS" });
@@ -157,7 +148,7 @@ router.get('/check_dupplicate', function (req, res) {
         });
     }
 
-    var task = [globalModule.connect.bind(this), checkValid, checkID, globalModule.releaseConnection.bind(this)];
+    var task = [globalModule.connect.bind(this),  checkID, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
