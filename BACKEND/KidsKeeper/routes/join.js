@@ -184,7 +184,7 @@ router.get('/verificationCode', function (req, res) {
                     callback(null, connection);
                 }
                 else {
-                    res.status(201).send(errorConfig.ALREADY_JOIN);
+                    res.status(201).send({message: "ALREADY_JOIN"});
                     callback("ALREADY_SEND_MESSAGE", connection, "api : /join/verificationCode");
                 }
             }
