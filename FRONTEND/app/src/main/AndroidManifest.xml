@@ -3,11 +3,17 @@
     package="kidskeeper.sungshin.or.kr.kikee">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- 블루투스 설정메뉴 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- 안드로이드 메모리 가용 용량 증가(largeHeap) -->
     <application
         android:name = ".Network.ApplicationController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -23,7 +29,12 @@
         <activity android:name=".Kids.ConnectActivity" />
         <activity android:name=".Adult.Voice.VoiceActivity" />
         <activity android:name=".Adult.LoginJoin.AdultLoginActivity" />
-        <activity android:name=".Adult.LoginJoin.JoinActivity"></activity>
+        <activity android:name=".Adult.LoginJoin.JoinActivity" />
+        <activity android:name=".Kids.KidsMain" />
+        <activity android:name=".Kids.OperateRobot" />
+        <activity android:name=".Kids.bluetoothDeviceList" />
+        <activity android:name=".Kids.WordGame" />
+        <activity android:name=".Kids.RecyclerView"></activity>
     </application>
 
 </manifest>
