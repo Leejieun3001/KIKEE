@@ -36,7 +36,7 @@ router.get('/', function (req, res) {
             if (error) callback(error, connection, "Selecet query Error : ");
             else {
                 if (rows.length === 0) {
-                    res.status(200).send({ message: "WORD_NOT_EIXT" });
+                    res.status(200).send({ message: "WORD_NOT_EXIT" });
                     callback("ALREADY_SEND_MESSAGE", connection, "api : /words/");
                 } else {
                     for (var x in rows) {
@@ -54,4 +54,42 @@ router.get('/', function (req, res) {
     var task = [globalModule.connect.bind(this), selectWords, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
+
+
+
+/**
+ * api 목적        : 단어 데이터 전송
+ */
+router.get('/category', function (req, res) {
+
+    let resultJson = {
+        message: 'SUCCESS',
+        categorys: []
+    };
+
+    let selectCategory = function (connection, callback) {
+        connection.query("SELECT DISTINCT category FROM sungshinDB.Word ;", function (error, rows) {
+            if (error) callback(error, connection, "Selecet query Error : ");
+            else {
+                if (rows.length === 0) {
+                    res.status(200).send({ message: "CATEGORY_NOT_EXIT" });
+                    callback("ALREADY_SEND_MESSAGE", connection, "api : /words/category");
+                } else {
+                    for (var x in rows) {
+                        var category = {}
+                        category.category = rows[x].category;
+                        resultJson.categorys.push(category);
+                    }
+                    res.status(200).send(resultJson)
+                    callback(null, connection, "api : /words/category");
+                }
+            }
+        });
+    }
+    var task = [globalModule.connect.bind(this), selectCategory, globalModule.releaseConnection.bind(this)];
+    async.waterfall(task, globalModule.asyncCallback.bind(this));
+});
+
+
+
 module.exports = router;
