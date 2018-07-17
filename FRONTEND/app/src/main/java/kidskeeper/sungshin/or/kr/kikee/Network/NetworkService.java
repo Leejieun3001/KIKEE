@@ -27,6 +27,9 @@ public interface NetworkService {
     @GET("/join/verificationCode")
     Call<VerificationCodeResult> getVerifiCodeResult(@Query("tempEmail") String id);
 
+    @GET("/join/check_iotNumber")
+    Call<BaseResult> getCheckIotNumResult (@Query("iotNumber") String iotNum);
+
 //    @POST("/login/find_id")
 //    Call<FindInfoResult> getFindIdResult(@Body FindId Info);
 //

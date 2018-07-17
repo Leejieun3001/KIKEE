@@ -13,7 +13,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by kwonhyeon-a on 2018. 3. 28..
+ * Created by LG-a on 2018. 07. 17..
  */
 
 public class ApplicationController extends Application {
@@ -81,7 +81,6 @@ public class ApplicationController extends Application {
         return currentActivity;
     }
 
-    // Activity가 올라올때마다 Activity의 onCreate에서 호출해줘야한다.
     public static void setCurrentActivity(Activity currentActivity) {
         instance.currentActivity = currentActivity;
     }

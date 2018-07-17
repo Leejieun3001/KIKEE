@@ -57,24 +57,24 @@ public class JoinActivity extends AppCompatActivity {
     ProgressBar progressBar;
     @BindView(R.id.join_edittext_checkiotNumber)
     EditText editTextIotNumber;
+    @BindView(R.id.join_button_checkiotNumber)
+    Button buttonCheckIotNum;
 
-    private  NetworkService service;
+    private NetworkService service;
     private final String TAG = "JoinActivity";
 
     private boolean isDuplicate = false;
     private boolean isCheckEmail = false;
+    private boolean isCheckIotNum = false;
     private String verificationCode = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
-
         ButterKnife.bind(this);
 
         service = ApplicationController.getInstance().getNetworkService();
-
-
         bindClickListener();
     }
 
@@ -169,11 +169,41 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
 
+        //iotNumber 체크
+        buttonCheckIotNum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String iotNumber = editTextIotNumber.getText().toString();
+                if (iotNumber.equals("")) {
+                    Toast.makeText(getApplicationContext(), "로봇 번호를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Call<BaseResult> checkIotNum = service.getCheckIotNumResult(iotNumber);
+                    checkIotNum.enqueue(new Callback<BaseResult>() {
+                        @Override
+                        public void onResponse(Call<BaseResult> call, Response<BaseResult> response) {
+                            if (response.isSuccessful()) {
+                                if (response.body().getMessage().equals("SUCCESS")) {
+                                    Toast.makeText(getApplicationContext(), "로봇 번호를 확인했습니다. 감사합니다. ", Toast.LENGTH_SHORT).show();
+                                    isCheckIotNum = true;
+                                }if (response.body().getMessage().equals("NOT_VAILD")) {
+                                    Toast.makeText(getApplicationContext(), "유효한 번호가 아닙니다. 다시 한번 확인해 주세요. ", Toast.LENGTH_SHORT).show();
+                                    isCheckIotNum = false;
+                                }
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<BaseResult> call, Throwable t) {
+
+                        }
+                    });
+                }
+            }
+        });
+
         //회원가입 완료
         buttonJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 if (!checkValid(editTextId.getText().toString(), editTextPassword.getText().toString(), editTextRepassword.getText().toString(), editTextNikname.getText().toString())) {
                     return;
@@ -245,8 +275,8 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
     }
-  //  유효성 체크
 
+    //  유효성 체크
     public boolean checkValid(String id, String password, String repassword, String name) {
         // 빈칸 체크
         if (id.equals("")) {
