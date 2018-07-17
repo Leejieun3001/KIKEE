@@ -66,7 +66,7 @@ public class JoinActivity extends AppCompatActivity {
     private boolean isDuplicate = false;
     private boolean isCheckEmail = false;
     private boolean isCheckIotNum = false;
-    private String verificationCode = "";
+    private String verificationCode = "not_valid_code";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,11 +160,15 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String code = editTextcheckCode.getText().toString();
-                if (code.equals(verificationCode)) {
-                    isCheckEmail = true;
-                    Toast.makeText(getApplicationContext(), "인증 되었습니다.", Toast.LENGTH_SHORT).show();
+                if (code.equals("")) {
+                    Toast.makeText(getApplicationContext(), "인증 번호를 입력해 주세요.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "인증번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    if (code.equals(verificationCode)) {
+                        isCheckEmail = true;
+                        Toast.makeText(getApplicationContext(), "인증 되었습니다.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "인증번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -185,12 +189,14 @@ public class JoinActivity extends AppCompatActivity {
                                 if (response.body().getMessage().equals("SUCCESS")) {
                                     Toast.makeText(getApplicationContext(), "로봇 번호를 확인했습니다. 감사합니다. ", Toast.LENGTH_SHORT).show();
                                     isCheckIotNum = true;
-                                }if (response.body().getMessage().equals("NOT_VAILD")) {
+                                }
+                                if (response.body().getMessage().equals("NOT_VAILD")) {
                                     Toast.makeText(getApplicationContext(), "유효한 번호가 아닙니다. 다시 한번 확인해 주세요. ", Toast.LENGTH_SHORT).show();
                                     isCheckIotNum = false;
                                 }
                             }
                         }
+
                         @Override
                         public void onFailure(Call<BaseResult> call, Throwable t) {
 
