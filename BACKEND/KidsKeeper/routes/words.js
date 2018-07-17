@@ -3,7 +3,6 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt-nodejs');
 const async = require('async');
 const globalModule = require('../module/globalModule');
-const nodemailer = require('nodemailer');
 const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
@@ -22,8 +21,8 @@ const upload = multer({
 
 /**
  * api 목적        : 단어 데이터 전송
- * request params : { String category: "카테고리"
- *                    }
+ * request params : { string category: "카테고리"
+ *                   }
  */
 router.get('/', function (req, res) {
 
@@ -37,11 +36,9 @@ router.get('/', function (req, res) {
             if (error) callback(error, connection, "Selecet query Error : ");
             else {
                 if (rows.length === 0) {
-                    // 존재하는 아이디가 없는 경우
                     res.status(200).send({ message: "WORD_NOT_EIXT" });
                     callback("ALREADY_SEND_MESSAGE", connection, "api : /words/");
                 } else {
-
                     for (var x in rows) {
                         var word = {}
                         word.korea = rows[x].korea;
@@ -49,18 +46,12 @@ router.get('/', function (req, res) {
                         resultJson.words.push(word);
                     }
                     res.status(200).send(resultJson)
-                    callback(null, connection,"api : /words/");
+                    callback(null, connection, "api : /words/");
                 }
             }
         });
     }
-
-
     var task = [globalModule.connect.bind(this), selectWords, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
-
-
-
-
 module.exports = router;
