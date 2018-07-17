@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.OperateRobot;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Word.WordGame;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class KidsMain extends AppCompatActivity {
@@ -20,6 +23,7 @@ public class KidsMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kids_main);
+        ButterKnife.bind(this);
         clickEventPlayWithRobot();
         clickEventWordGame();
     }

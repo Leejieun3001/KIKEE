@@ -1,16 +1,15 @@
-
-package kidskeeper.sungshin.or.kr.kikee.Kids;
+package kidskeeper.sungshin.or.kr.kikee.Kids.Word;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import kidskeeper.sungshin.or.kr.kikee.R;
 
-public class OperateRobot extends AppCompatActivity {
+public class WordGame extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_operate_robot);
+        setContentView(R.layout.activity_word_game);
     }
 }

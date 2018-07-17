@@ -1,4 +1,4 @@
-package kidskeeper.sungshin.or.kr.kikee.Kids;
+package kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;

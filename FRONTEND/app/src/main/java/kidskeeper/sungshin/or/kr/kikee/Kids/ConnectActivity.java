@@ -1,6 +1,5 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids;
 
-import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
@@ -12,9 +11,18 @@ import android.view.View;
 import android.widget.Button;
 
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth.BluetoothService;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth.bluetoothDeviceList;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.OperateRobot;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Word.WordGame;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class ConnectActivity extends AppCompatActivity {
+
+    @BindView(R.id.connect_button_go_kidsMain)
+    Button btnGoKidsMain;
 
     private BluetoothService bluetoothService = null;
     private android.os.Handler mHandler = new Handler(){
@@ -27,10 +35,12 @@ public class ConnectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {  //해당 activity를 작동하기 위해 표준으로 넣어야 하는 메인 함수같은 존재
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connect); //xml파일과 java파일을 연결시켜주는 명령
+        ButterKnife.bind(this);
 
         if(bluetoothService == null){
             bluetoothService = new BluetoothService(this,mHandler);
         }
+
 
         // alertDialog 를 만들기 위해 기본적으로 들어가는 속성들을 정리하는 것이 빌더 객체
         AlertDialog.Builder msgBuilder = new AlertDialog.Builder(this)
@@ -57,6 +67,18 @@ public class ConnectActivity extends AppCompatActivity {
                 msgDialog.show();  // 다이얼로그 객체를 버튼클릭시 띄우겠다.
             }
         });
+        clickEventGoKidsMain();
+    }
+
+    void clickEventGoKidsMain() {
+        btnGoKidsMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ConnectActivity.this, KidsMain.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
 

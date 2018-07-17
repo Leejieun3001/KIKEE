@@ -31,9 +31,9 @@
         <activity android:name=".Adult.LoginJoin.AdultLoginActivity" />
         <activity android:name=".Adult.LoginJoin.JoinActivity" />
         <activity android:name=".Kids.KidsMain" />
-        <activity android:name=".Kids.OperateRobot" />
-        <activity android:name=".Kids.bluetoothDeviceList" />
-        <activity android:name=".Kids.WordGame" />
+        <activity android:name=".Kids.Operate.OperateRobot" />
+        <activity android:name=".Kids.Bluetooth.bluetoothDeviceList" />
+        <activity android:name=".Kids.Word.WordGame" />
         <activity android:name=".Kids.RecyclerView"></activity>
     </application>
 
