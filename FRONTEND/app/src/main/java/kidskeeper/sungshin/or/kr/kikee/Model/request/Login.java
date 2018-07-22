@@ -5,29 +5,27 @@ package kidskeeper.sungshin.or.kr.kikee.Model.request;
  */
 
 public class Login {
-    private String iotNumber;
+    private String email;
     private String password;
 
-    public void setIotNumber(String iotNumber) {
-        this.iotNumber = iotNumber;
-    }
-
-    public void setPassword(String password) {
+    public Login(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
-    public String getIotNumber() {
+    public String getEmail() {
+        return email;
+    }
 
-        return iotNumber;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public Login(String iotNumber, String password) {
-
-        this.iotNumber = iotNumber;
+    public void setPassword(String password) {
         this.password = password;
     }
 }
