@@ -9,7 +9,7 @@
 
     <!-- 안드로이드 메모리 가용 용량 증가(largeHeap) -->
     <application
-        android:name = ".Network.ApplicationController"
+        android:name=".Network.ApplicationController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -34,7 +34,8 @@
         <activity android:name=".Kids.Operate.OperateRobot" />
         <activity android:name=".Kids.Bluetooth.bluetoothDeviceList" />
         <activity android:name=".Kids.Word.WordGame" />
-        <activity android:name=".Kids.RecyclerView"></activity>
+        <activity android:name=".Kids.RecyclerView" />
+        <activity android:name=".Kids.bluetooth.BluetoothList"></activity>
     </application>
 
 </manifest>

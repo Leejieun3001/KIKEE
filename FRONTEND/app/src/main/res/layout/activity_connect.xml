@@ -36,21 +36,12 @@
 
 
     <Button
-        android:id="@+id/connect_button_go_kidsMain"
+        android:id="@+id/btn_go_bluetoothList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="204dp"
-        android:layout_marginEnd="70dp"
-        android:text="NEXT" />
-
-    <Button
-        android:id="@+id/connect_button_bluetooth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/Connect_Bluetooth_Message"
-        android:layout_alignTop="@+id/connect_button_go_kidsMain"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="183dp"
         android:text="연결하기" />
 
 </RelativeLayout>

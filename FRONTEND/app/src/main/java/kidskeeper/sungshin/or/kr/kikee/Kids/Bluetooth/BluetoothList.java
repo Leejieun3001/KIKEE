@@ -1,17 +1,13 @@
-package kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth;
+package kidskeeper.sungshin.or.kr.kikee.Kids.bluetooth;
 
-import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -19,13 +15,6 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.TedPermission;
-import com.nainfox.bluetoothlib.bluetooth.BluetoothController;
-import com.nainfox.bluetoothlib.bluetooth.BluetoothLeService;
-import com.nainfox.bluetoothlib.bluetooth.Config;
-import com.nainfox.bluetoothlib.bluetooth.Data;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -38,19 +27,20 @@ import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class BluetoothList extends AppCompatActivity {
 
-    BluetoothAdapter bluetoothAdapter;
 
-    //UI 부분.
-    CheckBox cbCheckAllow;
-    Button btnBluetoothSearch;
+    BluetoothAdapter bluetoothAdapter; // 안드로이드에서 블루투스를 사용하기 위하여 필요한 Adapter 객체.
 
-    //검색된 기기의 목록을 처리하기 위한 부분
-    List<BluetoothDevice> bluetoothDevices;
+    // UI 부분.
+    CheckBox cbCheckAllow; // 다른 기기에서 내 기기를 검색할 수 있도록 허용하는 체크박스.
+    Button btnBluetoothSearch; // '블루투스 검색' 버튼.
+
+    // 검색된 기기의 목록을 처리하기 위한 부분.
+    List<BluetoothDevice> bluetoothDevices; // 검색된 블루투스 기기를 저장할 List 객체.
     List<Map<String, String>> dataDevice;
     SimpleAdapter adapterDevice;
     ListView searchDeviceList;
 
-    //페어링 부분
+    // 페어링 부분
     SimpleAdapter adapterPaired;
     List<Map<String,String>> dataPaired;
     ListView pairSucessList;
@@ -58,19 +48,20 @@ public class BluetoothList extends AppCompatActivity {
     int selectDevice;
 
     @Override
-    protected void onCreate(Bundle savednstanceState){
-        super.onCreate(savednstanceState);
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth_list);
 
-        //실행하는 기기 자체에 내장된 블루투스 Adapter 객체 반환
-        //bluetoothAdapter = null 이면 해당 기기는 블루투스 사용 불가능
+        // 실행하는 기기 자체에 내장된 블루투스 Adapter 객체 반환.
+        // bluetoothAdatper = null이면 해당 기기는 블루투스 사용 불가능.
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        bluetoothDevices = new ArrayList<>();
+        bluetoothDevices = new ArrayList<>(); // 검색된 블루투스 기기를 저장할 List 객체.
 
-        //검색된 기기의 목록을 저장하고 ListView 위에 출력해줌
+        // 검색된 기기의 목록을 저장하고 ListView 위에 출력해줌.
         dataDevice = new ArrayList<>();
         adapterDevice = new SimpleAdapter(this, dataDevice, android.R.layout.simple_list_item_2, new String[]{"name", "address"}, new int[]{android.R.id.text1, android.R.id.text2});
-        searchDeviceList = (ListView)findViewById(R.id.searchDeviceList);
+        searchDeviceList = (ListView) findViewById(R.id.searchDeviceList);
         searchDeviceList.setAdapter(adapterDevice);
 
         selectDevice = -1;
@@ -80,33 +71,37 @@ public class BluetoothList extends AppCompatActivity {
         pairSucessList = (ListView)findViewById(R.id.pairSucessList);
         pairSucessList.setAdapter(adapterPaired);
 
-        //다른 기기에서 내 기기를 검색할 수 있도록 허용하는 체크박스
-        cbCheckAllow = (CheckBox)findViewById(R.id.cbCheckAllow);
+        // 다른 기기에서 내 기기를 검색할 수 있도록 허용하는 체크박스.
+        cbCheckAllow = (CheckBox) findViewById(R.id.cbCheckAllow);
         cbCheckAllow.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v){
-                setCbCheckAllow();
+            public void onClick(View v)
+            {
+                setCbCheckAllow(); // '검색 허용' 모드 활성화.
             }
         });
 
-        //내 인근에 연결 가능한 블루투스 장치를 검색하는 버튼
-        btnBluetoothSearch = (Button)findViewById(R.id.btnBluetoothSearch);
+        // 내 인근에 연결 가능한 블루투스 장치를 검색하는 버튼.
+        btnBluetoothSearch = (Button) findViewById(R.id.btnBluetoothSearch);
         btnBluetoothSearch.setOnClickListener(new View.OnClickListener()
         {
+
             @Override
-            public void onClick(View v){
-                if(bluetoothAdapter.isDiscovering())
+            public void onClick(View v)
+            {
+                if (bluetoothAdapter.isDiscovering()) // 현재, 인근의 블루투스 연결 가능한 장치를 검색중이라면.
                 {
-                    bluetoothAdapter.cancelDiscovery();
+                    bluetoothAdapter.cancelDiscovery(); // 진행중인 검색을 종료함.
                 }
                 else
                 {
-                    bluetoothAdapter.startDiscovery();
+                    bluetoothAdapter.startDiscovery(); // 블루투스 연결 가능한 인근의 장치 검색을 시작함.
                 }
             }
         });
-        //BroadcastReceiver 사용을 위한 Intent 필터 등록.
+
+        // BroadcastReceiver 사용을 위한 Intent 필터 등록.
         IntentFilter searchFilter = new IntentFilter();
         searchFilter.addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED); // BluetoothAdapter.ACTION_DISCOVERY_STARTED : 블루투스 검색 시작.
         searchFilter.addAction(BluetoothDevice.ACTION_FOUND); // BluetoothDevice.ACTION_FOUND : 블루투스 디바이스 찾음.
@@ -159,7 +154,7 @@ public class BluetoothList extends AppCompatActivity {
             {
                 Toast.makeText(BluetoothList.this, device.getName() + "과 연결되었습니다.", Toast.LENGTH_SHORT).show();
 
-                Intent i = new Intent(BluetoothList.this,KidsMain.class);
+                Intent i = new Intent(BluetoothList.this, KidsMain.class);
                 startActivity(i);
                 finish();
             }
@@ -269,7 +264,6 @@ public class BluetoothList extends AppCompatActivity {
         }
     };
 
-    // activity 가 종료될때 호출되는 콜백 API
     @Override
     protected void onDestroy()
     {
@@ -279,5 +273,3 @@ public class BluetoothList extends AppCompatActivity {
         super.onDestroy();
     }
 }
-
-

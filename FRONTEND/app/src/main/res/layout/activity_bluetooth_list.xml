@@ -1,89 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 버튼 영역 -->
-    <LinearLayout
-        android:id="@+id/basicBtnLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:id="@+id/basicBtnLayout">
 
-        <!-- 블루투스 검색을 위한 버튼 -->
-        <Button
+    <!-- 블루투스 검색을 위한 버튼 -->
+    <Button android:layout_height="wrap_content"
+            android:layout_width="0dp"
             android:id="@+id/btnBluetoothSearch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="블루투스 검색" />
+            android:text="블루투스 검색"
+            android:layout_weight="1"/>
 
-        <!-- Mac 주소 직접 연결을 위한 창을 띄워주는 버튼 -->
-        <Button
-            android:id="@+id/btnEnterMac"
+    <!-- Mac 주소 직접 연결을 위한 창을 띄워주는 버튼 -->
+    <Button android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Mac 주소 입력" />
-    </LinearLayout>
+            android:id="@+id/btnEnterMac"
+            android:text="Mac 주소 입력"
+            android:layout_weight="1"/>
+
+</LinearLayout>
 
     <!-- 검색 허용 View 영역 -->
-    <LinearLayout
-        android:id="@+id/searchAllowLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/basicBtnLayout"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:id="@+id/searchAllowLayout"
+                  android:gravity="center"
+                  android:layout_below="@+id/basicBtnLayout">
 
-        <!-- 안내 메시지 -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="다른 블루투스 기기가 내 휴대폰을 찾을수 있도록 합니다." />
+    <!-- 안내 메시지 -->
+    <TextView android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:text="다른 블루투스 기기가 내 휴대폰을 찾을수 있도록 합니다."/>
 
-        <!-- 검색 허용 체크 박스 -->
-        <CheckBox
-            android:id="@+id/cbCheckAllow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+    <!-- 검색 허용 체크 박스 -->
+    <CheckBox android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:id="@+id/cbCheckAllow"/>
+
+</LinearLayout>
 
     <!-- 메인 컨텐츠 영역 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/searchAllowLayout"
-        android:orientation="vertical">
+    <LinearLayout android:layout_height="match_parent"
+                  android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_below="@+id/searchAllowLayout">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="#ff0000"
-            android:gravity="center"
-            android:text="페어링된 목록"
-            android:textColor="#ffffff" />
+    <TextView android:layout_height="0dp"
+              android:layout_width="match_parent"
+              android:text="페어링된 목록"
+              android:layout_weight="1"
+              android:gravity="center"
+              android:textColor="#ffffff"
+              android:background="#ff0000"/>
 
-        <ListView
-            android:id="@+id/pairSucessList"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
+    <ListView android:layout_height="0dp"
+              android:layout_width="match_parent"
+              android:id="@+id/pairSucessList"
+              android:layout_weight="5"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="#ff0000"
-            android:gravity="center"
-            android:text="검색된 목록"
-            android:textColor="#ffffff" />
+    <TextView android:layout_height="0dp"
+              android:layout_width="match_parent"
+              android:text="검색된 목록"
+              android:layout_weight="1"
+              android:gravity="center"
+              android:textColor="#ffffff"
+              android:background="#ff0000"/>
 
-        <ListView
-            android:id="@+id/searchDeviceList"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
-    </LinearLayout>
+    <ListView android:layout_height="0dp"
+              android:layout_width="match_parent"
+              android:id="@+id/searchDeviceList"
+              android:layout_weight="5"/>
+
+</LinearLayout>
+
 </RelativeLayout>
