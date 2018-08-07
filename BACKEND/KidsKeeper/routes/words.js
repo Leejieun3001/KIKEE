@@ -42,7 +42,7 @@ router.get('/', function (req, res) {
                     for (var x in rows) {
                         var word = {}
                         word.korea = rows[x].korea;
-                        word.english = rows[x].english;
+                        word.English = rows[x].english;
                         resultJson.words.push(word);
                     }
                     res.status(200).send(resultJson)
