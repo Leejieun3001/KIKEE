@@ -1,5 +1,6 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids.WordGame;
 
+import android.content.Intent;
 import android.icu.util.ULocale;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,7 +32,6 @@ public class CategorySelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catagory_select);
-
         service = ApplicationController.getInstance().getNetworkService();
 
         ButterKnife.bind(this);
@@ -54,7 +54,6 @@ public class CategorySelectActivity extends AppCompatActivity {
                                 LinearLayout linearLayout = new LinearLayout(getBaseContext());
                                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-                                //Button 생성
                                 final Button btn = new Button(getBaseContext());
 
                                 btn.setText(category[i]);
@@ -62,25 +61,20 @@ public class CategorySelectActivity extends AppCompatActivity {
                                 btn.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Log.d("log", "position :" + position);
-
                                         Toast.makeText(getApplicationContext(), "클릭한 position:" + position, Toast.LENGTH_LONG).show();
-
+                                        Intent intent = new Intent(getApplicationContext(), PlayWordGameActivity.class);
+                                        intent.putExtra("category", position);
+                                        startActivity(intent);
+                                        finish();
 
                                     }
                                 });
-
                                 linearLayout.addView(btn);
-
                                 linearLayoutCategory.addView(linearLayout);
-
-
                             }
-
-
                     }
                 }else {
-
+                    Toast.makeText(getApplicationContext(), "서버가 불안정 합니다! 빠른 시일 내에 개선하겠습니다.", Toast.LENGTH_LONG).show();
                 }
             }
 

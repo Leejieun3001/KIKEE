@@ -36,7 +36,8 @@
         <activity android:name=".Kids.Word.WordGame" />
         <activity android:name=".Kids.RecyclerView" />
         <activity android:name=".Kids.Bluetooth.BluetoothList" />
-        <activity android:name=".Kids.WordGame.CategorySelectActivity"></activity>
+        <activity android:name=".Kids.WordGame.CategorySelectActivity" />
+        <activity android:name=".Kids.WordGame.PlayWordGameActivity"></activity>
     </application>
 
 </manifest>
