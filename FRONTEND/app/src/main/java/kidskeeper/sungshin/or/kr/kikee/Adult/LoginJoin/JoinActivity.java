@@ -251,9 +251,6 @@ public class JoinActivity extends AppCompatActivity {
                                 case "NOT_MATCH_REGULATION":
                                     Toast.makeText(getApplicationContext(), "입력 형식이 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                                     break;
-                                case "NO_IMAGE":
-                                    Toast.makeText(getApplicationContext(), "이미지가 없습니다.", Toast.LENGTH_SHORT).show();
-                                    break;
                             }
                             progressBar.setVisibility(View.GONE);
                         }
@@ -265,7 +262,6 @@ public class JoinActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                     }
                 });
-                Log.d(TAG, "통신 끝");
             }
         });
 

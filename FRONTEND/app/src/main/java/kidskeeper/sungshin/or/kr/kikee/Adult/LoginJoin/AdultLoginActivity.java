@@ -50,41 +50,46 @@ public class AdultLoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = editTextId.getText().toString().trim();
                 String pw = editTextPw.getText().toString().trim();
-                Login login = new Login(email, pw);
 
-                Call<LoginResult> getLoginResult = service.getLoginResult(login);
+                if (email.equals("")) {
+                    Toast.makeText(getApplicationContext(), "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                } else if (pw.equals("")) {
+                    Toast.makeText(getApplicationContext(), "비밀번호를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Login login = new Login(email, pw);
 
-                getLoginResult.enqueue(new Callback<LoginResult>() {
-                    @Override
-                    public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
-                        if (response.isSuccessful()) {
+                    Call<LoginResult> getLoginResult = service.getLoginResult(login);
 
-                            String message = response.body().getMessage();
-                            switch (message) {
-                                case "SUCCESS":
-                                    Toast.makeText(getApplicationContext(), "로그인이  완료되었습니다.", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), AdultHomeActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                    break;
-                                case "NOT_SIGN_UP":
-                                    Toast.makeText(getApplicationContext(), "일치하는 회원 정보가 없습니다.이메일과 비밀번호를 다시한번 확인해 주세요", Toast.LENGTH_SHORT).show();
-                                    break;
-                                case "INCORRECT_PASSWORD":
-                                    Toast.makeText(getApplicationContext(), "이메일과 비밀번호를 다시한번 확인해 주세요", Toast.LENGTH_SHORT).show();
-                                    break;
+                    getLoginResult.enqueue(new Callback<LoginResult>() {
+                        @Override
+                        public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                            if (response.isSuccessful()) {
+
+                                String message = response.body().getMessage();
+                                switch (message) {
+                                    case "SUCCESS":
+                                        Toast.makeText(getApplicationContext(), "로그인이  완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), AdultHomeActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                        break;
+                                    case "NOT_SIGN_UP":
+                                        Toast.makeText(getApplicationContext(), "일치하는 회원 정보가 없습니다.이메일과 비밀번호를 다시한번 확인해 주세요", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case "INCORRECT_PASSWORD":
+                                        Toast.makeText(getApplicationContext(), "이메일과 비밀번호를 다시한번 확인해 주세요", Toast.LENGTH_SHORT).show();
+                                        break;
+                                }
+
                             }
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginResult> call, Throwable t) {
 
                         }
-                    }
-
-                    @Override
-                    public void onFailure(Call<LoginResult> call, Throwable t) {
-
-                    }
-                });
-
-
+                    });
+                }
             }
         });
 

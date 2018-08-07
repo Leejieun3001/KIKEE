@@ -1,4 +1,6 @@
-package kidskeeper.sungshin.or.kr.kikee.Kids.bluetooth;
+package kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth;
+
+import android.support.v7.app.AppCompatActivity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;

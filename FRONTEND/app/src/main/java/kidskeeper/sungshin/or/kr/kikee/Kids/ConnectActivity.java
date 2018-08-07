@@ -13,7 +13,7 @@ import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.bluetooth.BluetoothList;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth.BluetoothList;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class ConnectActivity extends AppCompatActivity {
