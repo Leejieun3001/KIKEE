@@ -77,7 +77,7 @@ router.get('/category', function (req, res) {
                 } else {
                     for (var x in rows) {
                         var category = {}
-                        category.category = rows[x].category;
+                        category = rows[x].category;
                         resultJson.categorys.push(category);
                     }
                     res.status(200).send(resultJson)
