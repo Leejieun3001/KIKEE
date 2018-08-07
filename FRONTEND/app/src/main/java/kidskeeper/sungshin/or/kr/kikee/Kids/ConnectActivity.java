@@ -1,5 +1,6 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids;
 
+import kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth.BluetoothList;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
@@ -11,9 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth.BluetoothList;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class ConnectActivity extends AppCompatActivity {
@@ -56,7 +55,7 @@ public class ConnectActivity extends AppCompatActivity {
     }
 
     private void clickEventGoBluetoothList() {
-                Intent intent = new Intent(ConnectActivity.this,BluetoothList.class);
+                Intent intent = new Intent(ConnectActivity.this, BluetoothList.class);
                 startActivity(intent);
                 finish();
 

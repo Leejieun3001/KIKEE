@@ -26,6 +26,37 @@ const upload = multer({
  * title, content date hits user_idx nickname
  */
 
+router.post('/write', function (req, res) {
+
+    let resultJson = {
+        message: 'SUCCESS',
+        boards: []
+    };
+
+    let selectBoardList = function (connection, callback) {
+        connection.query("SELECT * FROM Board;", function (error, rows) {
+            if (error) callback(error, connection, "Selecet query Error : ");
+            else {
+                if (rows.length === 0) {
+                    res.status(200).send({ message: "BOARD_NOT_EXIT" });
+                    callback("ALREADY_SEND_MESSAGE", connection, "api : /board/write");
+                } else {
+                    for (var x in rows) {
+                        var board = {}
+                        board= rows[x];
+                        resultJson.boards.push(board);
+                    }
+                    res.status(200).send(resultJson)
+                    callback(null, connection, "api : /board/write");
+                }
+            }
+        });
+    }
+    var task = [globalModule.connect.bind(this), selectBoardList, globalModule.releaseConnection.bind(this)];
+    async.waterfall(task, globalModule.asyncCallback.bind(this));
+});
+
+
  /**
   * 글 조회
   */
