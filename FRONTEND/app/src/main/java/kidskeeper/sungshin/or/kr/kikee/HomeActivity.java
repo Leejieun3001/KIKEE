@@ -20,9 +20,6 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.home_button_go_kids)
     Button buttonGoConnect;
 
-    @BindView(R.id.home_button_go_test)
-    Button test;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,14 +44,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CategorySelectActivity.class);
-                startActivity(intent);
 
-            }
-        });
 
     }
 

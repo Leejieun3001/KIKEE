@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.OperateRobot;
 import kidskeeper.sungshin.or.kr.kikee.Kids.Word.WordGame;
+import kidskeeper.sungshin.or.kr.kikee.Kids.WordGame.CategorySelectActivity;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class KidsMain extends AppCompatActivity {
@@ -34,6 +35,7 @@ public class KidsMain extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(KidsMain.this, OperateRobot.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -43,8 +45,9 @@ public class KidsMain extends AppCompatActivity {
         buttonGoWordGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(KidsMain.this, WordGame.class);
+                Intent intent2 = new Intent(KidsMain.this, CategorySelectActivity.class);
                 startActivity(intent2);
+                finish();
             }
         });
     }

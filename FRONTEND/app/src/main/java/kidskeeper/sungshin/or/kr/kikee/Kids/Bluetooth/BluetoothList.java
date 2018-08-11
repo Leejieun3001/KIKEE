@@ -1,8 +1,5 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth;
 
-/**
- * Created by LG on 2018-08-07.
- */
 
 import android.bluetooth.BluetoothAdapter;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import kidskeeper.sungshin.or.kr.kikee.Kids.KidsMain;
 import kidskeeper.sungshin.or.kr.kikee.R;
@@ -115,6 +113,8 @@ public class BluetoothList extends AppCompatActivity {
         connectFilter.addAction(BluetoothDevice.ACTION_ACL_CONNECTED);
         registerReceiver(bluetoothConnectReceiver, connectFilter);
 
+
+
         // 검색된 디바이스목록 클릭시 페어링 요청
         searchDeviceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -122,6 +122,7 @@ public class BluetoothList extends AppCompatActivity {
                 BluetoothDevice device = bluetoothDevices.get(position);
 
                 try {
+
                     // 선택한 디바이스 페어링 요청
                     Method method = device.getClass().getMethod("createBond", (Class[]) null);
                     method.invoke(device, (Object[]) null);

@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Kids.WordGame.PlayWordGameActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/solveAnswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="99dp"
+        android:layout_marginEnd="134dp"
+        android:text="정답 맞추기"
+        android:gravity="center_horizontal|center_vertical"/>
+
+    <TextView
+        android:id="@+id/textEnglish"
+        android:layout_width="151dp"
+        android:layout_height="63dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="94dp"
+        android:textSize="30sp"
+        android:textColor="#f00f"
+        android:gravity="center_vertical|center_horizontal"/>
+
+    <TextView
+        android:id="@+id/textKorea"
+        android:layout_width="131dp"
+        android:layout_height="61dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="222dp"
+        android:textSize="25sp"
+        android:gravity="center_vertical|center_horizontal"
+       />
+</RelativeLayout>

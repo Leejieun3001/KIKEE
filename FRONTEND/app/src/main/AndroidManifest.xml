@@ -3,6 +3,9 @@
     package="kidskeeper.sungshin.or.kr.kikee">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <!-- 블루투스 설정메뉴 -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -32,9 +35,7 @@
         <activity android:name=".Adult.LoginJoin.JoinActivity" />
         <activity android:name=".Kids.KidsMain" />
         <activity android:name=".Kids.Operate.OperateRobot" />
-        <activity android:name=".Kids.Bluetooth.bluetoothDeviceList" />
         <activity android:name=".Kids.Word.WordGame" />
-        <activity android:name=".Kids.RecyclerView" />
         <activity android:name=".Kids.Bluetooth.BluetoothList" />
         <activity android:name=".Kids.WordGame.CategorySelectActivity" />
         <activity android:name=".Kids.WordGame.PlayWordGameActivity"></activity>
