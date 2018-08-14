@@ -68,6 +68,15 @@ router.post('/', function (req, res) {
         comments: []
     };
 
+    let updateBoard = function (connection, callback) {
+        connection.query("update Board set hits = hits+1 where idx = ? ;", req.body.board_idx, function (error, rows) {
+            if (error) callback(error, connection, "update query Error : ");
+            else {
+                callback(null, connection);
+            }
+        });
+    }
+
     let selectBoard = function (connection, callback) {
         connection.query("SELECT Board.idx, Board.title, Board.content, Board.date, Board.hits, Board.nickname ,Board.user_idx , Count(Pick.board_idx) pick "
             + "FROM Board  left join Pick on Pick.board_idx = Board.idx "
@@ -81,11 +90,12 @@ router.post('/', function (req, res) {
                         resultJson.board = rows[0];
                         if (rows[0].user_idx === req.body.user_idx) { resultJson.isMine = 1; }
                         else { resultJson.isMine = 0; }
-                        callback(null, connection, "api : /board");
+                        callback(null, connection);
                     }
                 }
             });
     }
+
 
     let selectCommentList = function (connection, callback) {
         connection.query("SELECT * FROM CommentBoard where board_idx = ? ", req.body.board_idx, function (error, rows) {
@@ -108,9 +118,7 @@ router.post('/', function (req, res) {
             }
         });
     }
-
-
-    var task = [globalModule.connect.bind(this), selectBoard, selectCommentList, globalModule.releaseConnection.bind(this)];
+    var task = [globalModule.connect.bind(this), updateBoard, selectBoard, selectCommentList, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
