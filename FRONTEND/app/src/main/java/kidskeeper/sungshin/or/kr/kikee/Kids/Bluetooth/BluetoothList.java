@@ -2,6 +2,7 @@ package kidskeeper.sungshin.or.kr.kikee.Kids.Bluetooth;
 
 
 import android.bluetooth.BluetoothAdapter;
+import android.location.Address;
 import android.support.v7.app.AppCompatActivity;
 
 import android.bluetooth.BluetoothDevice;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Method;
@@ -28,9 +30,8 @@ import java.util.UUID;
 import kidskeeper.sungshin.or.kr.kikee.Kids.KidsMain;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
+
 public class BluetoothList extends AppCompatActivity {
-
-
     BluetoothAdapter bluetoothAdapter; // 안드로이드에서 블루투스를 사용하기 위하여 필요한 Adapter 객체.
 
     // UI 부분.
@@ -114,15 +115,12 @@ public class BluetoothList extends AppCompatActivity {
         registerReceiver(bluetoothConnectReceiver, connectFilter);
 
 
-
         // 검색된 디바이스목록 클릭시 페어링 요청
         searchDeviceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 BluetoothDevice device = bluetoothDevices.get(position);
-
                 try {
-
                     // 선택한 디바이스 페어링 요청
                     Method method = device.getClass().getMethod("createBond", (Class[]) null);
                     method.invoke(device, (Object[]) null);
@@ -140,6 +138,7 @@ public class BluetoothList extends AppCompatActivity {
             String action = intent.getAction();
 
             BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+
 
             if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(action)) {
                 Toast.makeText(BluetoothList.this, device.getName() + "과 연결되었습니다.", Toast.LENGTH_SHORT).show();
@@ -202,6 +201,10 @@ public class BluetoothList extends AppCompatActivity {
                             dataDevice.remove(selectDevice);
                             adapterDevice.notifyDataSetChanged();
                             selectDevice = -1;
+
+                            Intent i = new Intent(BluetoothList.this, KidsMain.class);
+                            startActivity(i);
+                            finish();
                         }
                     }
             }
