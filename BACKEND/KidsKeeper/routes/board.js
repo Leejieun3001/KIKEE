@@ -43,7 +43,7 @@ router.post('/write', function (req, res) {
                 } else {
                     for (var x in rows) {
                         var board = {}
-                        board= rows[x];
+                        board = rows[x];
                         resultJson.boards.push(board);
                     }
                     res.status(200).send(resultJson)
@@ -57,14 +57,68 @@ router.post('/write', function (req, res) {
 });
 
 
- /**
-  * 글 조회
-  */
+/**
+ * 글 조회
+ */
+router.post('/', function (req, res) {
 
-  /**
-   * 전체 글 리스트 조회
-   */
-  
+    let resultJson = {
+        message: 'SUCCESS',
+        board: {},
+        comments: []
+    };
+
+    let selectBoard = function (connection, callback) {
+        connection.query("SELECT Board.idx, Board.title, Board.content, Board.date, Board.hits, Board.nickname ,Board.user_idx , Count(Pick.board_idx) pick "
+            + "FROM Board  left join Pick on Pick.board_idx = Board.idx "
+            + "where Board.idx = ? ", req.body.board_idx, function (error, rows) {
+                if (error) callback(error, connection, "Selecet query Error : ");
+                else {
+                    if (rows.length === 0) {
+                        res.status(200).send({ message: "BOARD_NOT_EXIT" });
+                        callback("ALREADY_SEND_MESSAGE", connection, "api : /board");
+                    } else {
+                        resultJson.board = rows[0];
+                        if (rows[0].user_idx === req.body.user_idx) { resultJson.isMine = 1; }
+                        else { resultJson.isMine = 0; }
+                        callback(null, connection, "api : /board");
+                    }
+                }
+            });
+    }
+
+    let selectCommentList = function (connection, callback) {
+        connection.query("SELECT * FROM CommentBoard where board_idx = ? ", req.body.board_idx, function (error, rows) {
+            if (error) callback(error, connection, "Selecet query Error : ");
+            else {
+                if (rows.length === 0) {
+                    res.status(200).send({ message: "BOARD_NOT_EXIT" });
+                    callback("ALREADY_SEND_MESSAGE", connection, "api : /board");
+                } else {
+                    resultJson.message = "SUCCESS";
+
+                    for (var x in rows) {
+                        var comment = {}
+                        comment = rows[x];
+                        resultJson.comments.push(comment);
+                    }
+                    res.status(200).send(resultJson);
+                    callback(null, connection, "api : /board");
+                }
+            }
+        });
+    }
+
+
+    var task = [globalModule.connect.bind(this), selectBoard, selectCommentList, globalModule.releaseConnection.bind(this)];
+    async.waterfall(task, globalModule.asyncCallback.bind(this));
+});
+
+
+/**
+ * 전체 글 리스트 조회
+ */
+
 router.get('/total', function (req, res) {
 
     let resultJson = {
@@ -82,7 +136,7 @@ router.get('/total', function (req, res) {
                 } else {
                     for (var x in rows) {
                         var board = {}
-                        board= rows[x];
+                        board = rows[x];
                         resultJson.boards.push(board);
                     }
                     res.status(200).send(resultJson)
@@ -96,17 +150,17 @@ router.get('/total', function (req, res) {
 });
 
 
-  /**
-   * 글 수정
-   */
+/**
+ * 글 수정
+ */
 
-   /**
-    * 글 좋아요
-    */
+/**
+ * 글 좋아요
+ */
 
-   /*
-   *글 싫어요
-    *
-    */
+/*
+*글 싫어요
+ *
+ */
 
 module.exports = router;
