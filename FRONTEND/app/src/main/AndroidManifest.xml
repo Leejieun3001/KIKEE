@@ -8,9 +8,8 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <!-- 블루투스 설정메뉴 -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- 안드로이드 메모리 가용 용량 증가(largeHeap) -->
     <application
@@ -40,7 +39,8 @@
         <activity android:name=".Kids.Word.WordGame" />
         <activity android:name=".Kids.Bluetooth.BluetoothList" />
         <activity android:name=".Kids.WordGame.CategorySelectActivity" />
-        <activity android:name=".Kids.WordGame.PlayWordGameActivity"></activity>
+        <activity android:name=".Kids.WordGame.PlayWordGameActivity" />
+        <activity android:name=".Adult.Community.BoardActivity"></activity>
     </application>
 
 </manifest>

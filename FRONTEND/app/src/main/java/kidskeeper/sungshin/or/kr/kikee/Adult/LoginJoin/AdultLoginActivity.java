@@ -1,6 +1,7 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.LoginJoin;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,8 +30,6 @@ public class AdultLoginActivity extends AppCompatActivity {
     Button buttonLogin;
     @BindView(R.id.adultlogin_button_join)
     Button buttonJoin;
-
-
     private NetworkService service;
 
     @Override
@@ -38,7 +37,6 @@ public class AdultLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adult_login);
         service = ApplicationController.getInstance().getNetworkService();
-
         ButterKnife.bind(this);
 
         clickEvent();
@@ -68,7 +66,12 @@ public class AdultLoginActivity extends AppCompatActivity {
                                 String message = response.body().getMessage();
                                 switch (message) {
                                     case "SUCCESS":
-                                        Toast.makeText(getApplicationContext(), "로그인이  완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), response.body().getNickname()+"님! 로그인이  완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                        SharedPreferences userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = userInfo.edit();
+                                        editor.putString("user_idx", response.body().getIdx());
+                                        editor.putString("nickname", response.body().getNickname());
+                                        editor.commit();
                                         Intent intent = new Intent(getApplicationContext(), AdultHomeActivity.class);
                                         startActivity(intent);
                                         finish();

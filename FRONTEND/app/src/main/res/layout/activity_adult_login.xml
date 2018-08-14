@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:hint="로봇 아이디를 입력해 주세요" />
+            android:text="admin@admin.com"
+            android:hint="이메일을 입력해 주세요" />
 
         <EditText
             android:id="@+id/adultlogin_edittext_pw"
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
+            android:text="1234"
             android:hint="로봇 비밀번호를 입력해 주세요" />
 
         <LinearLayout

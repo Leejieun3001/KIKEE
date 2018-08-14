@@ -35,7 +35,7 @@ public class AdultHomeActivity extends AppCompatActivity {
     private long backPressedTime = 0;
 
     private final int ADULTHOME = 0;
-    private final int SETTING = 1;
+    private final int BOARD = 1;
     private final int MYPAGE = 2;
 
     @Override
@@ -46,7 +46,7 @@ public class AdultHomeActivity extends AppCompatActivity {
 
         setupViewPager();
         tabLayout.setupWithViewPager(viewPager);
-        // setupTabIcons();
+        setupTabIcons();
 
         //    clickEvent();
 
@@ -87,11 +87,11 @@ public class AdultHomeActivity extends AppCompatActivity {
 //
 //    }
 
-//    private void setupTabIcons() {
-//        tabLayout.getTabAt(LANDMARK).setIcon(R.drawable.navigation_button_landmark_on).setCustomView(R.layout.item_custom_icon);
-//        tabLayout.getTabAt(RANKING).setIcon(R.drawable.navigation_button_ranking_off).setCustomView(R.layout.item_custom_icon);
-//        tabLayout.getTabAt(MYPAGE).setIcon(R.drawable.navigation_button_mypage_off).setCustomView(R.layout.item_custom_icon);
-//    }
+    private void setupTabIcons() {
+        tabLayout.getTabAt(ADULTHOME).setText("홈");
+        tabLayout.getTabAt(BOARD).setText("커뮤니티");
+        tabLayout.getTabAt(MYPAGE).setText("마이 페이지");
+    }
 
     private void setupViewPager() {
         ViewPagerAapter adapter = new ViewPagerAapter(getSupportFragmentManager());

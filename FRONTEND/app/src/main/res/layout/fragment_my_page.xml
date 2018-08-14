@@ -5,5 +5,14 @@
     tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Mypage.MyPageFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_landmark_recyclerView_userrecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorWhite"
+        android:layout_marginRight="@dimen/regular_margin"
+        android:layout_marginLeft="@dimen/regular_margin"
+        android:padding="@dimen/margin_10">
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
