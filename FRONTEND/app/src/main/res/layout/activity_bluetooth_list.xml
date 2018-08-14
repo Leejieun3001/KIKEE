@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-    <RelativeLayout android:layout_height="match_parent"
+    <LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 버튼 영역 -->
@@ -29,7 +29,7 @@
     <!-- 검색 허용 View 영역 -->
     <LinearLayout android:layout_height="wrap_content"
                   android:layout_width="match_parent"
-                  android:orientation="horizontal"
+                  android:orientation="vertical"
                   android:id="@+id/searchAllowLayout"
                   android:gravity="center"
                   android:layout_below="@+id/basicBtnLayout">
@@ -80,4 +80,4 @@
 
 </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -83,7 +83,7 @@ public class PlayWordGameActivity extends AppCompatActivity {
 
                 Toast.makeText(PlayWordGameActivity.this, results.get(0) + " 정답입니다.", Toast.LENGTH_SHORT).show();
                 if (INDEX == 9) {
-                    
+
 
                 } else {
                     INDEX++;
