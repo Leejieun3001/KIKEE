@@ -30,12 +30,12 @@ router.post('/', function (req, res) {
 
     let resultJson = {
         message: '',
-        code: "",
-        user: null
+        idx: '',
+        nickname:''
     };
 
     let selectUserInfo = function (connection, callback) {
-        connection.query("select password from User where email = ? ", req.body.email, function (error, rows) {
+        connection.query("select * from User where email = ? ", req.body.email, function (error, rows) {
             if (error) callback(error, connection, "Selecet query Error : ");
             else {
                 console.log(rows);
@@ -63,11 +63,9 @@ router.post('/', function (req, res) {
                 res.status(200).send({ message: "INCORRECT_PASSWORD" });
             } else {
                 resultJson.message = "SUCCESS";
-                resultJson.user = {
-                    idx: rows[0].idx,
-                    nickname: rows[0].nickname,
 
-                };
+                resultJson.idx = rows[0].idx;
+                resultJson.nickname = rows[0].nickname;
                 res.status(200).send(resultJson);
             }
             callback(null, connection, "api : /login/");
