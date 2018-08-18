@@ -1,122 +1,143 @@
-/* ???뚯뒪???먮??대끂(Eduino)???섑빐??踰덉뿭, ?섏젙, ?묒꽦?섏뿀怨??뚯쑀沅??먰븳 ?먮??대끂??寃껋엯?덈떎. 
- *  ?뚯쑀沅뚯옄???덈씫??諛쏆? ?딄퀬 臾대떒?쇰줈 ?섏젙, ??젣?섏뿬 諛고룷????踰뺤쟻??泥섎쾶??諛쏆쓣 ?섎룄 ?덉뒿?덈떎. 
- *  
- *  ?먮??대끂 援먯쑁??2???꾨몢?대끂 ?ㅻ쭏?몄뭅 援щ룞?덉젣 
- *  - ?ㅻ쭏?명룿 ?댄뵆???댁슜???ㅻ쭏?몄뭅 議곗쥌?섍린 -
- *  
- *  ?ㅻ쭏?명룿??臾대즺 釉붾（?ъ뒪 ?댄뵆???댁슜???ㅻ쭏?몄뭅瑜?議곗쥌?섎뒗 ?뚯뒪?낅땲??
- *  
- */
-
 #include <SoftwareSerial.h>
-#include <AFMotor.h>
-AF_DCMotor motor_L(3);              // 紐⑦꽣?쒕씪?대쾭 L293D  3: M3???곌껐,  4: M4???곌껐
-AF_DCMotor motor_R(4); 
+
+//모터 연결
+int E1 = 10;      // 1번(A) 모터 Enable
+int E2 = 11;      // 2번(B) 모터 Enable
+int M1 = 12;      // 1번(A) 모터 PWM  
+int M2 = 13;      // 2번(B) 모터 PWM
+#define motor_speed 255
 
 #define BT_RXD A5
 #define BT_TXD A4
-SoftwareSerial bluetooth(BT_RXD, BT_TXD);       // RX: A5, TX: A4
+SoftwareSerial bluetooth(BT_RXD, BT_TXD);// RX: A5, TX: A4
 
 char rec_data;
 bool rec_chk = false;
+bool dance_chk = false;
 
-int i;
-int j;
-
-//珥덉쓬?뚯꽱??異쒕젰?(trig)怨??낅젰?(echo) ?ㅼ젙
-int trigPin = A0;
-int echoPin = A1;
+#define red_LED A0
+//const int red_LED = A3;
+const int green_LED = 7;
 
 void setup(){
-  Serial.begin(9600);              // PC????쒕━???듭떊?띾룄
-  bluetooth.begin(9600);            // ?ㅻ쭏?명룿 釉붾（?ъ뒪 ?듭떊?띾룄
+  Serial.begin(9600);             
+  bluetooth.begin(9600);
+           
   Serial.println("Eduino Smart Car Start!");
-
-  pinMode(echoPin, INPUT);   // echoPin ?낅젰
-  pinMode(trigPin, OUTPUT);  // trigPin 異쒕젰
-
+  Serial.println("");
+  
   // turn on motor
-  motor_L.setSpeed(250);              // ?쇱そ 紐⑦꽣???띾룄   
-  motor_L.run(RELEASE);
-  motor_R.setSpeed(250);              // ?ㅻⅨ履?紐⑦꽣???띾룄   
-  motor_R.run(RELEASE);
-}
+  pinMode(M1, OUTPUT);      // 출력핀 설정진
+  pinMode(M2, OUTPUT);
 
+  //정답 유무 
+  pinMode(red_LED ,OUTPUT);
+  pinMode(green_LED ,OUTPUT);
+}
 
 void loop(){
-  
-  if(bluetooth.available()){         // 釉붾（?ъ뒪 紐낅졊 ?섏떊
+    
+    if(Serial.available()){
+    bluetooth.write(Serial.read());
+    }
+    
+  if(bluetooth.available()){         //블루투스 명령 수신
+     //Serial.write(bluetooth.read());
      rec_data = bluetooth.read();
-     Serial.write(rec_data);
-     rec_chk = true;
-  }  
-
-  if(rec_data == 'g'){  // ?꾩쭊, go
-     motor_L.run(FORWARD);  motor_R.run(FORWARD);        
+     Serial.write(rec_data); 
+     //rec_chk = true;
+  }
+  
+  //단어 정답 체크
+ /*if(rec_data == 'y'){
+    dance_chk = ture;
+    analogWrite(red_LED ,255);
+    //digitalWrite(green_LED, HIGH);
+    //dancing();
+  }
+  else if (rec_data == 'n'){
+    digitalWrite(red_LED ,HIGH);
+    digitalWrite(green_LED, HIGH); 
+  }
+  else if ( rec_data = 'e'){
+    digitalWrite(red_LED ,LOW);
+    digitalWrite(green_LED, LOW); 
+  }*/
+  
+  //모터 방향 구동
+  if(rec_data == 'g'){  //go
+    motor_forwards();
   } 
-  else if(rec_data == 'b'){ // ?꾩쭊, back
-     motor_L.run(BACKWARD);  motor_R.run(BACKWARD);    
+  else if(rec_data == 'b'){ //back
+    motor_backwards();
   }
-  else if(rec_data == 'l'){ // 醫뚰쉶?? Go Left
-   motor_L.run(RELEASE);  motor_R.run(FORWARD);     
+  else if(rec_data == 'l'){ //Go Left
+    motor_left();
   }
-  else if(rec_data == 'r'){ // ?고쉶?? Go Right
-    motor_L.run(FORWARD);  motor_R.run(RELEASE);                
+  else if(rec_data == 'r'){ //Go Right        
+    motor_right();               
   }
-  else if(rec_data == 'w'){ // ?쒖옄由??뚯쟾, Right Rotation
-     motor_L.run(BACKWARD);   motor_R.run(FORWARD);      
+  else if(rec_data == 's'){ 
+    motor_stop();
+    } // Stop 
+  else if(rec_data == 'y'){
+    analogWrite(red_LED, 255);
   }
-  else if(rec_data == 'q'){ // ?쒖옄由??뚯쟾, Left Rotation
-      motor_L.run(FORWARD);   motor_R.run(BACKWARD);    
-  }
-  else if(rec_data == 's'){  } // Stop 
-
-  if(rec_data == 's' ){       // ?뺤?
-    if(rec_chk == true){
-       for (i=250; i>=0; i=i-20) {
-          motor_L.setSpeed(i);  motor_R.setSpeed(i);  
-          delay(10);
-       }  
-       motor_L.run(RELEASE);       motor_R.run(RELEASE);
-    }
-  }
-  else{
-    if(rec_chk == true){
-      if(rec_data == 'l'){  // Left
-        for (i=20; i<200; i=i+10) {
-          motor_L.setSpeed(i);  motor_R.setSpeed(i);
-          delay(30);
-        }
-       }
-       else if(rec_data == 'r'){       // Right
-        for (i=20; i<200; i=i+10) {
-          motor_L.setSpeed(i);  motor_R.setSpeed(i);
-          delay(30);
-        }
-       }
-       else if(rec_data == 'w' || rec_data == 'q'){ // Rotation Left, Right
-        for (i=0; i<250; i=i+20) {
-          motor_L.setSpeed(i);  motor_R.setSpeed(i);  
-          delay(20);
-        }
-       }
-       else if(rec_data == 'g'){ //Go
-        for (i=0; i<250; i=i+20) { 
-           motor_L.setSpeed(i);  motor_R.setSpeed(i);  
-          delay(10);   
-        }
-       }
-       else{
-        for (i=0; i<250; i=i+20) { //  Back
-           motor_L.setSpeed(i);  motor_R.setSpeed(i);  
-          delay(10);                         
-        }
-       }
-     }
-    else{     
-          motor_L.setSpeed(250);  motor_R.setSpeed(250);  
-    }
-  }
-  rec_chk = false;
 }
+
+void motor_stop(){
+  digitalWrite(M1,HIGH);
+  digitalWrite(M2,HIGH);
+  analogWrite(E1, 0);
+  analogWrite(E2, 0);
+}
+
+void motor_forwards(){
+  digitalWrite(M1,HIGH);
+  digitalWrite(M2,HIGH);
+  analogWrite(E1, motor_speed);
+  analogWrite(E2, motor_speed);
+}
+
+void motor_backwards(){
+  digitalWrite(M1,LOW);
+  digitalWrite(M2,LOW);
+  analogWrite(E1, motor_speed);
+  analogWrite(E2, motor_speed);
+}
+
+void motor_right(){
+  digitalWrite(M1,HIGH);
+  digitalWrite(M2,LOW);
+  analogWrite(E1, motor_speed);
+  analogWrite(E2, motor_speed);
+}
+
+void motor_left(){
+  digitalWrite(M1,LOW);
+  digitalWrite(M2,HIGH);
+  analogWrite(E1, motor_speed);
+  analogWrite(E2, motor_speed);
+}
+
+/*void dancing(){
+  for(i = 0 ; i <=255 ; i+=10){
+     digitalWrite(M1,HIGH);
+    digitalWrite(M2,LOW);
+    analogWrite(E1, i);
+    analogWrite(E2, i);
+    delay(30);
+    }
+   delay(1000);
+  for(i = 255 ; i >= 0 ; i-=10){
+     digitalWrite(M1,LOW);
+    digitalWrite(M2,HIGH);
+    analogWrite(E1, i);
+    analogWrite(E2, i);
+    delay(30);
+  }
+  delay(1000);
+  motor_stop();
+  dance_chk = false;
+}*/
 
