@@ -45,7 +45,7 @@ router.post('/write', function (req, res) {
                 callback(error, connection, "insertquery Error : ", res);
             } else {
                 res.status(200).send({ message: "SUCCESS" });
-                callback(null, connection);
+                callback(null, connection,"api /board/wirte");
             }
         });
     }
@@ -95,25 +95,26 @@ router.post('/', function (req, res) {
 
 
     let selectCommentList = function (connection, callback) {
-        connection.query("SELECT * FROM CommentBoard where board_idx = ? ", req.body.board_idx, function (error, rows) {
-            if (error) callback(error, connection, "Selecet query Error : ");
-            else {
-                if (rows.length === 0) {
-                    res.status(200).send({ message: "BOARD_NOT_EXIT" });
-                    callback("ALREADY_SEND_MESSAGE", connection, "api : /board");
-                } else {
-                    resultJson.message = "SUCCESS";
+        connection.query("SELECT CommentBoard.board_idx, CommentBoard.user_idx, CommentBoard.content, User.nickname FROM CommentBoard"
+            + " join User on User.idx = CommentBoard.user_idx where board_idx = ? ", req.body.board_idx, function (error, rows) {
+                if (error) callback(error, connection, "Selecet query Error : ");
+                else {
+                    if (rows.length === 0) {
+                        res.status(200).send({ message: "BOARD_NOT_EXIT" });
+                        callback("ALREADY_SEND_MESSAGE", connection, "api : /board");
+                    } else {
+                        resultJson.message = "SUCCESS";
 
-                    for (var x in rows) {
-                        var comment = {}
-                        comment = rows[x];
-                        resultJson.comments.push(comment);
+                        for (var x in rows) {
+                            var comment = {}
+                            comment = rows[x];
+                            resultJson.comments.push(comment);
+                        }
+                        res.status(200).send(resultJson);
+                        callback(null, connection, "api : /board");
                     }
-                    res.status(200).send(resultJson);
-                    callback(null, connection, "api : /board");
                 }
-            }
-        });
+            });
     }
     var task = [globalModule.connect.bind(this), updateBoard, selectBoard, selectCommentList, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
@@ -175,24 +176,24 @@ router.get('/total', function (req, res) {
 
 router.post('/write/comment', function (req, res) {
 
-    let updateBoard = function (connection, callback) {
+    let updateComment = function (connection, callback) {
         let insertquery = "insert into CommentBoard (board_idx, user_idx, content)"
             + " values (?, ? ,? );"
         let params = [
             req.body.board_idx,
             req.body.user_idx,
             req.body.content,
-         ]
+        ]
         connection.query(insertquery, params, function (error, rows) {
             if (error) {
                 callback(error, connection, "insertquery Error : ", res);
             } else {
                 res.status(200).send({ message: "SUCCESS" });
-                callback(null, connection);
+                callback(null, connection,"api /board/wirte/comment");
             }
         });
     }
-    var task = [globalModule.connect.bind(this), updateBoard, globalModule.releaseConnection.bind(this)];
+    var task = [globalModule.connect.bind(this), updateComment, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
