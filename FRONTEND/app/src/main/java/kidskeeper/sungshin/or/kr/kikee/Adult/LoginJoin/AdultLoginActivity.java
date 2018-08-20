@@ -38,7 +38,6 @@ public class AdultLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_adult_login);
         service = ApplicationController.getInstance().getNetworkService();
         ButterKnife.bind(this);
-
         clickEvent();
     }
 
@@ -66,7 +65,7 @@ public class AdultLoginActivity extends AppCompatActivity {
                                 String message = response.body().getMessage();
                                 switch (message) {
                                     case "SUCCESS":
-                                        Toast.makeText(getApplicationContext(), response.body().getNickname()+"님! 로그인이  완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), response.body().getNickname() + "님! 로그인이  완료되었습니다.", Toast.LENGTH_SHORT).show();
                                         SharedPreferences userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = userInfo.edit();
                                         editor.putString("user_idx", response.body().getIdx());

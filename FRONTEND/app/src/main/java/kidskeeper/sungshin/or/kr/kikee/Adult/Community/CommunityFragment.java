@@ -1,5 +1,6 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.Community;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kidskeeper.sungshin.or.kr.kikee.Model.request.BoardDetail;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardListReult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.board;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
@@ -103,14 +105,10 @@ public class CommunityFragment extends Fragment {
         public void onClick(View v) {
             int itemPosition = recyclerView.getChildPosition(v);
             int tempId = itemList.get(itemPosition).getIdx();
-            Intent intent = new Intent(getActivity().getApplicationContext(), BoardActivity.class);
-
+            Intent intent = new Intent(getContext(), BoardDetailActivity.class);
             intent.putExtra("idx", tempId);
             startActivity(intent);
         }
     };
 
-
-    public void bindClickListener() {
-    }
 }

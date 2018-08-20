@@ -52,6 +52,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
         holder.textViewTitle.setText(item.getTitle());
         holder.textViewContent.setText(item.getContent());
         holder.textViewHits.setText(String.valueOf(item.getHits()));
+        holder.textViewPick.setText(String.valueOf(item.getPick()));
+
     }
 
     @Override
@@ -63,12 +65,14 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
         private TextView textViewTitle;
         private TextView textViewContent;
         private TextView textViewHits;
+        private TextView textViewPick;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textViewTitle = (TextView) itemView.findViewById(R.id.itemboard_textview_title);
             textViewContent = (TextView) itemView.findViewById(R.id.itemboard_textview_content);
             textViewHits = (TextView) itemView.findViewById(R.id.itemboard_textview_hits);
+            textViewPick = (TextView) itemView.findViewById(R.id.itemboard_textview_pick);
         }
     }
 
