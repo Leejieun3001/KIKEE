@@ -42,6 +42,9 @@
         <activity android:name=".Adult.Community.BoardActivity"></activity>
         <activity android:name=".Kids.WordGame.SuccessWord"></activity>
 
+        <activity android:name=".Adult.Community.BoardActivity" />
+        <activity android:name=".Adult.Community.BoardDetailActivity" />
+        <activity android:name=".Adult.Community.BoardWriteActivity"></activity>
     </application>
 
 </manifest>
