@@ -2,8 +2,6 @@ package kidskeeper.sungshin.or.kr.kikee.Model.response;
 
 import java.util.ArrayList;
 
-import kidskeeper.sungshin.or.kr.kikee.Adult.Community.comments;
-
 /**
  * Created by LG on 2018-08-21.
  */
@@ -13,6 +11,15 @@ public class BoardDetailResult {
     private board board;
     private ArrayList<comments> comments;
     private String isMine;
+    private String isPick;
+
+    public BoardDetailResult(String message, kidskeeper.sungshin.or.kr.kikee.Model.response.board board, ArrayList<kidskeeper.sungshin.or.kr.kikee.Model.response.comments> comments, String isMine, String isPick) {
+        this.message = message;
+        this.board = board;
+        this.comments = comments;
+        this.isMine = isMine;
+        this.isPick = isPick;
+    }
 
     public String getMessage() {
         return message;
@@ -30,11 +37,11 @@ public class BoardDetailResult {
         this.board = board;
     }
 
-    public ArrayList<kidskeeper.sungshin.or.kr.kikee.Adult.Community.comments> getComments() {
+    public ArrayList<kidskeeper.sungshin.or.kr.kikee.Model.response.comments> getComments() {
         return comments;
     }
 
-    public void setComments(ArrayList<kidskeeper.sungshin.or.kr.kikee.Adult.Community.comments> comments) {
+    public void setComments(ArrayList<kidskeeper.sungshin.or.kr.kikee.Model.response.comments> comments) {
         this.comments = comments;
     }
 
@@ -46,15 +53,11 @@ public class BoardDetailResult {
         this.isMine = isMine;
     }
 
-    public BoardDetailResult(String message, kidskeeper.sungshin.or.kr.kikee.Model.response.board board, ArrayList<kidskeeper.sungshin.or.kr.kikee.Adult.Community.comments> comments, String isMine) {
-        this.message = message;
-        this.board = board;
-        this.comments = comments;
-        this.isMine = isMine;
+    public String getIsPick() {
+        return isPick;
     }
 
-
-
-
+    public void setIsPick(String isPick) {
+        this.isPick = isPick;
+    }
 }
-

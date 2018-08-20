@@ -1,28 +1,20 @@
-package kidskeeper.sungshin.or.kr.kikee.Adult.Community;
+package kidskeeper.sungshin.or.kr.kikee.Model.response;
 
 /**
  * Created by LG on 2018-08-21.
  */
 
 public class comments {
-    private String idx;
     private String board_idx;
     private String user_idx;
     private String content;
+    private String nickname;
 
-    public comments(String idx, String board_idx, String user_idx, String content) {
-        this.idx = idx;
+    public comments(String board_idx, String user_idx, String content, String nickname) {
         this.board_idx = board_idx;
         this.user_idx = user_idx;
         this.content = content;
-    }
-
-    public String getIdx() {
-        return idx;
-    }
-
-    public void setIdx(String idx) {
-        this.idx = idx;
+        this.nickname = nickname;
     }
 
     public String getBoard_idx() {
@@ -47,5 +39,13 @@ public class comments {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }
