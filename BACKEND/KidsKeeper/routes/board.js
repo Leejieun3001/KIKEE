@@ -135,23 +135,24 @@ router.get('/total', function (req, res) {
     };
 
     let selectBoardList = function (connection, callback) {
-        connection.query("SELECT * FROM Board;", function (error, rows) {
-            if (error) callback(error, connection, "Selecet query Error : ");
-            else {
-                if (rows.length === 0) {
-                    res.status(200).send({ message: "BOARD_NOT_EXIT" });
-                    callback("ALREADY_SEND_MESSAGE", connection, "api : /board/total");
-                } else {
-                    for (var x in rows) {
-                        var board = {}
-                        board = rows[x];
-                        resultJson.boards.push(board);
+        connection.query("SELECT  Board.idx, Board.title, Board.content, Board.date, Board.hits, Board.nickname ,Board.user_idx ,count(Board.idx) pick " +
+            "FROM Board  left join Pick on Pick.board_idx = Board.idx  group by Board.idx", function (error, rows) {
+                if (error) callback(error, connection, "Selecet query Error : ");
+                else {
+                    if (rows.length === 0) {
+                        res.status(200).send({ message: "BOARD_NOT_EXIT" });
+                        callback("ALREADY_SEND_MESSAGE", connection, "api : /board/total");
+                    } else {
+                        for (var x in rows) {
+                            var board = {}
+                            board = rows[x];
+                            resultJson.boards.push(board);
+                        }
+                        res.status(200).send(resultJson)
+                        callback(null, connection, "api : /board/total");
                     }
-                    res.status(200).send(resultJson)
-                    callback(null, connection, "api : /board/total");
                 }
-            }
-        });
+            });
     }
     var task = [globalModule.connect.bind(this), selectBoardList, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
@@ -168,6 +169,10 @@ router.get('/total', function (req, res) {
 
 /*
 *글 싫어요
+ *
+ */
+/**
+ * 댓글 쓰기
  *
  */
 
