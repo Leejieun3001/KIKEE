@@ -93,9 +93,30 @@ router.post('/', function (req, res) {
             });
     }
 
+    let selectIsPick = function (connection, callback) {
+        let selectIsPick = "SELECT  Pick.user_idx   FROM Board  left join Pick on Pick.board_idx = Board.idx "
+            + "where Board.idx = ? and Pick.user_idx = ?;"
+        let params = [
+            req.body.board_idx,
+            req.body.user_idx
+        ]
+        connection.query(selectIsPick, params, function (error, rows) {
+            if (error) callback(error, connection, "Selecet query Error : ");
+            else {
+                if (rows.length === 0) {
+                    resultJson.isPick = 0;
+                    callback(null, connection);
+                } else {
+                    resultJson.isPick = 1;
+                    callback(null, connection);
+                }
+            }
+        });
+    }
+
 
     let selectCommentList = function (connection, callback) {
-        connection.query("SELECT CommentBoard.board_idx, CommentBoard.user_idx, CommentBoard.content, User.nickname FROM CommentBoard"
+        connection.query("SELECT CommentBoard.board_idx, CommentBoard.user_idx, CommentBoard.content, User.nickname FROM CommentBoard "
             + " join User on User.idx = CommentBoard.user_idx where board_idx = ? ", req.body.board_idx, function (error, rows) {
                 if (error) callback(error, connection, "Selecet query Error : ");
                 else {
@@ -116,7 +137,7 @@ router.post('/', function (req, res) {
                 }
             });
     }
-    var task = [globalModule.connect.bind(this), updateBoard, selectBoard, selectCommentList, globalModule.releaseConnection.bind(this)];
+    var task = [globalModule.connect.bind(this), updateBoard, selectBoard, selectIsPick, selectCommentList, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
@@ -156,14 +177,38 @@ router.get('/total', function (req, res) {
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
-
 /**
  * 글 수정
  */
 
 /**
+ * 
+ * 
+ ***/
+/**
  * 글 좋아요
  */
+
+router.post('/pick', function (req, res) {
+
+    let updateComment = function (connection, callback) {
+        let selectquery = "select board_idx, user_idx from Pick where board_idx = ? and  user_idx = ?";
+        let params = [
+            req.body.board_idx,
+            req.body.user_idx,
+        ]
+        connection.query(insertquery, params, function (error, rows) {
+            if (error) {
+                callback(error, connection, "insertquery Error : ", res);
+            } else {
+                res.status(200).send({ message: "SUCCESS" });
+                callback(null, connection, "api /board/wirte/comment");
+            }
+        });
+    }
+    var task = [globalModule.connect.bind(this), updateComment, globalModule.releaseConnection.bind(this)];
+    async.waterfall(task, globalModule.asyncCallback.bind(this));
+});
 
 /*
 *글 싫어요
