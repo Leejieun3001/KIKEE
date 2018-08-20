@@ -4,17 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Telephony;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardActivity;
+import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardAdapter;
+import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardWriteActivity;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardListReult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.board;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
@@ -29,6 +35,8 @@ public class CommunityFragment extends Fragment {
 
     @BindView(R.id.community_recyclerview_recyclerview)
     RecyclerView recyclerView;
+    @BindView(R.id.reviewlist_floatingbutton_fab)
+    FloatingActionButton addNotice;
 
     private boolean flag = true;
     String TAG = "CommunityFragment";
@@ -39,6 +47,7 @@ public class CommunityFragment extends Fragment {
     private ArrayList<board> itemList = new ArrayList<board>();
 
     public CommunityFragment() {
+
         super();
     }
 
@@ -54,9 +63,21 @@ public class CommunityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_community, container, false);
         ButterKnife.bind(this, view);
+        clickEvent();
         initRecyclerView();
         getBoardList();
         return view;
+    }
+
+    public void clickEvent()
+    {
+        addNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),BoardWriteActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initRecyclerView() {
@@ -73,7 +94,6 @@ public class CommunityFragment extends Fragment {
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
-
 
     public void getBoardList() {
         Call<BoardListReult> getBoardListResult = service.getBoardListResult();
@@ -111,6 +131,5 @@ public class CommunityFragment extends Fragment {
     };
 
 
-    public void bindClickListener() {
-    }
+
 }

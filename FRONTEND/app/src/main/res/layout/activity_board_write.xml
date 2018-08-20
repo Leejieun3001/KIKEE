@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardWriteActivity">
+    android:orientation="vertical"
+    tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardWriteActivity"
+    android:background="@color/colorWhite">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#B2CCFF"/>
+
+    <EditText
+        android:id="@+id/writeTitle"
+        android:layout_margin="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite"
+        android:text="제목을 입력해주세요" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#B2CCFF"/>
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:id="@+id/writeContext"
+        android:layout_margin="10dp"
+        android:background="#B2CCFF"
+        android:gravity="top|start"
+        android:text="내용을 입력해주세요"
+        />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/btnBack"
+        android:background="@drawable/round_background"
+        android:textColor="@color/colorWhite"
+        android:text="뒤로 가기"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnStore"
+        android:layout_margin="10dp"
+        android:background="@drawable/round_background"
+        android:textColor="@color/colorWhite"
+        android:text="글 등록하기"/>
+
+</LinearLayout>

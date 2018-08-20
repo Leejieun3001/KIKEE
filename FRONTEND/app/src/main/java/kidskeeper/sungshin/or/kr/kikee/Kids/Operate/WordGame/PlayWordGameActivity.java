@@ -1,19 +1,10 @@
-package kidskeeper.sungshin.or.kr.kikee.Kids.WordGame;
+package kidskeeper.sungshin.or.kr.kikee.Kids.Operate.WordGame;
 
-//import android.app.Dialog;
-//import android.app.AlertDialog;
 
 import android.content.Context;
-//import android.content.DialogInterface;
-//import android.content.Context;
 import android.content.Intent;
-//import android.content.pm.PackageManager;
-//import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-//import android.os.Handler;
-//import android.os.WorkSource;
-//import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 //import android.speech.SpeechRecognizer;
 import android.support.v7.app.AppCompatActivity;
@@ -21,17 +12,14 @@ import android.os.Bundle;
 //import android.telecom.RemoteConference;
 import android.util.Log;
 import android.view.View;
-//import android.widget.AdapterView;
-//import android.widget.ArrayAdapter;
+
 import android.widget.Button;
 //import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import com.google.gson.internal.bind.ArrayTypeAdapter;
-
+import java.io.OutputStream;
 import java.util.ArrayList;
-//import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -42,9 +30,11 @@ import kidskeeper.sungshin.or.kr.kikee.Model.response.word;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
 import kidskeeper.sungshin.or.kr.kikee.Network.NetworkService;
 import kidskeeper.sungshin.or.kr.kikee.R;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.ConnectActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 public class PlayWordGameActivity extends AppCompatActivity {
 
@@ -57,18 +47,23 @@ public class PlayWordGameActivity extends AppCompatActivity {
     private final String TAG = "PlayWordGameActivity";
     private static final int REQUEST_CODE = 100;
     private int INDEX = 0;
-    private int dance = 0;
+
+
+    static int dance = 0;
     private int wrongIndex = 0;
     private String English, Korea;
     ArrayList<String> results;
     ArrayList<word> answers = null;
 
 
+    OutputStream mOutputStream = null;
+
     @BindView(R.id.solveAnswer)
     Button ifCorrect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_word_game);
@@ -110,42 +105,40 @@ public class PlayWordGameActivity extends AppCompatActivity {
             Log.d(TAG, String.valueOf("사이즈는 : " + results.size()));
             Toast.makeText(PlayWordGameActivity.this, results.get(0), Toast.LENGTH_SHORT).show();
 
-            if (English.equals(results.get(0))) {
 
-                Toast.makeText(PlayWordGameActivity.this, results.get(0) + " 정답입니다.", Toast.LENGTH_SHORT).show();
+            String tmp = results.get(0).toLowerCase();
+
+            if (English.equals(tmp)) {
+
+                Toast.makeText(PlayWordGameActivity.this, tmp + " 정답입니다.", Toast.LENGTH_SHORT).show();
+                sendData("y");
+                sendData("e");
+                INDEX++;
+                dance++;
+                wrongIndex = 0;
                 if (INDEX == 9) {
-
-                    String tmp = results.get(0).toLowerCase();
-                    if (English.equals(tmp)) {
-
-                        Toast.makeText(PlayWordGameActivity.this, tmp + " 정답입니다.", Toast.LENGTH_SHORT).show();
-                        INDEX++;
-                        dance++;
-                        wrongIndex = 0;
-                        if (INDEX == 9) {
-                            Toast.makeText(PlayWordGameActivity.this, "참 잘했어요!!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), SuccessWord.class);
-                            startActivity(intent);
-
-                        } else {
-                            checkWord();
-                        }
-                    } else {
-                        Toast.makeText(PlayWordGameActivity.this, tmp + " 오답입니다.", Toast.LENGTH_SHORT).show();
-                        wrongIndex++;
-                        checkWord();
-                        if (wrongIndex == 2) {
-                            wrongIndex = 0;
-                            INDEX++;
-                            checkWord();
-                        }
-                    }
+                    Toast.makeText(PlayWordGameActivity.this, "참 잘했어요!!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), SuccessWord.class);
+                    startActivity(intent);
+                } else {
+                    checkWord();
                 }
-                if (dance >= 7) {
-                    //로봇 춤추게?
 
+            } else {
+                Toast.makeText(PlayWordGameActivity.this, tmp + " 오답입니다.", Toast.LENGTH_SHORT).show();
+                sendData("n");
+
+                sendData("e");
+                wrongIndex++;
+
+                checkWord();
+                if (wrongIndex == 2) {
+                    wrongIndex = 0;
+                    INDEX++;
+                    checkWord();
                 }
             }
+
 
         }
     }
@@ -225,6 +218,21 @@ public class PlayWordGameActivity extends AppCompatActivity {
 
         });
     }
+
+    public void sendData(String msg) {
+        //msg += mStrDelimiter;  // 문자열 종료표시 (\n)
+        try {
+            //mSocket.connect(); // 소켓이 생성 되면 connect() 함수를 호출함으로써 두기기의 연결은 완료된다.
+            // getBytes() : String을 byte로 변환
+            // OutputStream.write : 데이터를 쓸때는 write(byte[]) 메소드를 사용함. byte[] 안에 있는 데이터를 한번에 기록해 준다.
+            mOutputStream = ConnectActivity.getmSocket().getOutputStream();
+            mOutputStream.write(msg.getBytes());  // 문자열 전송.
+        } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
+            Toast.makeText(getApplicationContext(), "데이터 전송중 오류가 발생", Toast.LENGTH_LONG).show();
+            finish();  // App 종료
+        }
+    }
+
 
 }
 

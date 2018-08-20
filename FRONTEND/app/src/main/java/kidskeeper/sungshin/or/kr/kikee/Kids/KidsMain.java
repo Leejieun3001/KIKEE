@@ -9,8 +9,7 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.OperateRobot;
-import kidskeeper.sungshin.or.kr.kikee.Kids.Word.WordGame;
-import kidskeeper.sungshin.or.kr.kikee.Kids.WordGame.CategorySelectActivity;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.WordGame.CategorySelectActivity;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class KidsMain extends AppCompatActivity {

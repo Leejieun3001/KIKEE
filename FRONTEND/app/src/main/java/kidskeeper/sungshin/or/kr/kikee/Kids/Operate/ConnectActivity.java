@@ -38,6 +38,11 @@ public class ConnectActivity extends AppCompatActivity {
      * 현재 기기가 아닌 다른 블루투스 기기와의 연결 및 정보를 알아낼 때 사용.
      */
     BluetoothDevice mRemoteDevice;
+
+    public static BluetoothSocket getmSocket() {
+        return mSocket;
+    }
+
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
     static BluetoothSocket mSocket = null;
     OutputStream mOutputStream = null;
