@@ -45,7 +45,7 @@ router.post('/write', function (req, res) {
                 callback(error, connection, "insertquery Error : ", res);
             } else {
                 res.status(200).send({ message: "SUCCESS" });
-                callback(null, connection,"api /board/wirte");
+                callback(null, connection, "api /board/wirte");
             }
         });
     }
@@ -189,7 +189,7 @@ router.post('/write/comment', function (req, res) {
                 callback(error, connection, "insertquery Error : ", res);
             } else {
                 res.status(200).send({ message: "SUCCESS" });
-                callback(null, connection,"api /board/wirte/comment");
+                callback(null, connection, "api /board/wirte/comment");
             }
         });
     }
