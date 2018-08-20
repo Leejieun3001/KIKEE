@@ -39,10 +39,8 @@
         <activity android:name=".Kids.Word.WordGame" />
         <activity android:name=".Kids.Operate.WordGame.CategorySelectActivity" />
         <activity android:name=".Kids.Operate.WordGame.PlayWordGameActivity" />
-        <activity android:name=".Adult.Community.BoardActivity"></activity>
-        <activity android:name=".Kids.Operate.WordGame.SuccessWord"></activity>
+        <activity android:name=".Kids.Operate.WordGame.SuccessWord"/>
 
-        <activity android:name=".Adult.Community.BoardActivity" />
         <activity android:name=".Adult.Community.BoardDetailActivity" />
         <activity android:name=".Adult.Community.BoardWriteActivity"></activity>
     </application>

@@ -12,8 +12,9 @@ public class board {
     private int hits;
     private String user_idx;
     private String nickname;
+    private String pick;
 
-    public board(int idx, String title, String content, String date, int hits, String user_idx, String nickname) {
+    public board(int idx, String title, String content, String date, int hits, String user_idx, String nickname, String pick) {
         this.idx = idx;
         this.title = title;
         this.content = content;
@@ -21,6 +22,7 @@ public class board {
         this.hits = hits;
         this.user_idx = user_idx;
         this.nickname = nickname;
+        this.pick = pick;
     }
 
     public int getIdx() {
@@ -78,4 +80,13 @@ public class board {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+    public String getPick() {
+        return pick;
+    }
+
+    public void setPick(String pick) {
+        this.pick = pick;
+    }
 }
+
