@@ -173,4 +173,28 @@ router.get('/total', function (req, res) {
  *
  */
 
+router.post('/write/comment', function (req, res) {
+
+    let updateBoard = function (connection, callback) {
+        let insertquery = "insert into CommentBoard (board_idx, user_idx, content)"
+            + " values (?, ? ,? );"
+        let params = [
+            req.body.board_idx,
+            req.body.user_idx,
+            req.body.content,
+         ]
+        connection.query(insertquery, params, function (error, rows) {
+            if (error) {
+                callback(error, connection, "insertquery Error : ", res);
+            } else {
+                res.status(200).send({ message: "SUCCESS" });
+                callback(null, connection);
+            }
+        });
+    }
+    var task = [globalModule.connect.bind(this), updateBoard, globalModule.releaseConnection.bind(this)];
+    async.waterfall(task, globalModule.asyncCallback.bind(this));
+});
+
+
 module.exports = router;
