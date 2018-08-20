@@ -1,35 +1,37 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids.WordGame;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
+//import android.app.Dialog;
+//import android.app.AlertDialog;
+
 import android.content.Context;
-import android.content.DialogInterface;
+//import android.content.DialogInterface;
+//import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+//import android.content.pm.PackageManager;
+//import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Handler;
-import android.os.WorkSource;
-import android.speech.RecognitionListener;
+//import android.os.Handler;
+//import android.os.WorkSource;
+//import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
-import android.speech.SpeechRecognizer;
+//import android.speech.SpeechRecognizer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telecom.RemoteConference;
+//import android.telecom.RemoteConference;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+//import android.widget.AdapterView;
+//import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+//import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.internal.bind.ArrayTypeAdapter;
+//import com.google.gson.internal.bind.ArrayTypeAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
+//import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -46,29 +48,57 @@ import retrofit2.Response;
 
 public class PlayWordGameActivity extends AppCompatActivity {
 
+    @BindView(R.id.btn_go_category)
+    Button Category;
+    @BindView(R.id.btn_go_kidsMain)
+    Button Home;
 
     private NetworkService service;
     private final String TAG = "PlayWordGameActivity";
     private static final int REQUEST_CODE = 100;
     private int INDEX = 0;
-
+    private int dance = 0;
+    private int wrongIndex = 0;
     private String English, Korea;
     ArrayList<String> results;
     ArrayList<word> answers = null;
 
+
     @BindView(R.id.solveAnswer)
     Button ifCorrect;
 
-    boolean Ok;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_word_game);
         service = ApplicationController.getInstance().getNetworkService();
         ButterKnife.bind(this);
         loadWord();
+        clickCategory();
+        clickHome();
+    }
+
+    void clickHome() {
+        Home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(PlayWordGameActivity.this, KidsMain.class);
+                startActivity(intent2);
+                finish();
+            }
+        });
+    }
+
+    void clickCategory() {
+        Category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(PlayWordGameActivity.this, CategorySelectActivity.class);
+                startActivity(intent2);
+                finish();
+            }
+        });
     }
 
 
@@ -79,24 +109,46 @@ public class PlayWordGameActivity extends AppCompatActivity {
             results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             Log.d(TAG, String.valueOf("사이즈는 : " + results.size()));
             Toast.makeText(PlayWordGameActivity.this, results.get(0), Toast.LENGTH_SHORT).show();
+
             if (English.equals(results.get(0))) {
 
                 Toast.makeText(PlayWordGameActivity.this, results.get(0) + " 정답입니다.", Toast.LENGTH_SHORT).show();
                 if (INDEX == 9) {
 
+                    String tmp = results.get(0).toLowerCase();
+                    if (English.equals(tmp)) {
 
-                } else {
-                    INDEX++;
+                        Toast.makeText(PlayWordGameActivity.this, tmp + " 정답입니다.", Toast.LENGTH_SHORT).show();
+                        INDEX++;
+                        dance++;
+                        wrongIndex = 0;
+                        if (INDEX == 9) {
+                            Toast.makeText(PlayWordGameActivity.this, "참 잘했어요!!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), SuccessWord.class);
+                            startActivity(intent);
+
+                        } else {
+                            checkWord();
+                        }
+                    } else {
+                        Toast.makeText(PlayWordGameActivity.this, tmp + " 오답입니다.", Toast.LENGTH_SHORT).show();
+                        wrongIndex++;
+                        checkWord();
+                        if (wrongIndex == 2) {
+                            wrongIndex = 0;
+                            INDEX++;
+                            checkWord();
+                        }
+                    }
                 }
-                checkWord();
-            } else {
-                Toast.makeText(PlayWordGameActivity.this, results.get(0) + " 오답입니다.", Toast.LENGTH_SHORT).show();
+                if (dance >= 7) {
+                    //로봇 춤추게?
 
+                }
             }
 
         }
     }
-
 
     public boolean isConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -107,6 +159,7 @@ public class PlayWordGameActivity extends AppCompatActivity {
             return false;
         }
     }
+
 
     public void find_voice() {
         // 인텐트를 만들고 액티비티를 시작한다.
@@ -119,7 +172,6 @@ public class PlayWordGameActivity extends AppCompatActivity {
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
         startActivityForResult(intent, REQUEST_CODE);
     }
-
 
     private void loadWord() {
 
@@ -164,7 +216,7 @@ public class PlayWordGameActivity extends AppCompatActivity {
 //                                            Log.i("word", SpeechRecognizer.RESULTS_RECOGNITION);
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "인터넷 연결을 해주세요", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PlayWordGameActivity.this, "인터넷 연결을 해주세요", Toast.LENGTH_LONG).show();
                     finish();
                 }
                 find_voice();
@@ -175,4 +227,6 @@ public class PlayWordGameActivity extends AppCompatActivity {
     }
 
 }
+
+
 

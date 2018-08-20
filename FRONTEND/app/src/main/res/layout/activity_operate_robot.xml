@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Kids.Operate.OperateRobot">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_go_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignLeft="@id/btn_go_stop"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_88"
+        android:text="left"
+        />
+
+    <Button
+        android:id="@+id/btn_go_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/btn_go_stop"
+        android:text="Go" />
+
+    <Button
+        android:id="@+id/btn_go_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@id/btn_go_stop"
+        android:layout_marginRight="@dimen/margin_88"
+        android:text="Right" />
+
+    <Button
+        android:id="@+id/btn_go_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_go_stop"
+        android:layout_centerInParent="true"
+        android:text="Back" />
+
+    <Button
+        android:id="@+id/btn_go_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Stop" />
+
+    <Button
+        android:id="@+id/go_to_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_10"
+        android:layout_alignParentRight="true"
+        android:text="목록으로" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:textColor="#f0f"
+        android:textSize="@dimen/margin_30"
+        android:text="로봇 움직이기!" />
+
+</RelativeLayout>

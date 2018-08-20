@@ -30,17 +30,18 @@
         </activity>
         <activity android:name=".Adult.AdultHome.AdultHomeActivity" />
         <activity android:name=".Adult.Camera.CameraActivity" />
-        <activity android:name=".Kids.ConnectActivity" />
+        <activity android:name=".Kids.Operate.ConnectActivity" />
         <activity android:name=".Adult.Voice.VoiceActivity" />
         <activity android:name=".Adult.LoginJoin.AdultLoginActivity" />
         <activity android:name=".Adult.LoginJoin.JoinActivity" />
         <activity android:name=".Kids.KidsMain" />
         <activity android:name=".Kids.Operate.OperateRobot" />
         <activity android:name=".Kids.Word.WordGame" />
-        <activity android:name=".Kids.Bluetooth.BluetoothList" />
         <activity android:name=".Kids.WordGame.CategorySelectActivity" />
         <activity android:name=".Kids.WordGame.PlayWordGameActivity" />
         <activity android:name=".Adult.Community.BoardActivity"></activity>
+        <activity android:name=".Kids.WordGame.SuccessWord"></activity>
+
     </application>
 
 </manifest>
