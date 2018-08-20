@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.FloatRange;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,12 +27,15 @@ import kidskeeper.sungshin.or.kr.kikee.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Body;
 
 
 public class CommunityFragment extends Fragment {
 
     @BindView(R.id.community_recyclerview_recyclerview)
     RecyclerView recyclerView;
+    @BindView(R.id.reviewlist_floatingbutton_fab)
+    FloatingActionButton addNotice;
 
     private boolean flag = true;
     String TAG = "CommunityFragment";
@@ -58,6 +63,7 @@ public class CommunityFragment extends Fragment {
         ButterKnife.bind(this, view);
         initRecyclerView();
         getBoardList();
+        clickEvent();
         return view;
     }
 
@@ -100,6 +106,17 @@ public class CommunityFragment extends Fragment {
         });
 
     }
+
+    public void clickEvent() {
+        addNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BoardWriteActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 
     public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {

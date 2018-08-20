@@ -192,7 +192,7 @@ router.get('/total', function (req, res) {
 router.post('/pick', function (req, res) {
 
     let updateComment = function (connection, callback) {
-        let selectquery = "select board_idx, user_idx from Pick where board_idx = ? and  user_idx = ?";
+        let insertquery = "insert into Pick values (? , ?)";
         let params = [
             req.body.board_idx,
             req.body.user_idx,
