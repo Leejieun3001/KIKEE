@@ -32,8 +32,6 @@ public class BoardDetailActivity extends AppCompatActivity {
 
 
     public void loadData() {
-
-
         SharedPreferences userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
         String user_idx = userInfo.getString("user_idx", "");
         BoardDetail data = new BoardDetail(board_idx, user_idx);
@@ -42,6 +40,13 @@ public class BoardDetailActivity extends AppCompatActivity {
         getBoardDetailResult.enqueue(new Callback<BoardDetailResult>() {
             @Override
             public void onResponse(Call<BoardDetailResult> call, Response<BoardDetailResult> response) {
+                if (response.isSuccessful()){
+                    String message = response.body().getMessage();
+                    switch (message){
+                        case "SUCCESS":
+
+                    }
+                }
 
             }
 

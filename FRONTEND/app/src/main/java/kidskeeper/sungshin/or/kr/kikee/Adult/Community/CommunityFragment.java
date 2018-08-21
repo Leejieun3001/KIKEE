@@ -123,11 +123,7 @@ public class CommunityFragment extends Fragment {
         public void onClick(View v) {
             int itemPosition = recyclerView.getChildPosition(v);
             int tempId = itemList.get(itemPosition).getIdx();
-
             Intent intent = new Intent(getContext(), BoardDetailActivity.class);
-
-          //  Intent intent = new Intent(getActivity().getApplicationContext(), BoardDetailActivity.class);
-
 
             intent.putExtra("idx", tempId);
             startActivity(intent);
