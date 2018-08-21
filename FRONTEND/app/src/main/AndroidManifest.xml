@@ -36,7 +36,6 @@
         <activity android:name=".Adult.LoginJoin.JoinActivity" />
         <activity android:name=".Kids.KidsMain" />
         <activity android:name=".Kids.Operate.OperateRobot" />
-        <activity android:name=".Kids.Word.WordGame" />
         <activity android:name=".Kids.Operate.WordGame.CategorySelectActivity" />
         <activity android:name=".Kids.Operate.WordGame.PlayWordGameActivity" />
         <activity android:name=".Kids.Operate.WordGame.SuccessWord"/>

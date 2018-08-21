@@ -127,7 +127,9 @@ public class ConnectActivity extends AppCompatActivity {
 
         } catch (Exception e) { // 블루투스 연결 중 오류 발생
             Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
-            finish();  // App 종료
+            //finish();  // App 종료
+            Intent intent2 = new Intent(ConnectActivity.this,KidsMain.class);
+            startActivity(intent2);
         }
     }
     // 블루투스 지원하며 활성 상태인 경우.

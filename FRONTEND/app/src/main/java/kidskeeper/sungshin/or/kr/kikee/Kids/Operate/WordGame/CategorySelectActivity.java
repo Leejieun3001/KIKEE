@@ -54,6 +54,7 @@ public class CategorySelectActivity extends AppCompatActivity {
                                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
                                 final Button btn = new Button(getBaseContext());
+                                btn.setGravity(View.TEXT_ALIGNMENT_CENTER);
 
                                 btn.setText(category[i]);
                                 final String position = category[i];

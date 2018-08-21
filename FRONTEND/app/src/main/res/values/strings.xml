@@ -3,5 +3,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Kcolor1">#273540</string>
+    <string name="Kcolor2">#4E6A7F</string>
+    <string name="Kcolor3">#76A0BF</string>
+    <string name="Kcolor4">#8DC0E5</string>
+    <string name="Kcolor5">#9DD5FF</string>
+
 
 </resources>

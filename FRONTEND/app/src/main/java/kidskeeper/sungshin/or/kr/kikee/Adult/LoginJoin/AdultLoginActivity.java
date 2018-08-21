@@ -22,13 +22,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AdultLoginActivity extends AppCompatActivity {
-    @BindView(R.id.adultlogin_edittext_id)
+    @BindView(R.id.adult_login_edittext_id)
     EditText editTextId;
-    @BindView(R.id.adultlogin_edittext_pw)
+    @BindView(R.id.adult_login_edittext_pw)
     EditText editTextPw;
-    @BindView(R.id.adultlogin_button_login)
+    @BindView(R.id.adult_login_button_login)
     Button buttonLogin;
-    @BindView(R.id.adultlogin_button_join)
+    @BindView(R.id.adult_login_button_join)
     Button buttonJoin;
     private NetworkService service;
 
