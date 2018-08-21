@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bgpattern"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,10 +15,15 @@
         android:id="@+id/home_button_go_adult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round_background"
+        android:textColor="@color/colorWhite"
+        android:layout_margin="20dp"
         android:layout_gravity="center"
         android:text="어른"/>
     <Button
         android:id="@+id/home_button_go_kids"
+        android:background="@drawable/round_background"
+        android:textColor="@color/colorWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

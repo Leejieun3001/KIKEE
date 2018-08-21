@@ -43,20 +43,25 @@ public class CategorySelectActivity extends AppCompatActivity {
         getCategoryList.enqueue(new Callback<CategoryResult>() {
             @Override
             public void onResponse(Call<CategoryResult> call, Response<CategoryResult> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     String message = response.body().getMessage();
-                    switch (message){
+                    switch (message) {
                         case "SUCCESS":
                             String[] category = response.body().getCategorys();
 
-                            for(int i=0; i<category.length;i++){
+                            for (int i = 0; i < category.length; i++) {
                                 LinearLayout linearLayout = new LinearLayout(getBaseContext());
-                                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                                params.topMargin = 10;
+                                params.bottomMargin = 10;
 
+                                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                linearLayout.setLayoutParams(params);
                                 final Button btn = new Button(getBaseContext());
                                 btn.setGravity(View.TEXT_ALIGNMENT_CENTER);
-
                                 btn.setText(category[i]);
+                                btn.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                                 final String position = category[i];
                                 btn.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -69,11 +74,13 @@ public class CategorySelectActivity extends AppCompatActivity {
 
                                     }
                                 });
+                                linearLayout.setGravity(View.TEXT_ALIGNMENT_CENTER);
+                                btn.setGravity(View.TEXT_ALIGNMENT_CENTER);
                                 linearLayout.addView(btn);
                                 linearLayoutCategory.addView(linearLayout);
                             }
                     }
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "서버가 불안정 합니다! 빠른 시일 내에 개선하겠습니다.", Toast.LENGTH_LONG).show();
                 }
             }
