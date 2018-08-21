@@ -4,9 +4,9 @@
     android:id="@+id/itemreview_layout_layout"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:orientation="horizontal"
-    android:background="@color/colorWhite"
     android:layout_margin="15dp"
+    android:background="@color/colorWhite"
+    android:orientation="horizontal"
 
     android:padding="10dp">
 
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/itemboard_textview_content"
@@ -40,19 +40,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-          <Button
-              android:layout_width="25dp"
-              android:layout_height="35dp"
-              android:layout_margin="2dp"
-              android:background="@drawable/binoculars"/>
+            <Button
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_margin="2dp"
+                android:background="@drawable/binoculars" />
 
             <TextView
                 android:id="@+id/itemboard_textview_hits"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
         <LinearLayout
@@ -60,17 +61,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <Button
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@drawable/like"/>
+            <Button
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/like" />
+
             <TextView
                 android:id="@+id/itemboard_textview_pick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

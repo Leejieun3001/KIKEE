@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.BoardDetail;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardDetailResult;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
@@ -16,6 +20,19 @@ import retrofit2.Response;
 
 public class BoardDetailActivity extends AppCompatActivity {
 
+    @BindView(R.id.board_detail_title)
+    TextView textViewTitle;
+    @BindView(R.id.board_detail_content)
+    TextView textViewContent;
+    @BindView(R.id.board_detail_nickname)
+    TextView textViewNickname;
+    @BindView(R.id.board_detail_date)
+    TextView textViewDate;
+    @BindView(R.id.board_detail_hits)
+    TextView textViewhits;
+    @BindView(R.id.board_detail_picks)
+    TextView textViewPicks;
+
     private NetworkService service;
     private String board_idx;
 
@@ -24,6 +41,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_detail);
         service = ApplicationController.getInstance().getNetworkService();
+        ButterKnife.bind(this);
         Intent gettingIntent = getIntent();
         board_idx = String.valueOf(gettingIntent.getIntExtra("idx", 1));
 
@@ -40,10 +58,17 @@ public class BoardDetailActivity extends AppCompatActivity {
         getBoardDetailResult.enqueue(new Callback<BoardDetailResult>() {
             @Override
             public void onResponse(Call<BoardDetailResult> call, Response<BoardDetailResult> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     String message = response.body().getMessage();
-                    switch (message){
+                    switch (message) {
                         case "SUCCESS":
+                            textViewTitle.setText(String.valueOf(response.body().getBoard().getTitle()));
+                            textViewContent.setText(String.valueOf(response.body().getBoard().getContent()));
+                            textViewNickname.setText(String.valueOf(response.body().getBoard().getNickname()));
+                            textViewDate.setText(String.valueOf(response.body().getBoard().getDate()));
+                            textViewhits.setText(String.valueOf(response.body().getBoard().getHits()));
+                            textViewPicks.setText(String.valueOf(response.body().getBoard().getPick()));
+
 
                     }
                 }
