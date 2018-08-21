@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#4E6A7F</color>
+    <color name="colorPrimaryDark">#273540</color>
+    <color name="colorAccent">#9DD5FF</color>
     <color name="colorWhite">#FFFFFF</color>
+    <string name="Kcolor1">#273540</string>
+    <string name="Kcolor2">#4E6A7F</string>
+    <string name="Kcolor3">#76A0BF</string>
+    <string name="Kcolor4">#8DC0E5</string>
+    <string name="Kcolor5">#9DD5FF</string>
 </resources>

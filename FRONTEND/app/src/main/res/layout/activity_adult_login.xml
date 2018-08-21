@@ -16,20 +16,22 @@
         <EditText
             android:id="@+id/adult_login_edittext_id"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="admin@admin.com"
+            android:background="@color/colorWhite"
             android:hint="이메일을 입력해 주세요"
             />
 
         <EditText
             android:id="@+id/adult_login_edittext_pw"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="1234"
+            android:background="@color/colorWhite"
             android:hint="로봇 비밀번호를 입력해 주세요" />
 
         <LinearLayout
@@ -40,13 +42,17 @@
                 android:id="@+id/adult_login_button_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="로그인"/>
+                android:text="로그인"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/round_background"/>
 
             <Button
                 android:id="@+id/adult_login_button_join"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회원 등록"/>
+                android:text="회원 등록"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/round_background"/>
         </LinearLayout>
     </LinearLayout>
 
