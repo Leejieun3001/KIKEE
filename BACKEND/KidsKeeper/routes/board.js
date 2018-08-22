@@ -22,11 +22,12 @@ const upload = multer({
 });
 
 /**
- * 글쓰기
- * "title": "글제목", 
- * "content": "내용",
- * "user_idx" : 2,
- * "nickname" : "관리자2"
+ * api 목적     : 글 작성
+ * request params : { String title : "글제목", 
+ *                    String content : "내용",
+ *                    String user_idx  : "사용자 인덱스",
+ *                    String nickname : "사용자 닉네임"
+ *                  }
  */
 
 router.post('/write', function (req, res) {
@@ -55,7 +56,11 @@ router.post('/write', function (req, res) {
 
 
 /**
- * 글 조회
+ * api  목적      : 글 조회
+ * request params : {
+ *                     String board_idx : 개시판 번호 idx
+ *                     String user_idx : 사용용자 idx 
+ *                     } 
  */
 router.post('/', function (req, res) {
 
@@ -80,15 +85,10 @@ router.post('/', function (req, res) {
             + "where Board.idx = ? ", req.body.board_idx, function (error, rows) {
                 if (error) callback(error, connection, "Selecet query Error : ");
                 else {
-                    if (rows.length === 0) {
-                        res.status(200).send({ message: "BOARD_NOT_EXIT" });
-                        callback("ALREADY_SEND_MESSAGE", connection, "api : /board");
-                    } else {
-                        resultJson.board = rows[0];
-                        if (rows[0].user_idx === req.body.user_idx) { resultJson.isMine = 1; }
-                        else { resultJson.isMine = 0; }
-                        callback(null, connection);
-                    }
+                    resultJson.board = rows[0];
+                    if (rows[0].user_idx === req.body.user_idx) { resultJson.isMine = 1; }
+                    else { resultJson.isMine = 0; }
+                    callback(null, connection);
                 }
             });
     }
@@ -143,7 +143,8 @@ router.post('/', function (req, res) {
 
 
 /**
- * 전체 글 리스트 조회
+ * api 목적       : 전체 글 리스트 조회
+ * request params : 없음
  */
 
 router.get('/total', function (req, res) {
@@ -178,15 +179,11 @@ router.get('/total', function (req, res) {
 });
 
 /**
- * 글 수정
- */
-
-/**
- * 
- * 
- ***/
-/**
- * 글 좋아요
+ * api 목적 : 글 좋아요
+ * request params : {
+ *                    String board_idx : 개시글 idx
+ *                    String user_idx : 사용자 idx
+ *                  }
  */
 
 router.post('/pick', function (req, res) {
@@ -210,11 +207,13 @@ router.post('/pick', function (req, res) {
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
-/*
-*글 싫어요
- *
+/**
+ * api 목적 : 글 좋아요 취소
+ * request params : {
+ *                    String board_idx : 개시글 idx
+ *                    String user_idx : 사용자 idx
+ *                  }
  */
-
 
 router.post('/unpick', function (req, res) {
 
@@ -238,8 +237,12 @@ router.post('/unpick', function (req, res) {
 });
 
 /**
- * 댓글 쓰기
- *
+ * api 목적        : 댓글 작성
+ * request params  : {
+ *                     String board_idx : 개시판 idx
+ *                     String user_idx  : 사용자 idx
+ *                     String content : 내용
+ *                    } 
  */
 
 router.post('/write/comment', function (req, res) {
