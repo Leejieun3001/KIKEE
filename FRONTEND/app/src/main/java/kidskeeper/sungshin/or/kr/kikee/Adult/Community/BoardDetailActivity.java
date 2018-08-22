@@ -61,7 +61,6 @@ public class BoardDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_detail);
         service = ApplicationController.getInstance().getNetworkService();
-
         ButterKnife.bind(this);
         Intent gettingIntent = getIntent();
         board_idx = String.valueOf(gettingIntent.getIntExtra("idx", 1));

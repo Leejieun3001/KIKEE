@@ -4,55 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgpattern"
     android:orientation="vertical"
-    tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardWriteActivity"
-    android:background="@drawable/bgpattern">
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:background="#B2CCFF"/>
+    tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardWriteActivity">
 
     <EditText
-        android:id="@+id/writeTitle"
-        android:layout_margin="14dp"
+        android:id="@+id/board_write_edittext_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:textColor="@string/Kcolor1"
+        android:layout_margin="14dp"
         android:hint="제목을 입력해주세요" />
+
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:background="#B2CCFF"/>
+        android:layout_height="3dp" />
+
     <EditText
+        android:id="@+id/board_write_edittext_content"
         android:layout_width="fill_parent"
         android:layout_height="200dp"
-        android:id="@+id/writeContext"
         android:layout_margin="10dp"
-        android:background="@color/colorWhite"
         android:gravity="top|start"
-        android:textColor="@string/Kcolor1"
+        android:background="@color/colorWhite"
         android:hint="내용을 입력해주세요" />
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="3dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:background="@color/colorPrimaryDark" />
+
     <Button
+        android:id="@+id/board_write_button_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:id="@+id/btnBack"
         android:background="@drawable/round_background"
-        android:textColor="@color/colorWhite"
-        android:text="뒤로 가기"/>
+        android:text="뒤로 가기"
+        android:textColor="@color/colorWhite" />
+
     <Button
+        android:id="@+id/board_write_button_write"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnStore"
         android:layout_margin="10dp"
         android:background="@drawable/round_background"
-        android:textColor="@color/colorWhite"
-        android:text="글 등록하기"/>
+        android:text="글 등록하기"
+        android:textColor="@color/colorWhite" />
 
 </LinearLayout>
