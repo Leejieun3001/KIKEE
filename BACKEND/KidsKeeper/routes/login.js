@@ -31,17 +31,14 @@ router.post('/', function (req, res) {
     let resultJson = {
         message: '',
         idx: '',
-        nickname:''
+        nickname: ''
     };
 
     let selectUserInfo = function (connection, callback) {
         connection.query("select * from User where email = ? ", req.body.email, function (error, rows) {
             if (error) callback(error, connection, "Selecet query Error : ");
             else {
-                console.log(rows);
-                console.log(rows.length);
                 if (rows.length === 0) {
-                    // 존재하는 아이디가 없는 경우
                     res.status(200).send({ message: "NOT_SIGN_UP" });
                     callback("ALREADY_SEND_MESSAGE", connection, "api : /login/");
                 } else {
@@ -75,7 +72,6 @@ router.post('/', function (req, res) {
     var task = [globalModule.connect.bind(this), selectUserInfo, comparePW, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
-
 
 
 
