@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adult_login);
+        setContentView(R.layout.activity_login);
         service = ApplicationController.getInstance().getNetworkService();
         ButterKnife.bind(this);
         clickEvent();

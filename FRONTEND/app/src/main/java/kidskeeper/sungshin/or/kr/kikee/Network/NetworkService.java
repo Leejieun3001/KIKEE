@@ -1,7 +1,7 @@
 package kidskeeper.sungshin.or.kr.kikee.Network;
 
-import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardDetailActivity;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.BoardDetail;
+import kidskeeper.sungshin.or.kr.kikee.Model.request.CommentWrite;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Join;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Login;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BaseResult;
@@ -48,6 +48,9 @@ public interface NetworkService {
 
     @POST("/board")
     Call<BoardDetailResult> getBoardDetailResult(@Body BoardDetail boardDetail);
+
+    @POST("/board//write/comment")
+    Call<BaseResult> getCommentWriteResult(@Body CommentWrite comment);
 
 //    @POST("/login/find_id")
 //    Call<FindInfoResult> getFindIdResult(@Body FindId Info);
