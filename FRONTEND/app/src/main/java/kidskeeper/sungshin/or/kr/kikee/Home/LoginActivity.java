@@ -1,4 +1,4 @@
-package kidskeeper.sungshin.or.kr.kikee.Adult.LoginJoin;
+package kidskeeper.sungshin.or.kr.kikee.Home;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AdultLoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.adult_login_edittext_id)
     EditText editTextId;
     @BindView(R.id.adult_login_edittext_pw)
@@ -71,7 +71,7 @@ public class AdultLoginActivity extends AppCompatActivity {
                                         editor.putString("user_idx", response.body().getIdx());
                                         editor.putString("nickname", response.body().getNickname());
                                         editor.commit();
-                                        Intent intent = new Intent(getApplicationContext(), AdultHomeActivity.class);
+                                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                         startActivity(intent);
                                         finish();
                                         break;

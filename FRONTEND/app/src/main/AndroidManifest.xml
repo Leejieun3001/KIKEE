@@ -21,7 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+
+        <activity android:name=".Home.LoginActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,16 +34,15 @@
         <activity android:name=".Adult.Camera.CameraActivity" />
         <activity android:name=".Kids.Operate.ConnectActivity" />
         <activity android:name=".Adult.Voice.VoiceActivity" />
-        <activity android:name=".Adult.LoginJoin.AdultLoginActivity" />
-        <activity android:name=".Adult.LoginJoin.JoinActivity" />
         <activity android:name=".Kids.KidsMain" />
         <activity android:name=".Kids.Operate.OperateRobot" />
         <activity android:name=".Kids.Operate.WordGame.CategorySelectActivity" />
         <activity android:name=".Kids.Operate.WordGame.PlayWordGameActivity" />
-        <activity android:name=".Kids.Operate.WordGame.SuccessWord"/>
-
+        <activity android:name=".Kids.Operate.WordGame.SuccessWord" />
         <activity android:name=".Adult.Community.BoardDetailActivity" />
-        <activity android:name=".Adult.Community.BoardWriteActivity"></activity>
+        <activity android:name=".Adult.Community.BoardWriteActivity" />
+        <activity android:name=".Home.HomeActivity"/>
+        <activity android:name=".Home.JoinActivity"></activity>
     </application>
 
 </manifest>
