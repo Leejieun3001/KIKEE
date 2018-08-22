@@ -85,10 +85,15 @@ router.post('/', function (req, res) {
             + "where Board.idx = ? ", req.body.board_idx, function (error, rows) {
                 if (error) callback(error, connection, "Selecet query Error : ");
                 else {
-                    resultJson.board = rows[0];
-                    if (rows[0].user_idx === req.body.user_idx) { resultJson.isMine = 1; }
-                    else { resultJson.isMine = 0; }
-                    callback(null, connection);
+                    if (rows.length === 0) {
+                        res.status(200).send({ message: "BOARD_NOT_EXIT" });
+                        callback("ALREADY_SEND_MESSAGE", connection, "api : /board");
+                    } else {
+                        resultJson.board = rows[0];
+                        if (rows[0].user_idx === req.body.user_idx) { resultJson.isMine = 1; }
+                        else { resultJson.isMine = 0; }
+                        callback(null, connection);
+                    }
                 }
             });
     }
@@ -120,10 +125,6 @@ router.post('/', function (req, res) {
             + " join User on User.idx = CommentBoard.user_idx where board_idx = ? ", req.body.board_idx, function (error, rows) {
                 if (error) callback(error, connection, "Selecet query Error : ");
                 else {
-                    if (rows.length === 0) {
-                        res.status(200).send({ message: "BOARD_NOT_EXIT" });
-                        callback("ALREADY_SEND_MESSAGE", connection, "api : /board");
-                    } else {
                         resultJson.message = "SUCCESS";
 
                         for (var x in rows) {
@@ -134,7 +135,7 @@ router.post('/', function (req, res) {
                         res.status(200).send(resultJson);
                         callback(null, connection, "api : /board");
                     }
-                }
+                
             });
     }
     var task = [globalModule.connect.bind(this), updateBoard, selectBoard, selectIsPick, selectCommentList, globalModule.releaseConnection.bind(this)];
@@ -241,7 +242,7 @@ router.post('/unpick', function (req, res) {
  * request params  : {
  *                     String board_idx : 개시판 idx
  *                     String user_idx  : 사용자 idx
- *                     String content : 내용
+ *                     String content :
  *                    } 
  */
 
