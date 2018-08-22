@@ -261,7 +261,7 @@ router.post('/write/comment', function (req, res) {
             }
         });
     }
-    var task = [globalModule.connect.bind(this), deletePick, globalModule.releaseConnection.bind(this)];
+    var task = [globalModule.connect.bind(this), updateComment, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
