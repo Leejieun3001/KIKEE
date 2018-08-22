@@ -20,7 +20,8 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="admin@admin.com"
-            android:background="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:background="#8DC0E5"
             android:hint="이메일을 입력해 주세요"
             />
 
@@ -31,7 +32,8 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="1234"
-            android:background="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:background="#8DC0E5"
             android:hint="로봇 비밀번호를 입력해 주세요" />
 
         <LinearLayout
