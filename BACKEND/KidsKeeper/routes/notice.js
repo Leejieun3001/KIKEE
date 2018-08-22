@@ -41,6 +41,7 @@ router.get('/', function (req, res) {
                 } else {
                     for (var x in rows) {
                         var todo = {}
+                        todo.idx = rows[x].idx;
                         todo.todo = rows[x].todo;
                         todo.isdo = rows[x].isDo;
                         resultJson.todos.push(todo);
