@@ -4,6 +4,7 @@ import kidskeeper.sungshin.or.kr.kikee.Model.request.BoardDetail;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.CommentWrite;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Join;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Login;
+import kidskeeper.sungshin.or.kr.kikee.Model.request.Pick;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BaseResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardDetailResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardListReult;
@@ -51,6 +52,12 @@ public interface NetworkService {
 
     @POST("/board//write/comment")
     Call<BaseResult> getCommentWriteResult(@Body CommentWrite comment);
+
+    @POST("/board/pick")
+    Call<BaseResult> getPickResult(@Body Pick pick);
+
+    @POST("/board/unpick")
+    Call<BaseResult> getUnPickResult(@Body Pick pick);
 
 //    @POST("/login/find_id")
 //    Call<FindInfoResult> getFindIdResult(@Body FindId Info);

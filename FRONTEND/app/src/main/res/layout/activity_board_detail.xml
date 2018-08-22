@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/friends" />
+                android:src="@drawable/friends"/>
 
             <TextView
                 android:id="@+id/board_detail_hits"
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/like" />
+                android:src="@drawable/like" />
 
             <TextView
                 android:id="@+id/board_detail_picks"
