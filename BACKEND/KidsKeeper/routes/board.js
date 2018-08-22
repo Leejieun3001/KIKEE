@@ -191,7 +191,7 @@ router.get('/total', function (req, res) {
 
 router.post('/pick', function (req, res) {
 
-    let updateComment = function (connection, callback) {
+    let insertPick = function (connection, callback) {
         let insertquery = "insert into Pick values (? , ?)";
         let params = [
             req.body.board_idx,
@@ -206,7 +206,7 @@ router.post('/pick', function (req, res) {
             }
         });
     }
-    var task = [globalModule.connect.bind(this), updateComment, globalModule.releaseConnection.bind(this)];
+    var task = [globalModule.connect.bind(this), insertPick, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
@@ -214,6 +214,29 @@ router.post('/pick', function (req, res) {
 *글 싫어요
  *
  */
+
+
+router.post('/unpick', function (req, res) {
+
+    let deletePick = function (connection, callback) {
+        let insertquery = "delete from Pick where board_idx = ? and user_idx = ?";
+        let params = [
+            req.body.board_idx,
+            req.body.user_idx,
+        ]
+        connection.query(insertquery, params, function (error, rows) {
+            if (error) {
+                callback(error, connection, "insertquery Error : ", res);
+            } else {
+                res.status(200).send({ message: "SUCCESS" });
+                callback(null, connection, "api /board/wirte/comment");
+            }
+        });
+    }
+    var task = [globalModule.connect.bind(this), deletePick, globalModule.releaseConnection.bind(this)];
+    async.waterfall(task, globalModule.asyncCallback.bind(this));
+});
+
 /**
  * 댓글 쓰기
  *
@@ -238,7 +261,7 @@ router.post('/write/comment', function (req, res) {
             }
         });
     }
-    var task = [globalModule.connect.bind(this), updateComment, globalModule.releaseConnection.bind(this)];
+    var task = [globalModule.connect.bind(this), deletePick, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
