@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/bgpattern"
+    android:background="#FFF3F0"
     android:layout_height="match_parent"
     tools:context=".Kids.Operate.WordGame.SuccessWord">
 
@@ -47,5 +47,5 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="97dp"
-        app:srcCompat="@drawable/searching" />
+        app:srcCompat="@drawable/bluetooth_icon" />
 </RelativeLayout>

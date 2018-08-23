@@ -1,37 +1,32 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids.Operate;
 
-import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.UUID;
-
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.KidsMain;
+import kidskeeper.sungshin.or.kr.kikee.Kids.PlayKidsMain;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class OperateRobot extends AppCompatActivity{
 
     @BindView(R.id.btn_go_left)
-    Button btnLeft;
+    ImageButton btnLeft;
     @BindView(R.id.btn_go_right)
-    Button btnRight;
+    ImageButton btnRight;
     @BindView(R.id.btn_go_top)
-    Button btnTop;
+    ImageButton btnTop;
     @BindView(R.id.btn_go_back)
-    Button btnBack;
+    ImageButton btnBack;
     @BindView(R.id.btn_go_stop)
-    Button btnStop;
+    ImageButton btnStop;
     @BindView(R.id.go_to_list)
     Button btnList;
 
@@ -96,7 +91,7 @@ public class OperateRobot extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 sendData(message ="s");
-                Intent intent = new Intent(OperateRobot.this, KidsMain.class);
+                Intent intent = new Intent(OperateRobot.this, PlayKidsMain.class);
                 startActivity(intent);
                 finish();
             }

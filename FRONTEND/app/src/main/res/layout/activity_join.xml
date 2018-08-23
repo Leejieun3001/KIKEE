@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/icon_robot"
+    android:background="#FFF3F0"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.LoginJoin.JoinActivity">
+    tools:context="kidskeeper.sungshin.or.kr.kikee.Home.JoinActivity">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -20,13 +20,12 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
 
-        <activity android:name=".Home.LoginActivity" >
-
+        <activity android:name=".Home.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,15 +33,17 @@
         <activity android:name=".Adult.Camera.CameraActivity" />
         <activity android:name=".Kids.Operate.ConnectActivity" />
         <activity android:name=".Adult.Voice.VoiceActivity" />
-        <activity android:name=".Kids.KidsMain" />
+        <activity android:name=".Kids.PlayKidsMain" />
         <activity android:name=".Kids.Operate.OperateRobot" />
         <activity android:name=".Kids.Operate.WordGame.CategorySelectActivity" />
         <activity android:name=".Kids.Operate.WordGame.PlayWordGameActivity" />
         <activity android:name=".Kids.Operate.WordGame.SuccessWord" />
         <activity android:name=".Adult.Community.BoardDetailActivity" />
         <activity android:name=".Adult.Community.BoardWriteActivity" />
-        <activity android:name=".Home.HomeActivity"/>
-        <activity android:name=".Home.JoinActivity"></activity>
+        <activity android:name=".Home.HomeActivity" />
+        <activity android:name=".Home.JoinActivity" />
+        <activity android:name=".Kids.KidsHome.KidsHome" />
+        <activity android:name=".Kids.HomeWork.HomeWork"></activity>
     </application>
 
 </manifest>

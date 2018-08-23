@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgpattern"
+    android:background="#FFF3F0"
     android:orientation="vertical"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardWriteActivity">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#B2CCFF" />
 
     <EditText
         android:id="@+id/board_write_edittext_title"
@@ -24,8 +29,8 @@
         android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:layout_margin="10dp"
-        android:gravity="top|start"
         android:background="@color/colorWhite"
+        android:gravity="top|start"
         android:hint="내용을 입력해주세요" />
 
     <TextView

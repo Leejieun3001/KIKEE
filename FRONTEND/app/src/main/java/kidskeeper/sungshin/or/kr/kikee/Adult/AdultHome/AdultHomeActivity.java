@@ -88,9 +88,9 @@ public class AdultHomeActivity extends AppCompatActivity {
 //    }
 
     private void setupTabIcons() {
-        tabLayout.getTabAt(ADULTHOME).setText("홈");
-        tabLayout.getTabAt(BOARD).setText("커뮤니티");
-        tabLayout.getTabAt(MYPAGE).setText("마이 페이지");
+        tabLayout.getTabAt(ADULTHOME).setIcon(R.drawable.home);
+        tabLayout.getTabAt(BOARD).setIcon(R.drawable.community);
+        tabLayout.getTabAt(MYPAGE).setIcon(R.drawable.settings);
     }
 
     private void setupViewPager() {

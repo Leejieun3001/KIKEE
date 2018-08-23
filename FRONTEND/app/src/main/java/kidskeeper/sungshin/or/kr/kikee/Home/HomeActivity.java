@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,10 +17,10 @@ import kidskeeper.sungshin.or.kr.kikee.R;
 public class HomeActivity extends AppCompatActivity {
 
     @BindView(R.id.home_button_go_adult)
-    Button buttonGoAdult;
+    ImageButton buttonGoAdult;
 
     @BindView(R.id.home_button_go_kids)
-    Button buttonGoConnect;
+    ImageButton buttonGoConnect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

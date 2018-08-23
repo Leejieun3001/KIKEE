@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.KidsMain;
+import kidskeeper.sungshin.or.kr.kikee.Kids.PlayKidsMain;
 import kidskeeper.sungshin.or.kr.kikee.R;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -121,18 +121,20 @@ public class ConnectActivity extends AppCompatActivity {
 
 
 
-            Intent intent = new Intent(ConnectActivity.this,KidsMain.class);
+            Intent intent = new Intent(ConnectActivity.this,PlayKidsMain.class);
             startActivity(intent);
 
 
         } catch (Exception e) { // 블루투스 연결 중 오류 발생
+            
             Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
             //finish();  // App 종료
-            Intent intent2 = new Intent(ConnectActivity.this,KidsMain.class);
-            startActivity(intent2);
+
         }
     }
     // 블루투스 지원하며 활성 상태인 경우.
+
+
     void selectDevice() {
         // 블루투스 디바이스는 연결해서 사용하기 전에 먼저 페어링 되어야만 한다
         // getBondedDevices() : 페어링된 장치 목록 얻어오는 함수.

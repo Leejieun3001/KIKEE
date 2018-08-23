@@ -1,5 +1,6 @@
 package kidskeeper.sungshin.or.kr.kikee.Home;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,6 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome.AdultHomeActivity;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Login;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.LoginResult;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;

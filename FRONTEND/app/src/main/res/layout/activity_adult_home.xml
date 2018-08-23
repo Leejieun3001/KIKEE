@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bgpattern"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome.AdultHomeActivity">
 
 
@@ -16,6 +15,7 @@
         android:layout_weight="9"></android.support.v4.view.ViewPager>
 
     <android.support.design.widget.TabLayout
+        android:background="#FFB9AC"
         android:id="@+id/adultHome_tablayout_tablayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"

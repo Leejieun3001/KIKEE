@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bgpattern"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFF3F0"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Kids.KidsMain">
+    tools:context=".Kids.KidsHome.KidsHome">
 
     <Button
-        android:id="@+id/playWithRobot"
+        android:id="@+id/btn_go_homework"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="141dp"
+        android:layout_marginTop="180dp"
         android:background="@drawable/round_background"
+        android:text="알림장"
+        android:layout_marginBottom="10dp"
         android:textColor="@color/colorWhite"
-        android:text="로봇과 놀기" />
-
+        android:layout_marginLeft="145dp"/>
     <Button
-        android:id="@+id/wordGame"
+        android:id="@+id/btn_go_Bluetooth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/round_background"
         android:textColor="@color/colorWhite"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="208dp"
-        android:text="단어게임" />
+        android:text="로봇 \n연결하기"
+        android:layout_below="@id/btn_go_homework"
+        android:layout_marginLeft="145dp"
+
+        />
+
 </RelativeLayout>

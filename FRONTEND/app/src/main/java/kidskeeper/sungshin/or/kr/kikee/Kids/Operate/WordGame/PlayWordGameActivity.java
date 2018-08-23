@@ -24,7 +24,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.KidsMain;
+import kidskeeper.sungshin.or.kr.kikee.Kids.PlayKidsMain;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.WordsResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.word;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
@@ -78,7 +78,7 @@ public class PlayWordGameActivity extends AppCompatActivity {
         Home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(PlayWordGameActivity.this, KidsMain.class);
+                Intent intent2 = new Intent(PlayWordGameActivity.this, PlayKidsMain.class);
                 startActivity(intent2);
                 finish();
             }

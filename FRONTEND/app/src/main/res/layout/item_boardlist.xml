@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:layout_margin="15dp"
-    android:background="@color/colorWhite"
+    android:background="#FFF3F0"
     android:orientation="horizontal"
 
     android:padding="10dp">
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorWhite" />
 
         <TextView
             android:id="@+id/itemboard_textview_content"

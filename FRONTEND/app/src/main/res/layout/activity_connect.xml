@@ -1,32 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bgpattern"
+    android:background="#FFF3F0"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Kids.Operate.ConnectActivity">
-
-    <TextView
-        android:id="@+id/Connect_Bluetooth_Message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:background="@drawable/round_background"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:textSize="25dp"
-        android:textColor="@color/colorWhite"
-        android:gravity="center_horizontal"
-        android:text="로봇과 연결해주세요"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,14 +15,26 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="93dp"
-        android:layout_margin="40dp"
         android:layout_gravity="center"
+        android:layout_margin="@dimen/margin_115"
         app:layout_constraintBottom_toBottomOf="@+id/Connect_Bluetooth_Message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/searching" />
+        app:srcCompat="@drawable/bluetooth_icon" />
 
+
+    <TextView
+        android:id="@+id/Connect_Bluetooth_Message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:text="로봇과 연결해주세요"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_go_bluetoothList"
@@ -57,4 +50,4 @@
         android:textSize="20dp"
 />
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,53 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF3F0"
     tools:context=".Kids.Operate.OperateRobot">
 
-    <Button
-        android:id="@+id/btn_go_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignLeft="@id/btn_go_stop"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/margin_88"
-        android:text="left"
-        />
+    <!--<Button-->
+        <!--android:id="@+id/btn_go_left"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignLeft="@id/btn_go_stop"-->
+        <!--android:background="@drawable/round_background"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginLeft="@dimen/margin_88"-->
+        <!--android:text="left"-->
+        <!--/>-->
 
-    <Button
-        android:id="@+id/btn_go_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_above="@id/btn_go_stop"
-        android:text="Go" />
+    <!--<Button-->
+        <!--android:id="@+id/btn_go_top"-->
+        <!--android:background="@drawable/round_background"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_above="@id/btn_go_stop"-->
+        <!--android:text="Go" />-->
 
-    <Button
-        android:id="@+id/btn_go_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@id/btn_go_stop"
-        android:layout_marginRight="@dimen/margin_88"
-        android:text="Right" />
+    <!--<Button-->
+        <!--android:id="@+id/btn_go_right"-->
+        <!--android:background="@drawable/round_background"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_alignRight="@id/btn_go_stop"-->
+        <!--android:layout_marginRight="@dimen/margin_88"-->
+        <!--android:text="Right" />-->
 
-    <Button
-        android:id="@+id/btn_go_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_go_stop"
-        android:layout_centerInParent="true"
-        android:text="Back" />
+    <!--<Button-->
+        <!--android:id="@+id/btn_go_back"-->
+        <!--android:background="@drawable/round_background"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/btn_go_stop"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:text="Back" />-->
 
-    <Button
-        android:id="@+id/btn_go_stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Stop" />
+    <!--<Button-->
+        <!--android:id="@+id/btn_go_stop"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:background="@drawable/round_background"-->
+        <!--android:text="Stop" />-->
 
     <Button
         android:id="@+id/go_to_list"
@@ -55,18 +62,56 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/margin_10"
+        android:background="@drawable/round_background"
         android:layout_alignParentRight="true"
         android:text="목록으로" />
 
-    <TextView
-
+    <ImageButton
+        android:id="@+id/btn_go_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:textColor="#f0f"
-        android:textSize="@dimen/margin_30"
-        android:text="로봇 움직이기!" />
+        android:layout_marginTop="25dp"
+        android:background="#FFF3F0"
+        app:srcCompat="@drawable/go" />
+
+    <ImageButton
+        android:id="@+id/btn_go_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="149dp"
+        android:background="#FFF3F0"
+        app:srcCompat="@drawable/left" />
+
+    <ImageButton
+        android:id="@+id/btn_go_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#FFF3F0"
+        app:srcCompat="@drawable/stop" />
+
+    <ImageButton
+        android:id="@+id/btn_go_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="140dp"
+        android:background="#FFF3F0"
+        app:srcCompat="@drawable/right" />
+
+    <ImageButton
+        android:id="@+id/btn_go_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:background="#FFF3F0"
+        app:srcCompat="@drawable/back" />
 
 </RelativeLayout>

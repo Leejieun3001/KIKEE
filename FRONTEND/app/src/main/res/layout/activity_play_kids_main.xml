@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFF3F0"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Kids.PlayKidsMain">
+
+    <!--<Button-->
+        <!--android:id="@+id/playWithRobot"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="141dp"-->
+        <!--android:background="@drawable/round_background"-->
+        <!--android:textColor="@color/colorWhite"-->
+        <!--android:text="로봇과 놀기" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/wordGame"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/round_background"-->
+        <!--android:textColor="@color/colorWhite"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="208dp"-->
+        <!--android:text="단어게임" />-->
+
+    <ImageButton
+        android:id="@+id/wordGame"
+        android:background="#FFF3F0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="139dp"
+        app:srcCompat="@drawable/wordgame_icon" />
+
+
+    <ImageButton
+        android:background="#FFF3F0"
+        android:id="@+id/playWithRobot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp"
+        app:srcCompat="@drawable/playrobot_icon" />
+</RelativeLayout>
