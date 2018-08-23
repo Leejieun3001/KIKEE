@@ -107,7 +107,6 @@ public class MyPageFragment extends Fragment {
         }
     };
 
-
     private void LogoutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("로그아웃");
@@ -121,10 +120,10 @@ public class MyPageFragment extends Fragment {
                         editor.commit();
                         Toast.makeText(getActivity().getApplicationContext(), "로그아웃 되었습니다", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         getActivity().finish();
-
+                        Toast.makeText(getContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.setNegativeButton("아니오",
@@ -136,7 +135,6 @@ public class MyPageFragment extends Fragment {
     }
 
     public void getMyBoard() {
-
         SharedPreferences userInfo = getActivity().getSharedPreferences("userInfo", MODE_PRIVATE);
         String user_idx = userInfo.getString("user_idx", "");
         Call<BoardListReult> getBoardListResult = service.getMineBoardResult(user_idx);

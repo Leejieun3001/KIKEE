@@ -3,6 +3,7 @@ package kidskeeper.sungshin.or.kr.kikee.Kids.KidsHome;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +34,12 @@ public class KidsHomeActivity extends AppCompatActivity {
     Button goBluetooth;
     @BindView(R.id.kidsHome_recyclerview_recyclerview)
     RecyclerView recyclerView;
+    @BindView(R.id.todolist_floatingbutton_fab)
+    FloatingActionButton floatingActionButtonAdd;
+
+
+    AddTodoDialog addCateDialog;
+
 
     String user_idx;
 
@@ -54,6 +61,8 @@ public class KidsHomeActivity extends AppCompatActivity {
         onClickEvent();
         initRecyclerView();
         getTodoList();
+        addCateDialog = new AddTodoDialog(getApplicationContext());
+
     }
 
     void onClickEvent() {
@@ -64,6 +73,17 @@ public class KidsHomeActivity extends AppCompatActivity {
                 startActivity(intent1);
             }
 
+        });
+
+        floatingActionButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddTodoDialog customDialog = new AddTodoDialog(KidsHomeActivity.this);
+
+                // 커스텀 다이얼로그를 호출한다.
+                // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
+                customDialog.callFunction(user_idx);
+            }
         });
     }
 
@@ -163,4 +183,12 @@ public class KidsHomeActivity extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        initRecyclerView();
+        getTodoList();
+    }
+
 }

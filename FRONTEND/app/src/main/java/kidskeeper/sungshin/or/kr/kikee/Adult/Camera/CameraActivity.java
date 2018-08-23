@@ -32,13 +32,10 @@ public class CameraActivity extends AppCompatActivity {
         webView.setHorizontalScrollBarEnabled(true);
         webView.setVerticalScrollBarEnabled(true);
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setSupportZoom(true);
-
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
-
         webView.getSettings().setUseWideViewPort(true);
         webView.loadUrl("http://172.20.10.5:8081");
         webView.setWebViewClient(new WishWebViewClient());

@@ -1,4 +1,5 @@
 package kidskeeper.sungshin.or.kr.kikee.Home;
+
 ;
 import android.app.ActionBar;
 import android.content.Intent;
@@ -14,11 +15,8 @@ import kidskeeper.sungshin.or.kr.kikee.Kids.KidsHome.KidsHomeActivity;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class HomeActivity extends AppCompatActivity {
-
-
     @BindView(R.id.home_button_go_adult)
     ImageButton buttonGoAdult;
-
     @BindView(R.id.home_button_go_kids)
     ImageButton buttonGoKids;
 
@@ -30,8 +28,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         clickEvent();
-
-
     }
 
     void clickEvent() {
@@ -49,9 +45,5 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
-
-
 }

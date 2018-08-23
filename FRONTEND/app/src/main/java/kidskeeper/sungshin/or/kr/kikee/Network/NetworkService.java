@@ -1,11 +1,13 @@
 package kidskeeper.sungshin.or.kr.kikee.Network;
 
+import butterknife.BindView;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.BoardDetail;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.BoardWrite;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.CommentWrite;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Join;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Login;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.NoticeDel;
+import kidskeeper.sungshin.or.kr.kikee.Model.request.NoticeWrite;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Pick;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BaseResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardDetailResult;
@@ -81,7 +83,10 @@ public interface NetworkService {
     @PUT("/notice/undo")
     Call<BaseResult> getNoticUnDoResult(@Query("idx") String idx);
 
-    @POST("notice/delete")
-    Call<BaseResult> getNoticeDeleteResult (@Body NoticeDel noticeDel);
+    @POST("/notice/delete")
+    Call<BaseResult> getNoticeDeleteResult(@Body NoticeDel noticeDel);
+
+    @POST("/notice/write")
+    Call<BaseResult> getNoticeWirteRsault(@Body NoticeWrite noticeWrite);
 
 }

@@ -72,8 +72,6 @@ public class JoinActivity extends AppCompatActivity {
         service = ApplicationController.getInstance().getNetworkService();
         bindClickListener();
     }
-
-
     //클릭 이벤트 바인딩
     public void bindClickListener() {
         //email 중복 체크
@@ -315,5 +313,4 @@ public class JoinActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }

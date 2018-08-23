@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox checkBoxAutoLogin;
     private NetworkService service;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
