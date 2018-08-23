@@ -2,17 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Mypage.MyPageFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:text="내가 작성한 글"
+        android:textSize="15sp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_landmark_recyclerView_userrecyclerview"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/colorWhite"
-        android:layout_marginRight="@dimen/regular_margin"
-        android:layout_marginLeft="@dimen/regular_margin"
-        android:padding="@dimen/margin_10">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_margin="20dp"
+        android:background="@color/colorWhite"></android.support.v7.widget.RecyclerView>
 
+    <Button
+        android:id="@+id/mypage_button_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="로그아웃" />
+
+    <Button
+        android:id="@+id/mypage_button_mypage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="정보수정" />
 </LinearLayout>

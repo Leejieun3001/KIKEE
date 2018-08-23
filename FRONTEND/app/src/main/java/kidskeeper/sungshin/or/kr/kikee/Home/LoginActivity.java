@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonLogin;
     @BindView(R.id.adult_login_button_join)
     Button buttonJoin;
+    @BindView(R.id.login_checkbox_auto_login)
+    CheckBox checkBoxAutoLogin;
     private NetworkService service;
 
 
@@ -79,6 +82,9 @@ public class LoginActivity extends AppCompatActivity {
                                         SharedPreferences.Editor editor = userInfo.edit();
                                         editor.putString("user_idx", response.body().getIdx());
                                         editor.putString("nickname", response.body().getNickname());
+                                        if (checkBoxAutoLogin.isChecked()) {
+                                            editor.putString("AutoLogin", "YES");
+                                        }
                                         editor.commit();
                                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                         startActivity(intent);

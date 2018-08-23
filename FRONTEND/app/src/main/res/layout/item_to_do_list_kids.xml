@@ -27,7 +27,7 @@
             android:id="@+id/todo_list_isdo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight=""
+            android:layout_alignParentRight="true"
             android:src="@drawable/unchecked"
             android:text="New Text"
             android:textColor="#666666" />

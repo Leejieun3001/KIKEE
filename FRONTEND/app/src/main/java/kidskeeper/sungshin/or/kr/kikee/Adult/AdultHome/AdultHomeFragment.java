@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Camera.CameraActivity;
-import kidskeeper.sungshin.or.kr.kikee.Adult.Voice.VoiceActivity;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.TodoList;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.TodoListResult;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
@@ -33,8 +32,6 @@ public class AdultHomeFragment extends Fragment {
 
     @BindView(R.id.adultHome_button_camera)
     Button buttonCamera;
-    @BindView(R.id.adultHome_button_voice)
-    Button buttonVoice;
     @BindView(R.id.adultHome__recyclerview_recyclerview)
     RecyclerView recyclerView;
 
@@ -78,14 +75,7 @@ public class AdultHomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        buttonVoice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), VoiceActivity.class);
-                startActivity(intent);
 
-            }
-        });
     }
 
     public void initRecyclerView() {
