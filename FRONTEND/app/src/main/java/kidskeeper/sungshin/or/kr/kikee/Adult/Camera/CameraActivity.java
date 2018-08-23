@@ -28,31 +28,19 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     void setWebView() {
-        //배경색 설정
         webView.setBackgroundColor(0);
-        //스크롤 설정
         webView.setHorizontalScrollBarEnabled(true);
         webView.setVerticalScrollBarEnabled(true);
-        //HTML을 파싱하여 웹뷰에서 보여주거나 하는 작업에서
-        //width , height 가 화면 크기와 맞지 않는 현상이 발생한다
-        //이를 잡아주기 위한 코드
         webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 
-        //캐시파일 사용 금지(운영중엔 주석처리 할 것)
-        //webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-
-        //zoom 허용
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setSupportZoom(true);
 
-        //javascript의 window.open 허용
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        //javascript 허용
         webView.getSettings().setJavaScriptEnabled(true);
 
-        //meta태그의 viewport사용 가능
         webView.getSettings().setUseWideViewPort(true);
-        webView.loadUrl("http://www.google.com/");
+        webView.loadUrl("http://172.20.10.5:8081");
         webView.setWebViewClient(new WishWebViewClient());
     }
 

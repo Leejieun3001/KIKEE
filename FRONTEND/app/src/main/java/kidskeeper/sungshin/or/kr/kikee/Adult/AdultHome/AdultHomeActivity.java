@@ -1,5 +1,7 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
 
+import android.support.v7.app.AppCompatActivity;
+
 
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -8,9 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Adult.Camera.CameraActivity;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Community.CommunityFragment;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Mypage.MyPageFragment;
 import kidskeeper.sungshin.or.kr.kikee.R;
@@ -49,14 +47,11 @@ public class AdultHomeActivity extends AppCompatActivity {
         setupViewPager();
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
-
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                int drawable;
                 switch (tab.getPosition()) {
                     case ADULTHOME:
-
                 }
                 viewPager.setCurrentItem(tab.getPosition());
             }
@@ -73,7 +68,7 @@ public class AdultHomeActivity extends AppCompatActivity {
         });
 
     }
-
+    //tab 아이콘 설정
     private void setupTabIcons() {
         tabLayout.getTabAt(ADULTHOME).setIcon(R.drawable.home);
         tabLayout.getTabAt(BOARD).setIcon(R.drawable.community);

@@ -1,13 +1,17 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -50,7 +54,6 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ItemViewHolder
                         return tryMoveSelection(lm, -1);
                     }
                 }
-
                 return false;
             }
         });
@@ -86,8 +89,13 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ItemViewHolder
         if (list.get(position).getIsdo().equals("0")) {
             holder.imageViewIsdo.setImageResource(R.drawable.unlike);
         } else {
-            holder.imageViewIsdo.setImageResource(R.drawable.unlike);
+            holder.imageViewIsdo.setImageResource(R.drawable.like);
         }
+        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
         holder.itemView.setSelected(focusedItem == position);
     }
 
@@ -99,12 +107,15 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ItemViewHolder
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewTodo;
         private ImageView imageViewIsdo;
+        private Button buttonDelete;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
             textViewTodo = (TextView) itemView.findViewById(R.id.todo_list_todo);
             imageViewIsdo = (ImageView) itemView.findViewById(R.id.todo_list_isdo);
+            buttonDelete = (Button) itemView.findViewById(R.id.todo_list_button_delete);
         }
     }
-
 }
+
+

@@ -3,6 +3,7 @@ package kidskeeper.sungshin.or.kr.kikee.Adult.Community;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Telephony;
@@ -29,6 +30,8 @@ import kidskeeper.sungshin.or.kr.kikee.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class CommunityFragment extends Fragment {
@@ -121,11 +124,21 @@ public class CommunityFragment extends Fragment {
         public void onClick(View v) {
             int itemPosition = recyclerView.getChildPosition(v);
             int tempId = itemList.get(itemPosition).getIdx();
-            Intent intent = new Intent(getContext(), BoardDetailActivity.class);
 
-            intent.putExtra("idx", tempId);
+            SharedPreferences userInfo = getActivity().getSharedPreferences("userInfo", MODE_PRIVATE);
+            SharedPreferences.Editor editor = userInfo.edit();
+            editor.putString("board_idx", String.valueOf(tempId));
+            editor.commit();
+            Intent intent = new Intent(getContext(), BoardDetailActivity.class);
             startActivity(intent);
         }
     };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initRecyclerView();
+        getBoardList();
+    }
 
 }

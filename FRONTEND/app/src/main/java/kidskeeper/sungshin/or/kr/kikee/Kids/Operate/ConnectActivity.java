@@ -8,15 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Kids.PlayKidsMain;
 import kidskeeper.sungshin.or.kr.kikee.R;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -40,8 +43,7 @@ public class ConnectActivity extends AppCompatActivity {
      */
     BluetoothDevice mRemoteDevice;
 
-    public static BluetoothSocket getmSocket()
-    {
+    public static BluetoothSocket getmSocket() {
         return mSocket;
     }
 
@@ -90,6 +92,7 @@ public class ConnectActivity extends AppCompatActivity {
             }
         });
     }
+
     BluetoothDevice getDeviceFromBondedList(String name) {
 
         // BluetoothDevice : 페어링 된 기기 목록을 얻어옴.
@@ -122,19 +125,18 @@ public class ConnectActivity extends AppCompatActivity {
             mSocket = mRemoteDevice.createRfcommSocketToServiceRecord(uuid);
 
 
-
             mSocket.connect(); // 소켓이 생성 되면 connect() 함수를 호출함으로써 두기기의 연결은 완료된다.
             mOutputStream = mSocket.getOutputStream();
             mInputStream = mSocket.getInputStream();
 
-            Intent intent = new Intent(ConnectActivity.this,PlayKidsMain.class);
+            Intent intent = new Intent(ConnectActivity.this, PlayKidsMain.class);
             startActivity(intent);
 
         } catch (Exception e) { // 블루투스 연결 중 오류 발생
-                Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(ConnectActivity.this, ConnectActivity.class);
-                startActivity(intent);
-                //finish();
+            Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ConnectActivity.this, ConnectActivity.class);
+            startActivity(intent);
+            //finish();
 
         }
 
@@ -237,5 +239,4 @@ public class ConnectActivity extends AppCompatActivity {
         super.onDestroy();
     }
 }
-
 

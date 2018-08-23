@@ -65,8 +65,8 @@ public class BoardDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_board_detail);
         service = ApplicationController.getInstance().getNetworkService();
         ButterKnife.bind(this);
-        Intent gettingIntent = getIntent();
-        board_idx = String.valueOf(gettingIntent.getIntExtra("idx", 1));
+       // Intent gettingIntent = getIntent();
+        //board_idx = String.valueOf(gettingIntent.getIntExtra("idx", 100));
 
         loadData();
         clickEvent();
@@ -77,6 +77,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     public void loadData() {
         SharedPreferences userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
         user_idx = userInfo.getString("user_idx", "");
+        board_idx = userInfo.getString("board_idx", "");
         BoardDetail data = new BoardDetail(board_idx, user_idx);
 
         Call<BoardDetailResult> getBoardDetailResult = service.getBoardDetailResult(data);
@@ -133,12 +134,18 @@ public class BoardDetailActivity extends AppCompatActivity {
                                 String message = response.body().getMessage();
                                 switch (message) {
                                     case "SUCCESS":
+                                        SharedPreferences userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = userInfo.edit();
+                                        editor.putString("board_idx", board_idx);
+                                        editor.commit();
                                         Intent intent = new Intent(getBaseContext(), BoardDetailActivity.class);
+                                        intent.putExtra("idx", board_idx);
                                         startActivity(intent);
                                         finish();
                                 }
                             }
                         }
+
                         @Override
                         public void onFailure(Call<BaseResult> call, Throwable t) {
 
