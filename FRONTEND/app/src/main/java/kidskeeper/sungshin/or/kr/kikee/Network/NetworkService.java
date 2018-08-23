@@ -18,6 +18,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -70,4 +72,11 @@ public interface NetworkService {
 
     @GET("/notice")
     Call<TodoListResult> getNoticeListResult(@Query("user_idx") String user_idx);
+
+    @PUT("/notice/do")
+    Call<BaseResult> getNoticDoResult(@Query("idx") String idx);
+
+    @PUT("/notice/undo")
+    Call<BaseResult> getNoticUnDoResult(@Query("idx") String idx);
+
 }

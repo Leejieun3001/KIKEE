@@ -9,13 +9,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardDetailActivity;
 import kidskeeper.sungshin.or.kr.kikee.Kids.Connect.ConnectActivity;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.TodoList;
+import kidskeeper.sungshin.or.kr.kikee.Model.response.BaseResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.TodoListResult;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
 import kidskeeper.sungshin.or.kr.kikee.Network.NetworkService;
@@ -31,15 +34,13 @@ public class KidsHomeActivity extends AppCompatActivity {
     @BindView(R.id.kidsHome_recyclerview_recyclerview)
     RecyclerView recyclerView;
 
-
     String user_idx;
 
+    private boolean isDo;
     private NetworkService service;
-
     private LinearLayoutManager layoutManager;
     private ToDoKidsAdapter adapter;
     private ArrayList<TodoList> itemList = new ArrayList<TodoList>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +55,12 @@ public class KidsHomeActivity extends AppCompatActivity {
         initRecyclerView();
         getTodoList();
     }
-    void onClickEvent(){
+
+    void onClickEvent() {
         goBluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(KidsHomeActivity.this,ConnectActivity.class);
+                Intent intent1 = new Intent(KidsHomeActivity.this, ConnectActivity.class);
                 startActivity(intent1);
             }
 
@@ -67,7 +69,7 @@ public class KidsHomeActivity extends AppCompatActivity {
 
     public void initRecyclerView() {
         itemList = new ArrayList<>();
-        adapter = new ToDoKidsAdapter(getApplicationContext(), itemList);
+        adapter = new ToDoKidsAdapter(getApplicationContext(), itemList, clickEvent);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -75,7 +77,7 @@ public class KidsHomeActivity extends AppCompatActivity {
     }
 
     private void setAdapter(ArrayList<TodoList> itemList) {
-        adapter = new ToDoKidsAdapter(this, itemList);
+        adapter = new ToDoKidsAdapter(this, itemList, clickEvent);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
@@ -92,9 +94,9 @@ public class KidsHomeActivity extends AppCompatActivity {
                     String message = response.body().getMessage();
                     switch (message) {
                         case "SUCCESS":
+                            itemList.clear();
                             itemList.addAll(response.body().getTodos());
                             setAdapter(itemList);
-
                     }
                 }
             }
@@ -105,4 +107,60 @@ public class KidsHomeActivity extends AppCompatActivity {
             }
         });
     }
+
+    public View.OnClickListener clickEvent = new View.OnClickListener() {
+        public void onClick(View v) {
+            int itemPosition = recyclerView.getChildPosition(v);
+            String tempId = itemList.get(itemPosition).getIdx();
+            if (itemList.get(itemPosition).getIsdo().equals("1")) {
+                isDo = true;
+            } else {
+                isDo = false;
+            }
+            if (!isDo) {
+                Call<BaseResult> gerNoticeDoResult = service.getNoticDoResult(tempId);
+                gerNoticeDoResult.enqueue(new Callback<BaseResult>() {
+                    @Override
+                    public void onResponse(Call<BaseResult> call, Response<BaseResult> response) {
+                        if (response.isSuccessful()) {
+                            String message = response.body().getMessage();
+                            switch (message) {
+                                case "SUCCESS":
+                                    getTodoList();
+                                    isDo = true;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseResult> call, Throwable t) {
+                    }
+                });
+
+            } else {
+                Call<BaseResult> gerNoticeUnDoResult = service.getNoticUnDoResult(tempId);
+                gerNoticeUnDoResult.enqueue(new Callback<BaseResult>() {
+                    @Override
+                    public void onResponse(Call<BaseResult> call, Response<BaseResult> response) {
+                        if (response.isSuccessful()) {
+                            String message = response.body().getMessage();
+                            switch (message) {
+                                case "SUCCESS":
+                                    getTodoList();
+                                    isDo = false;
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseResult> call, Throwable t) {
+
+                    }
+                });
+
+            }
+
+        }
+    };
 }

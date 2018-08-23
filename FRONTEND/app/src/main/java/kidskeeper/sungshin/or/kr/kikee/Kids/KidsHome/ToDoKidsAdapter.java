@@ -21,11 +21,14 @@ import kidskeeper.sungshin.or.kr.kikee.R;
 public class ToDoKidsAdapter extends RecyclerView.Adapter<ToDoKidsAdapter.ItemViewHolder> {
     ArrayList<TodoList> list;
     private Context context;
+    View.OnClickListener mOnClickListener;
+
     private int focusedItem = 0;
 
-    public ToDoKidsAdapter(Context context, ArrayList<TodoList> list) {
+    public ToDoKidsAdapter(Context context, ArrayList<TodoList> list,View.OnClickListener mOnClickListener) {
         this.context = context;
         this.list = list;
+        this.mOnClickListener = mOnClickListener;
     }
 
     public void setFocusedItem(int position) {
@@ -75,6 +78,7 @@ public class ToDoKidsAdapter extends RecyclerView.Adapter<ToDoKidsAdapter.ItemVi
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_to_do_list_kids, parent, false);
+        view.setOnClickListener(mOnClickListener);
         return new ItemViewHolder(view);
     }
 
