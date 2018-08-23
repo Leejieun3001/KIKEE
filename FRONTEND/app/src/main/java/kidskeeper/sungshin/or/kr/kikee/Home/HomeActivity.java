@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome.AdultHomeActivity;
+import kidskeeper.sungshin.or.kr.kikee.Kids.KidsHome.KidsHome;
 import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.ConnectActivity;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
@@ -22,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageButton buttonGoAdult;
 
     @BindView(R.id.home_button_go_kids)
-    ImageButton buttonGoConnect;
+    ImageButton buttonGoKids;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +45,10 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        buttonGoConnect.setOnClickListener(new View.OnClickListener() {
+        buttonGoKids.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ConnectActivity.class);
+                Intent intent = new Intent(getApplicationContext(), KidsHome.class);
                 startActivity(intent);
             }
         });

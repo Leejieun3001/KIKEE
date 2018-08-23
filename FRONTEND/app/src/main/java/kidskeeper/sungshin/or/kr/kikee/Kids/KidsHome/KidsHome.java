@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,10 +16,10 @@ import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class KidsHome extends AppCompatActivity {
 
-    @BindView(R.id.btn_go_bluetoothList)
-    Button goBluetooth;
+    @BindView(R.id.btn_go_bluetooth)
+    ImageButton goBluetooth;
     @BindView(R.id.btn_go_homework)
-    Button goHomework;
+    ImageButton goHomework;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,35 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itemreview_layout_layout"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="55dp"
     android:layout_margin="15dp"
     android:background="@color/colorWhite"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:src="@drawable/comment"/>
         <TextView
             android:id="@+id/comment_list_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="New Text"
-            android:textColor="#666666"
-            android:textSize="16dp" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="13dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="-7dp">
+
         <TextView
             android:id="@+id/comment_list_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:text="New Text"
-            android:textColor="#000000"
-            android:textSize="19dp" />
+            android:layout_marginStart="35dp"
+            android:textSize="14dp"
+            android:textColor="#694C46"/>
     </LinearLayout>
 
 </LinearLayout>
+
