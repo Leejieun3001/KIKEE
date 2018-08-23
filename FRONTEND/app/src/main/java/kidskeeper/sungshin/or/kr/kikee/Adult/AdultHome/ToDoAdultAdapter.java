@@ -83,6 +83,18 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
 
+        holder.textViewTodo.setText(list.get(position).getTodo());
+        if (list.get(position).getIsdo().equals("0")) {
+            holder.imageViewIsdo.setImageResource(R.drawable.unchecked);
+        } else {
+            holder.imageViewIsdo.setImageResource(R.drawable.checked);
+        }
+//        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            }
+//        });
+        holder.itemView.setSelected(focusedItem == position);
     }
 
     @Override
@@ -92,12 +104,12 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewTodo;
-        private ImageButton imageViewIdelete;
+        private ImageButton imageViewIsdo;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
             textViewTodo = (TextView) itemView.findViewById(R.id.todo_list_todo);
-            imageViewIdelete = (ImageButton) itemView.findViewById(R.id.to_do_delete);
+            imageViewIsdo = (ImageButton) itemView.findViewById(R.id.to_do_isdo);
         }
     }
 

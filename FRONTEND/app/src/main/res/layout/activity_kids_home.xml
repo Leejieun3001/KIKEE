@@ -1,78 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFF3F0"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Kids.PlayKidsMain">
+    android:orientation="vertical"
+    tools:context=".Kids.KidsHome.KidsHome">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:layout_marginTop="100dp">
-
-        <ImageButton
-            android:id="@+id/btn_go_homework"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFF3F0"
-            android:layout_margin="10dp"
-            app:srcCompat="@drawable/homework" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="알림장"
-            android:gravity="center"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/kidsHome_todolist_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp">
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:text="TO DO LIST"/>
 
-        <ImageButton
-            android:id="@+id/btn_go_bluetooth"
-            android:layout_margin="10dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/kidsHome_recyclerview_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFF3F0"
-            app:srcCompat="@drawable/connect" />
-        <TextView
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            tools:listitem="@layout/item_boardlist">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/todolist_floatingbutton_fab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="블루투스 연결"/>
-    </LinearLayout>
-</RelativeLayout>
-    <!--<Button-->
-        <!--android:id="@+id/btn_go_homework"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="180dp"-->
-        <!--android:background="@drawable/round_background"-->
-        <!--android:text="알림장"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:textColor="@color/colorWhite"-->
-        <!--android:layout_marginLeft="145dp"/>-->
-    <!--<Button-->
-        <!--android:id="@+id/btn_go_Bluetooth"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@drawable/round_background"-->
-        <!--android:textColor="@color/colorWhite"-->
-        <!--android:text="로봇 \n연결하기"-->
-        <!--android:layout_below="@id/btn_go_homework"-->
-        <!--android:layout_marginLeft="145dp"-->
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="#FFB3A4"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:src = "@drawable/add"/>
+    </RelativeLayout>
 
-        <!--/>-->
+    <Button
+        android:id="@+id/btn_go_Bluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/margin_10"
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/round_background"
+        android:textColor="@color/colorWhite"
+        android:text="로봇 연결하기"
+        />
+</LinearLayout>
 
+<!--
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_alignParentStart="true"
+android:orientation="vertical"
+android:layout_alignParentTop="true"
+android:gravity="center"
+android:layout_marginTop="100dp">
+
+<ImageButton
+    android:id="@+id/btn_go_homework"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF3F0"
+    android:layout_margin="10dp"
+    app:srcCompat="@drawable/homework" />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:text="알림장"
+    android:gravity="center"/>
+</LinearLayout>
+
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentBottom="true"
+android:orientation="vertical"
+android:layout_centerHorizontal="true"
+android:layout_marginBottom="100dp">
+
+<ImageButton
+    android:id="@+id/btn_go_bluetooth"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF3F0"
+    app:srcCompat="@drawable/connect" />
+<TextView
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="블루투스 연결"/>
+</LinearLayout>
+-->

@@ -87,9 +87,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ItemViewHolder
 
         holder.textViewTodo.setText(list.get(position).getTodo());
         if (list.get(position).getIsdo().equals("0")) {
-            holder.imageViewIsdo.setImageResource(R.drawable.unlike);
+            holder.imageViewIsdo.setImageResource(R.drawable.unchecked);
         } else {
-            holder.imageViewIsdo.setImageResource(R.drawable.like);
+            holder.imageViewIsdo.setImageResource(R.drawable.checked);
         }
         holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override

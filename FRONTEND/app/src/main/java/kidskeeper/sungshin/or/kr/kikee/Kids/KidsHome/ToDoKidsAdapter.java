@@ -84,9 +84,9 @@ public class ToDoKidsAdapter extends RecyclerView.Adapter<ToDoKidsAdapter.ItemVi
 
         holder.textViewTodo.setText(list.get(position).getTodo());
         if (list.get(position).getIsdo().equals("0")) {
-            holder.imageViewIsdo.setImageResource(R.drawable.unlike);
+            holder.imageViewIsdo.setImageResource(R.drawable.unchecked);
         } else {
-            holder.imageViewIsdo.setImageResource(R.drawable.unlike);
+            holder.imageViewIsdo.setImageResource(R.drawable.checked);
         }
         holder.itemView.setSelected(focusedItem == position);
     }
