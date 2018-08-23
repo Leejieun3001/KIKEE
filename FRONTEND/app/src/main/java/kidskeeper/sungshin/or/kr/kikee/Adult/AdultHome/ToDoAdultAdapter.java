@@ -23,10 +23,12 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
     ArrayList<TodoList> list;
     private Context context;
     private int focusedItem = 0;
+    View.OnClickListener mOnClickListener;
 
-    public ToDoAdultAdapter(Context context, ArrayList<TodoList> list) {
+    public ToDoAdultAdapter(Context context, ArrayList<TodoList> list, View.OnClickListener mOnClickListener) {
         this.context = context;
         this.list = list;
+        this.mOnClickListener = mOnClickListener;
     }
 
     public void setFocusedItem(int position) {
@@ -75,6 +77,7 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_todolist, parent, false);
+        view.setOnClickListener(mOnClickListener);
         return new ItemViewHolder(view);
     }
 

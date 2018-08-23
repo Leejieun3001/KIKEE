@@ -1,5 +1,7 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,13 +12,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Camera.CameraActivity;
+import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardDetailActivity;
+import kidskeeper.sungshin.or.kr.kikee.Home.LoginActivity;
+import kidskeeper.sungshin.or.kr.kikee.Model.request.NoticeDel;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.TodoList;
+import kidskeeper.sungshin.or.kr.kikee.Model.response.BaseResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.TodoListResult;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
 import kidskeeper.sungshin.or.kr.kikee.Network.NetworkService;
@@ -35,7 +42,9 @@ public class AdultHomeFragment extends Fragment {
     @BindView(R.id.adultHome__recyclerview_recyclerview)
     RecyclerView recyclerView;
 
-    String user_idx;
+    private String user_idx;
+    private String tempId;
+    private String todo;
 
     private boolean flag = true;
     String TAG = "AdultHomeFragment";
@@ -80,7 +89,7 @@ public class AdultHomeFragment extends Fragment {
 
     public void initRecyclerView() {
         itemList = new ArrayList<>();
-        adapter = new ToDoAdultAdapter(getActivity().getApplicationContext(), itemList);
+        adapter = new ToDoAdultAdapter(getActivity().getApplicationContext(), itemList, clickEvent);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -88,13 +97,12 @@ public class AdultHomeFragment extends Fragment {
     }
 
     private void setAdapter(ArrayList<TodoList> itemList) {
-        adapter = new ToDoAdultAdapter(getContext(), itemList);
+        adapter = new ToDoAdultAdapter(getContext(), itemList, clickEvent);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
 
     public void getTodoList() {
-
         SharedPreferences userInfo = getActivity().getSharedPreferences("userInfo", MODE_PRIVATE);
         user_idx = userInfo.getString("user_idx", "");
         Call<TodoListResult> getNoticeListResult = service.getNoticeListResult(user_idx);
@@ -105,6 +113,7 @@ public class AdultHomeFragment extends Fragment {
                     String message = response.body().getMessage();
                     switch (message) {
                         case "SUCCESS":
+                            itemList.clear();
                             itemList.addAll(response.body().getTodos());
                             setAdapter(itemList);
 
@@ -118,4 +127,52 @@ public class AdultHomeFragment extends Fragment {
             }
         });
     }
+
+    public View.OnClickListener clickEvent = new View.OnClickListener() {
+        public void onClick(View v) {
+            int itemPosition = recyclerView.getChildPosition(v);
+            tempId = itemList.get(itemPosition).getIdx();
+            todo = itemList.get(itemPosition).getTodo();
+            deleteDialog();
+
+
+        }
+    };
+
+    private void deleteDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("할일 삭제");
+        builder.setMessage(todo + "를 삭제 하실 것 입니까?");
+        builder.setPositiveButton("예",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        NoticeDel noticeDel = new NoticeDel(tempId, user_idx);
+                        Call<BaseResult> getNoticeDeleteResult = service.getNoticeDeleteResult(noticeDel);
+                        getNoticeDeleteResult.enqueue(new Callback<BaseResult>() {
+                            @Override
+                            public void onResponse(Call<BaseResult> call, Response<BaseResult> response) {
+                                if (response.isSuccessful()) {
+                                    String message = response.body().getMessage();
+                                    switch (message) {
+                                        case "SUCCESS":
+                                            getTodoList();
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<BaseResult> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
+        builder.setNegativeButton("아니오",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        builder.show();
+    }
+
+
 }

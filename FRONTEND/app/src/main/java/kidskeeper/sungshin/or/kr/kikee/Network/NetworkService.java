@@ -5,6 +5,7 @@ import kidskeeper.sungshin.or.kr.kikee.Model.request.BoardWrite;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.CommentWrite;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Join;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Login;
+import kidskeeper.sungshin.or.kr.kikee.Model.request.NoticeDel;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.Pick;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BaseResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardDetailResult;
@@ -16,6 +17,7 @@ import kidskeeper.sungshin.or.kr.kikee.Model.response.VerificationCodeResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.WordsResult;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -78,5 +80,8 @@ public interface NetworkService {
 
     @PUT("/notice/undo")
     Call<BaseResult> getNoticUnDoResult(@Query("idx") String idx);
+
+    @POST("notice/delete")
+    Call<BaseResult> getNoticeDeleteResult (@Body NoticeDel noticeDel);
 
 }
