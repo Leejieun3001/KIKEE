@@ -1,6 +1,4 @@
-#include <MsTimer2.h>
 #include <SoftwareSerial.h>
-
 
 //모터 연결
 int E1 = 10;      // 1번(A) 모터 Enable
@@ -16,10 +14,9 @@ SoftwareSerial bluetooth(BT_RXD, BT_TXD);// RX: A5, TX: A4
 char rec_data;
 bool motor_chk = false;
 bool word_chk = false;
-boolean led_control = LOW;
 
 const int red_LED = 8;
-const int green_LED = 9;
+const int blue_LED = 9;
 
 void setup(){
   Serial.begin(9600);             
@@ -32,9 +29,9 @@ void setup(){
   pinMode(M1, OUTPUT);      // 출력핀 설정진
   pinMode(M2, OUTPUT);
 
-  //정답 유무 
+  //LED
   pinMode(red_LED ,OUTPUT);
-  pinMode(green_LED ,OUTPUT);
+  pinMode(blue_LED ,OUTPUT);
 }
 
 void loop(){
@@ -44,13 +41,10 @@ void loop(){
     }
     
   if(bluetooth.available()){         //블루투스 명령 수신
-     //Serial.write(bluetooth.read());
      rec_data = bluetooth.read();
      Serial.write(rec_data); 
-     digitalWrite(green_LED, HIGH);
-     //rec_chk = true;
   }
-  if(rec_data == 'y' || rec_data == 'n' || rec_data == 'e'){
+  if(rec_data == 'y' || rec_data == 'n' || rec_data == 'e' || rec_data == 'd'){
     word_chk = true;
   }
     else{ 
@@ -61,30 +55,31 @@ void loop(){
   if(word_chk == true){
     if(rec_data == 'y'){
         digitalWrite(red_LED ,LOW);
-        digitalWrite(green_LED, HIGH);
+        digitalWrite(blue_LED, HIGH);
         delay(500);    
       }
       else if (rec_data == 'n'){
         digitalWrite(red_LED ,HIGH);
-        digitalWrite(green_LED, LOW); 
+        digitalWrite(blue_LED, LOW); 
         delay(500);
       }
       else if(rec_data == 'e') {
         digitalWrite(red_LED ,LOW);
-        digitalWrite(green_LED, LOW);
+        digitalWrite(blue_LED, LOW);
         delay(500);
-     word_chk = false;
-    }if(rec_data == 'd'){
+      }
+      else if(rec_data == 'd'){
+        digitalWrite(red_LED ,HIGH);
+        digitalWrite(blue_LED, HIGH);
         dancing();
-        MsTimer2::set(500,flash);
-        MsTimer2::start();
+    }
+     word_chk = false;
     }
     else {
         digitalWrite(red_LED ,LOW);
-        digitalWrite(green_LED, LOW);
+        digitalWrite(blue_LED, LOW);
         delay(500);
       }
-  }
   
   //모터 방향 구동
   if(motor_chk == true){
@@ -107,13 +102,6 @@ void loop(){
     }else{
       motor_stop();
     }
-}
-
-
-void flash(){
-      digitalWrite(red_LED ,led_control);
-      digitalWrite(green_LED, !led_control);
-      led_control = !led_control;
 }
 
 void motor_stop(){
@@ -152,11 +140,10 @@ void motor_left(){
 }
 
 void dancing(){
-  for(int i = 0 ; i <=255 ; i+=5){
     digitalWrite(M1,HIGH);
     digitalWrite(M2,LOW);
-    analogWrite(E1, i);
-    analogWrite(E2, i);
-}
+    analogWrite(E1, motor_speed);
+    analogWrite(E2, motor_speed);
+    delay(3000);
 }
 
