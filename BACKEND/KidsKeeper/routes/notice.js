@@ -64,7 +64,7 @@ router.get('/', function (req, res) {
 
 router.post('/write', function (req, res) {
 
-    let updateComment = function (connection, callback) {
+    let insertNotice = function (connection, callback) {
         let insertquery = "insert into Notice (todo, user_idx, isDO)"
             + "values ( ? , ? ,0);"
         let params = [
@@ -80,7 +80,32 @@ router.post('/write', function (req, res) {
             }
         });
     }
-    var task = [globalModule.connect.bind(this), updateComment, globalModule.releaseConnection.bind(this)];
+    var task = [globalModule.connect.bind(this), insertNotice, globalModule.releaseConnection.bind(this)];
+    async.waterfall(task, globalModule.asyncCallback.bind(this));
+});
+
+
+/**
+ * 할일 삭제
+ */
+router.delete('/delete', function (req, res) {
+
+    let deleteComment = function (connection, callback) {
+        let deletequery = "delete from Notice where idx = ? and user_idx = ?;"
+        let params = [
+            req.body.idx,
+            req.body.user_idx
+        ]
+        connection.query(deletequery, params, function (error, rows) {
+            if (error) {
+                callback(error, connection, "deletequery Error : ", res);
+            } else {
+                res.status(200).send({ message: "SUCCESS" });
+                callback(null, connection, "api /notice/delete");
+            }
+        });
+    }
+    var task = [globalModule.connect.bind(this), deleteComment, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
 
