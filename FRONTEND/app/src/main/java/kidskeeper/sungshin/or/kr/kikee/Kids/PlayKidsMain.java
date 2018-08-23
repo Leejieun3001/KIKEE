@@ -1,5 +1,6 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,8 @@ public class PlayKidsMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
         setContentView(R.layout.activity_play_kids_main);
         ButterKnife.bind(this);
         clickEventPlayWithRobot();

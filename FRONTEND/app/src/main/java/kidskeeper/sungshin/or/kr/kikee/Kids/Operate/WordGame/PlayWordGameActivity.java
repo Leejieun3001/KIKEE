@@ -1,6 +1,7 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids.Operate.WordGame;
 
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -66,6 +67,8 @@ public class PlayWordGameActivity extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
         setContentView(R.layout.activity_play_word_game);
         service = ApplicationController.getInstance().getNetworkService();
         ButterKnife.bind(this);

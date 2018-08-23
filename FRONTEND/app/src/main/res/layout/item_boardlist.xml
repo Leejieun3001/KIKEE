@@ -21,11 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorText" />
 
         <TextView
             android:id="@+id/itemboard_textview_content"
             android:layout_width="match_parent"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_height="wrap_content"
             android:maxLines="2" />
     </LinearLayout>

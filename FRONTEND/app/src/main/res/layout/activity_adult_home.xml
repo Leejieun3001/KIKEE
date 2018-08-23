@@ -15,7 +15,7 @@
         android:layout_weight="9"></android.support.v4.view.ViewPager>
 
     <android.support.design.widget.TabLayout
-        android:background="#FFB9AC"
+        android:background="@color/colorPrimary"
         android:id="@+id/adultHome_tablayout_tablayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
