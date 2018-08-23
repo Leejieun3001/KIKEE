@@ -1,10 +1,8 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.speech.tts.Voice;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,14 +16,17 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Camera.CameraActivity;
-import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardAdapter;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Voice.VoiceActivity;
-import kidskeeper.sungshin.or.kr.kikee.Model.response.board;
-import kidskeeper.sungshin.or.kr.kikee.Model.response.todolist;
+import kidskeeper.sungshin.or.kr.kikee.Model.request.TodoList;
+import kidskeeper.sungshin.or.kr.kikee.Model.response.TodoListResult;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
 import kidskeeper.sungshin.or.kr.kikee.Network.NetworkService;
 import kidskeeper.sungshin.or.kr.kikee.R;
-import retrofit2.http.Body;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class AdultHomeFragment extends Fragment {
@@ -37,6 +38,7 @@ public class AdultHomeFragment extends Fragment {
     @BindView(R.id.adultHome__recyclerview_recyclerview)
     RecyclerView recyclerView;
 
+    String user_idx;
 
     private boolean flag = true;
     String TAG = "AdultHomeFragment";
@@ -44,7 +46,7 @@ public class AdultHomeFragment extends Fragment {
 
     private LinearLayoutManager layoutManager;
     private ToDoAdapter adapter;
-    private ArrayList<todolist> itemList = new ArrayList<todolist>();
+    private ArrayList<TodoList> itemList = new ArrayList<TodoList>();
 
     public AdultHomeFragment() {
         super();
@@ -94,8 +96,35 @@ public class AdultHomeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
     }
 
+    private void setAdapter(ArrayList<TodoList> itemList) {
+        adapter = new ToDoAdapter(getContext(), itemList);
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+    }
+
     public void getTodoList() {
 
+        SharedPreferences userInfo = getActivity().getSharedPreferences("userInfo", MODE_PRIVATE);
+        user_idx = userInfo.getString("user_idx", "");
+        Call<TodoListResult> getNoticeListResult = service.getNoticeListResult(user_idx);
+        getNoticeListResult.enqueue(new Callback<TodoListResult>() {
+            @Override
+            public void onResponse(Call<TodoListResult> call, Response<TodoListResult> response) {
+                if (response.isSuccessful()) {
+                    String message = response.body().getMessage();
+                    switch (message) {
+                        case "SUCCESS":
+                            itemList.addAll(response.body().getTodos());
+                            setAdapter(itemList);
 
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TodoListResult> call, Throwable t) {
+
+            }
+        });
     }
 }

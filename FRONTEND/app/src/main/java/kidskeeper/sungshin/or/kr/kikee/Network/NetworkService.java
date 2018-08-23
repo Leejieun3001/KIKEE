@@ -11,6 +11,7 @@ import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardDetailResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardListReult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.CategoryResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.LoginResult;
+import kidskeeper.sungshin.or.kr.kikee.Model.response.TodoListResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.VerificationCodeResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.WordsResult;
 import retrofit2.Call;
@@ -63,11 +64,6 @@ public interface NetworkService {
     @POST("/board/write")
     Call<BaseResult> getBoardWriteResult(@Body BoardWrite boardWrite);
 
-//    @POST("/login/find_id")
-//    Call<FindInfoResult> getFindIdResult(@Body FindId Info);
-//
-//    @POST("/login/find_password")
-//    Call<FindInfoResult> getFindPwResult(@Body FindPassWord Info);
-
-
+    @GET("/notice")
+    Call<TodoListResult> getNoticeListResult(@Query("user_idx") String user_idx);
 }

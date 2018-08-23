@@ -1,15 +1,15 @@
-package kidskeeper.sungshin.or.kr.kikee.Model.response;
+package kidskeeper.sungshin.or.kr.kikee.Model.request;
 
 /**
  * Created by LG on 2018-08-23.
  */
 
-public class todolist {
+public class TodoList {
     private String idx;
     private String todo;
     private String isdo;
 
-    public todolist(String idx, String todo, String isdo) {
+    public TodoList(String idx, String todo, String isdo) {
         this.idx = idx;
         this.todo = todo;
         this.isdo = isdo;

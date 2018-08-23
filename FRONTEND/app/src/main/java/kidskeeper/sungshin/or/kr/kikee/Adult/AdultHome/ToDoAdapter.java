@@ -6,13 +6,12 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import kidskeeper.sungshin.or.kr.kikee.Model.response.todolist;
+import kidskeeper.sungshin.or.kr.kikee.Model.request.TodoList;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 /**
@@ -20,11 +19,11 @@ import kidskeeper.sungshin.or.kr.kikee.R;
  */
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ItemViewHolder> {
-    ArrayList<todolist> list;
+    ArrayList<TodoList> list;
     private Context context;
     private int focusedItem = 0;
 
-    public ToDoAdapter(Context context, ArrayList<todolist> list) {
+    public ToDoAdapter(Context context, ArrayList<TodoList> list) {
         this.context = context;
         this.list = list;
     }
@@ -75,13 +74,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ItemViewHolder
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_adult_home, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_todolist, parent, false);
         return new ItemViewHolder(view);
     }
 
     // View 의 내용을 해당 포지션의 데이터로 바꿉니다.
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
+
         holder.textViewTodo.setText(list.get(position).getTodo());
         if (list.get(position).getIsdo().equals("0")) {
             holder.imageViewIsdo.setImageResource(R.drawable.unlike);
@@ -96,7 +96,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ItemViewHolder
         return list.size();
     }
 
-    class ItemViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewTodo;
         private ImageView imageViewIsdo;
 
