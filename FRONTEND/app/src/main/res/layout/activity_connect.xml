@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="kidskeeper.sungshin.or.kr.kikee.Kids.Operate.ConnectActivity">
+    tools:context="kidskeeper.sungshin.or.kr.kikee.Kids.Connect.ConnectActivity">
 
     <ImageView
         android:id="@+id/imageView"

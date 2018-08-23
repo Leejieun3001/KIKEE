@@ -2,18 +2,15 @@ package kidskeeper.sungshin.or.kr.kikee.Home;
 ;
 import android.app.ActionBar;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome.AdultHomeActivity;
-import kidskeeper.sungshin.or.kr.kikee.Kids.KidsHome.KidsHome;
-import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.ConnectActivity;
+import kidskeeper.sungshin.or.kr.kikee.Kids.KidsHome.KidsHomeActivity;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -48,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         buttonGoKids.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), KidsHome.class);
+                Intent intent = new Intent(getApplicationContext(), KidsHomeActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,4 +1,4 @@
-package kidskeeper.sungshin.or.kr.kikee.Kids.Operate.WordGame;
+package kidskeeper.sungshin.or.kr.kikee.Kids.WordGame;
 
 
 import android.app.ActionBar;
@@ -25,13 +25,12 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.PlayKidsMain;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.WordsResult;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.word;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
 import kidskeeper.sungshin.or.kr.kikee.Network.NetworkService;
 import kidskeeper.sungshin.or.kr.kikee.R;
-import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.ConnectActivity;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Connect.ConnectActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

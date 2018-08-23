@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF3F0"
-    tools:context="kidskeeper.sungshin.or.kr.kikee.Kids.Operate.WordGame.CategorySelectActivity">
+    tools:context="kidskeeper.sungshin.or.kr.kikee.Kids.WordGame.CategorySelectActivity">
 
     <LinearLayout
         android:id="@+id/categoryselect_linear_category"

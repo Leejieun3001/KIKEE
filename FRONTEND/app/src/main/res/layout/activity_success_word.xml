@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="#FFF3F0"
     android:layout_height="match_parent"
-    tools:context=".Kids.Operate.WordGame.SuccessWord">
+    tools:context=".Kids.WordGame.SuccessWord">
 
     <ImageView
         android:id="@+id/imageView2"

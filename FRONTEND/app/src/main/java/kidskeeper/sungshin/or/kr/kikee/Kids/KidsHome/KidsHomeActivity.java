@@ -9,13 +9,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.ConnectActivity;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Connect.ConnectActivity;
 import kidskeeper.sungshin.or.kr.kikee.Model.request.TodoList;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.TodoListResult;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
@@ -25,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class KidsHome extends AppCompatActivity {
+public class KidsHomeActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_go_Bluetooth)
     Button goBluetooth;
@@ -59,7 +58,7 @@ public class KidsHome extends AppCompatActivity {
         goBluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(KidsHome.this,ConnectActivity.class);
+                Intent intent1 = new Intent(KidsHomeActivity.this,ConnectActivity.class);
                 startActivity(intent1);
             }
 

@@ -1,4 +1,4 @@
-package kidskeeper.sungshin.or.kr.kikee.Kids.Operate.WordGame;
+package kidskeeper.sungshin.or.kr.kikee.Kids.WordGame;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -9,11 +9,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.io.OutputStream;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.ConnectActivity;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.CategoryResult;
 import kidskeeper.sungshin.or.kr.kikee.Network.ApplicationController;
 import kidskeeper.sungshin.or.kr.kikee.Network.NetworkService;

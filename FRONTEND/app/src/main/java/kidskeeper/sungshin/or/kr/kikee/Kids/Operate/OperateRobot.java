@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.PlayKidsMain;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Connect.ConnectActivity;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class OperateRobot extends AppCompatActivity{

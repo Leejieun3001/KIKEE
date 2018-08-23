@@ -1,4 +1,4 @@
-package kidskeeper.sungshin.or.kr.kikee.Kids.Operate;
+package kidskeeper.sungshin.or.kr.kikee.Kids.Connect;
 
 import android.app.ActionBar;
 import android.content.DialogInterface;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Kids.PlayKidsMain;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 import java.io.InputStream;

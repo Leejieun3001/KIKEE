@@ -42,7 +42,7 @@ public class AdultHomeFragment extends Fragment {
     private NetworkService service;
 
     private LinearLayoutManager layoutManager;
-    private ToDoAdapter adapter;
+    private ToDoAdultAdapter adapter;
     private ArrayList<TodoList> itemList = new ArrayList<TodoList>();
 
     public AdultHomeFragment() {
@@ -80,7 +80,7 @@ public class AdultHomeFragment extends Fragment {
 
     public void initRecyclerView() {
         itemList = new ArrayList<>();
-        adapter = new ToDoAdapter(getActivity().getApplicationContext(), itemList);
+        adapter = new ToDoAdultAdapter(getActivity().getApplicationContext(), itemList);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -88,7 +88,7 @@ public class AdultHomeFragment extends Fragment {
     }
 
     private void setAdapter(ArrayList<TodoList> itemList) {
-        adapter = new ToDoAdapter(getContext(), itemList);
+        adapter = new ToDoAdultAdapter(getContext(), itemList);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }

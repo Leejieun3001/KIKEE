@@ -6,7 +6,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,7 +51,6 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
                         return tryMoveSelection(lm, -1);
                     }
                 }
-
                 return false;
             }
         });
@@ -75,7 +74,7 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_to_do_list_adult, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_todolist, parent, false);
         return new ItemViewHolder(view);
     }
 
@@ -89,11 +88,11 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
         } else {
             holder.imageViewIsdo.setImageResource(R.drawable.checked);
         }
-//        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//            }
-//        });
+        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
         holder.itemView.setSelected(focusedItem == position);
     }
 
@@ -104,13 +103,16 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewTodo;
-        private ImageButton imageViewIsdo;
+        private ImageView imageViewIsdo;
+        private Button buttonDelete;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
             textViewTodo = (TextView) itemView.findViewById(R.id.todo_list_todo);
-            imageViewIsdo = (ImageButton) itemView.findViewById(R.id.to_do_isdo);
+            imageViewIsdo = (ImageView) itemView.findViewById(R.id.todo_list_isdo);
+            buttonDelete = (Button) itemView.findViewById(R.id.todo_list_button_delete);
         }
     }
-
 }
+
+

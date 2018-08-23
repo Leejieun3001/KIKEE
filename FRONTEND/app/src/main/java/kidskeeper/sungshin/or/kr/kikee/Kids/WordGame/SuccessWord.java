@@ -1,4 +1,4 @@
-package kidskeeper.sungshin.or.kr.kikee.Kids.Operate.WordGame;
+package kidskeeper.sungshin.or.kr.kikee.Kids.WordGame;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import java.io.OutputStream;
 
-import kidskeeper.sungshin.or.kr.kikee.Kids.Operate.ConnectActivity;
+import kidskeeper.sungshin.or.kr.kikee.Kids.Connect.ConnectActivity;
 import kidskeeper.sungshin.or.kr.kikee.R;
 public class SuccessWord extends AppCompatActivity {
 
