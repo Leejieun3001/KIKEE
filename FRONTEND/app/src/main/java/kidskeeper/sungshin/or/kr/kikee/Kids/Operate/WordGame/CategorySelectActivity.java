@@ -1,5 +1,6 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids.Operate.WordGame;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class CategorySelectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
         setContentView(R.layout.activity_catagory_select);
         service = ApplicationController.getInstance().getNetworkService();
 

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4E6A7F</color>
-    <color name="colorPrimaryDark">#273540</color>
-    <color name="colorAccent">#9DD5FF</color>
+    <color name="colorPrimary">#FFB3A4</color>
+    <color name="colorPrimaryDark">#7F5D56</color>
+    <color name="colorAccentDark">#847E7C</color>
+    <color name="colorBackground">#FFF3F0</color>
     <color name="colorWhite">#FFFFFF</color>
-    <string name="Kcolor1">#273540</string>
-    <string name="Kcolor2">#4E6A7F</string>
-    <string name="Kcolor3">#76A0BF</string>
-    <string name="Kcolor4">#8DC0E5</string>
-    <string name="Kcolor5">#9DD5FF</string>
+    <color name="colorAccent">#CCC2C0</color>
+    <color name="colorText">#7F4F42</color>
 </resources>

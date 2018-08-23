@@ -1,5 +1,6 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids.Operate;
 
+import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
@@ -39,7 +40,8 @@ public class ConnectActivity extends AppCompatActivity {
      */
     BluetoothDevice mRemoteDevice;
 
-    public static BluetoothSocket getmSocket() {
+    public static BluetoothSocket getmSocket()
+    {
         return mSocket;
     }
 
@@ -60,6 +62,8 @@ public class ConnectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {  //해당 activity를 작동하기 위해 표준으로 넣어야 하는 메인 함수같은 존재
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
         setContentView(R.layout.activity_connect); //xml파일과 java파일을 연결시켜주는 명령
         ButterKnife.bind(this);
 
@@ -108,29 +112,33 @@ public class ConnectActivity extends AppCompatActivity {
         // BluetoothDevice 원격 블루투스 기기를 나타냄.
         mRemoteDevice = getDeviceFromBondedList(selectedDeviceName);
         // java.util.UUID.fromString : 자바에서 중복되지 않는 Unique 키 생성.
-        UUID uuid = java.util.UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
+        UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
 
         try {
+
             // 소켓 생성, RFCOMM 채널을 통한 연결.
             // createRfcommSocketToServiceRecord(uuid) : 이 함수를 사용하여 원격 블루투스 장치와 통신할 수 있는 소켓을 생성함.
             // 이 메소드가 성공하면 스마트폰과 페어링 된 디바이스간 통신 채널에 대응하는 BluetoothSocket 오브젝트를 리턴함.
             mSocket = mRemoteDevice.createRfcommSocketToServiceRecord(uuid);
+
+
+
             mSocket.connect(); // 소켓이 생성 되면 connect() 함수를 호출함으로써 두기기의 연결은 완료된다.
             mOutputStream = mSocket.getOutputStream();
             mInputStream = mSocket.getInputStream();
 
-
-
             Intent intent = new Intent(ConnectActivity.this,PlayKidsMain.class);
             startActivity(intent);
 
-
         } catch (Exception e) { // 블루투스 연결 중 오류 발생
-            
-            Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
-            //finish();  // App 종료
+                Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(ConnectActivity.this, ConnectActivity.class);
+                startActivity(intent);
+                //finish();
 
         }
+
+
     }
     // 블루투스 지원하며 활성 상태인 경우.
 
@@ -156,8 +164,6 @@ public class ConnectActivity extends AppCompatActivity {
             listItems.add(device.getName());
         }
         listItems.add("취소");  // 취소 항목 추가.
-
-
         // CharSequence : 변경 가능한 문자열.
         // toArray : List형태로 넘어온것 배열로 바꿔서 처리하기 위한 toArray() 함수.
         final CharSequence[] items = listItems.toArray(new CharSequence[listItems.size()]);
@@ -220,17 +226,16 @@ public class ConnectActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         try {
+            mBluetoothAdapter.disable();
             mWorkerThread.interrupt(); // 데이터 수신 쓰레드 종료
-            mInputStream.close();
             mSocket.close();
+            mInputStream.close();
         } catch (Exception e) {
+
+
         }
         super.onDestroy();
     }
-
-
-
-
 }
 
 

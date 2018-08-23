@@ -1,55 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FFF3F0"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_gravity="center"
+    android:background="#FFF3F0"
     android:gravity="center"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Home.HomeActivity">
 
-    <!--<Button-->
-        <!--android:id="@+id/home_button_go_adult"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@drawable/round_background"-->
-        <!--android:textColor="@color/colorWhite"-->
-        <!--android:layout_margin="20dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:text="어른"/>-->
-    <!--<Button-->
-        <!--android:id="@+id/home_button_go_kids"-->
-        <!--android:background="@drawable/round_background"-->
-        <!--android:textColor="@color/colorWhite"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:text="아이"/>-->
-
-
-    <ImageButton
-        android:id="@+id/home_button_go_adult"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="70dp"
-        android:background="#FFFAF9"
-        app:srcCompat="@drawable/adult" />
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/home_button_go_kids"
-        android:layout_width="102dp"
+        <ImageButton
+            android:id="@+id/home_button_go_adult"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="#FFF3F0"
+            app:srcCompat="@drawable/adult" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_gravity="center"
+            android:text="어른" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/home_button_go_adult"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="70dp"
-        android:background="#FFFAF9"
-        app:srcCompat="@drawable/kids" />
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
+        <ImageButton
+            android:id="@+id/home_button_go_kids"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/home_button_go_adult"
+            android:layout_gravity="center_horizontal"
+            android:background="#FFF3F0"
+            app:srcCompat="@drawable/kids" />
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="아이" />
+
+    </LinearLayout>
+</LinearLayout>

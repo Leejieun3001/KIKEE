@@ -1,13 +1,18 @@
 package kidskeeper.sungshin.or.kr.kikee.Home;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -32,12 +37,16 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonJoin;
     private NetworkService service;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
         setContentView(R.layout.activity_login);
         service = ApplicationController.getInstance().getNetworkService();
         ButterKnife.bind(this);
+
         clickEvent();
     }
 
@@ -105,4 +114,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

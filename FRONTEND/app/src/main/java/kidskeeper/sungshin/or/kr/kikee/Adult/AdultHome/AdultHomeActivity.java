@@ -1,7 +1,7 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
 
 
-import android.content.Intent;
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -41,6 +41,8 @@ public class AdultHomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
         setContentView(R.layout.activity_adult_home);
         ButterKnife.bind(this);
 

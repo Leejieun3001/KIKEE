@@ -1,5 +1,6 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.Community;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
@@ -59,6 +60,8 @@ public class BoardDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
         setContentView(R.layout.activity_board_detail);
         service = ApplicationController.getInstance().getNetworkService();
         ButterKnife.bind(this);

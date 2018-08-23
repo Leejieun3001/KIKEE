@@ -54,6 +54,7 @@ public class AdultHomeFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         service = ApplicationController.getInstance().getNetworkService();
     }

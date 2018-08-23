@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFAF9"
+    android:background="@color/colorBackground"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardDetailActivity">
 
     <TableLayout
@@ -20,12 +20,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="제목  "
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/board_detail_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"/>
         </TableRow>
 
         <TableRow>
@@ -34,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="작성자  "
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/board_detail_nickname"
@@ -95,6 +96,7 @@
         android:id="@+id/comment_listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
         android:layout_above="@+id/comment_enter"
         android:layout_below="@+id/board_content_Penal">
 

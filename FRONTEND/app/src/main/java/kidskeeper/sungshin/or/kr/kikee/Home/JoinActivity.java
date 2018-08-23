@@ -1,5 +1,6 @@
 package kidskeeper.sungshin.or.kr.kikee.Home;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -64,6 +65,8 @@ public class JoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
         ButterKnife.bind(this);
 
         service = ApplicationController.getInstance().getNetworkService();
