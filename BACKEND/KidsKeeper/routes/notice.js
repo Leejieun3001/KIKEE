@@ -108,6 +108,30 @@ router.delete('/delete', function (req, res) {
     var task = [globalModule.connect.bind(this), deleteComment, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
+/***
+ * 할일 상태 변경 
+ */
+
+router.put('/do', function (req, res) {
+
+    let updateNotice = function (connection, callback) {
+        let updatequery = "update Notice"
+            + " set isDo = 1 where idx=? "
+        let params = [
+            req.body.idx
+        ]
+        connection.query(updatequery, params, function (error, rows) {
+            if (error) {
+                callback(error, connection, "deletequery Error : ", res);
+            } else {
+                res.status(200).send({ message: "SUCCESS" });
+                callback(null, connection, "api /notice/do");
+            }
+        });
+    }
+    var task = [globalModule.connect.bind(this), updateNotice, globalModule.releaseConnection.bind(this)];
+    async.waterfall(task, globalModule.asyncCallback.bind(this));
+});
 
 
 module.exports = router;
