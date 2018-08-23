@@ -140,6 +140,12 @@ public class PlayWordGameActivity extends AppCompatActivity {
                     INDEX++;
                     checkWord();
                 }
+                if(INDEX == 9)
+                {
+                    Toast.makeText(getApplicationContext(),"좀 더 노력해요!",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), SuccessWord.class);
+                    startActivity(intent);
+                }
             }
 
 

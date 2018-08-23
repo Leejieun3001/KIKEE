@@ -69,7 +69,6 @@ public class CategorySelectActivity extends AppCompatActivity {
                                 btn.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Toast.makeText(getApplicationContext(), "클릭한 position:" + position, Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(getApplicationContext(), PlayWordGameActivity.class);
                                         intent.putExtra("category", position);
                                         startActivity(intent);
