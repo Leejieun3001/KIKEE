@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemreview_layout_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="55dp"
+    android:layout_margin="15dp"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
 
+
+    <TextView
+        android:id="@+id/my_board_textview_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="13dp" />
+
+
+    <TextView
+        android:id="@+id/my_board_textview_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="35dp"
+        android:text="New Text"
+        android:textColor="#694C46"
+        android:textSize="14dp" />
 </LinearLayout>
+
+

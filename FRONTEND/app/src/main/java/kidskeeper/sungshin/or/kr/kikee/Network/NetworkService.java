@@ -49,6 +49,10 @@ public interface NetworkService {
     @GET("/board/total")
     Call<BoardListReult> getBoardListResult();
 
+
+    @GET("/board/total/mine")
+    Call<BoardListReult> getMineBoardResult(@Query("user_idx") String user_idx);
+
     @POST("/board")
     Call<BoardDetailResult> getBoardDetailResult(@Body BoardDetail boardDetail);
 

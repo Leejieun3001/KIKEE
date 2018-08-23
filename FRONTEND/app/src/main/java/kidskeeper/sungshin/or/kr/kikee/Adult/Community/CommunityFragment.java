@@ -41,7 +41,6 @@ public class CommunityFragment extends Fragment {
     @BindView(R.id.reviewlist_floatingbutton_fab)
     FloatingActionButton addNotice;
 
-    private boolean flag = true;
     String TAG = "CommunityFragment";
     private NetworkService service;
 
