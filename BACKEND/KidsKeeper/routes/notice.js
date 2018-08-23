@@ -116,9 +116,9 @@ router.put('/do', function (req, res) {
 
     let updateNotice = function (connection, callback) {
         let updatequery = "update Notice"
-            + " set isDo = 1 where idx=? "
+            + " set isDo = 1 where idx= ? "
         let params = [
-            req.body.idx
+            req.query.idx
         ]
         connection.query(updatequery, params, function (error, rows) {
             if (error) {
@@ -139,7 +139,7 @@ router.put('/undo', function (req, res) {
         let updatequery = "update Notice"
             + " set isDo = 0 where idx=? "
         let params = [
-            req.body.idx
+            req.query.idx
         ]
         connection.query(updatequery, params, function (error, rows) {
             if (error) {
