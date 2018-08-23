@@ -88,7 +88,7 @@ router.post('/write', function (req, res) {
 /**
  * 할일 삭제
  */
-router.delete('/delete', function (req, res) {
+router.post('/delete', function (req, res) {
 
     let deleteComment = function (connection, callback) {
         let deletequery = "delete from Notice where idx = ? and user_idx = ?;"
