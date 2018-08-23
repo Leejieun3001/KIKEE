@@ -125,17 +125,17 @@ router.post('/', function (req, res) {
             + " join User on User.idx = CommentBoard.user_idx where board_idx = ? ", req.body.board_idx, function (error, rows) {
                 if (error) callback(error, connection, "Selecet query Error : ");
                 else {
-                        resultJson.message = "SUCCESS";
+                    resultJson.message = "SUCCESS";
 
-                        for (var x in rows) {
-                            var comment = {}
-                            comment = rows[x];
-                            resultJson.comments.push(comment);
-                        }
-                        res.status(200).send(resultJson);
-                        callback(null, connection, "api : /board");
+                    for (var x in rows) {
+                        var comment = {}
+                        comment = rows[x];
+                        resultJson.comments.push(comment);
                     }
-                
+                    res.status(200).send(resultJson);
+                    callback(null, connection, "api : /board");
+                }
+
             });
     }
     var task = [globalModule.connect.bind(this), updateBoard, selectBoard, selectIsPick, selectCommentList, globalModule.releaseConnection.bind(this)];
@@ -171,6 +171,43 @@ router.get('/total', function (req, res) {
                         }
                         res.status(200).send(resultJson)
                         callback(null, connection, "api : /board/total");
+                    }
+                }
+            });
+    }
+    var task = [globalModule.connect.bind(this), selectBoardList, globalModule.releaseConnection.bind(this)];
+    async.waterfall(task, globalModule.asyncCallback.bind(this));
+});
+
+
+/**
+ * api 목적       : 내가 쓴 글 리스트 조회
+ * request params : user_idx
+ */
+
+router.get('/total/mine', function (req, res) {
+
+    let resultJson = {
+        message: 'SUCCESS',
+        boards: []
+    };
+
+    let selectBoardList = function (connection, callback) {
+        connection.query("SELECT  Board.idx, Board.title, Board.content, Board.date, Board.hits, Board.nickname ,Board.user_idx ,count(Board.idx) pick "
+            + "FROM Board  left join Pick on Pick.board_idx = Board.idx where Board.user_idx = ?  group by Board.idx", req.query.user_idx, function (error, rows) {
+                if (error) callback(error, connection, "Selecet query Error : ");
+                else {
+                    if (rows.length === 0) {
+                        res.status(200).send({ message: "BOARD_NOT_EXIT" });
+                        callback("ALREADY_SEND_MESSAGE", connection, "api : /board/total/mine");
+                    } else {
+                        for (var x in rows) {
+                            var board = {}
+                            board = rows[x];
+                            resultJson.boards.push(board);
+                        }
+                        res.status(200).send(resultJson)
+                        callback(null, connection, "api : /board/total/mine");
                     }
                 }
             });
