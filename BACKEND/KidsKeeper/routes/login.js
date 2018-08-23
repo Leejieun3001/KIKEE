@@ -21,10 +21,10 @@ const upload = multer({
 });
 
 /**
- * api 목적        : 로그인
- * request params : { String email: "이메일"
+ * api 목적       : 로그인
+ * request params : String email: "이메일"
  *                    String password : "패스워드"
- *                    }
+ *                    
  */
 router.post('/', function (req, res) {
 
@@ -72,7 +72,5 @@ router.post('/', function (req, res) {
     var task = [globalModule.connect.bind(this), selectUserInfo, comparePW, globalModule.releaseConnection.bind(this)];
     async.waterfall(task, globalModule.asyncCallback.bind(this));
 });
-
-
 
 module.exports = router;

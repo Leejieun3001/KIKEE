@@ -1,6 +1,7 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,14 +18,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kidskeeper.sungshin.or.kr.kikee.Adult.Camera.CameraActivity;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Community.CommunityFragment;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Mypage.MyPageFragment;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
 public class AdultHomeActivity extends AppCompatActivity {
-
-    //    @BindView(R.id.adultHome_button_camera)
-//    Button buttonCamera;
 
     @BindView(R.id.adultHome_viewpager_viewpager)
     ViewPager viewPager;
@@ -33,7 +34,6 @@ public class AdultHomeActivity extends AppCompatActivity {
 
     private final long FINISH_INTERVAL_TIME = 2000;
     private long backPressedTime = 0;
-
     private final int ADULTHOME = 0;
     private final int BOARD = 1;
     private final int MYPAGE = 2;
@@ -47,8 +47,6 @@ public class AdultHomeActivity extends AppCompatActivity {
         setupViewPager();
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
-
-        //    clickEvent();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -73,19 +71,6 @@ public class AdultHomeActivity extends AppCompatActivity {
         });
 
     }
-
-//    void clickEvent() {
-//
-//        buttonCamera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//
-//    }
 
     private void setupTabIcons() {
         tabLayout.getTabAt(ADULTHOME).setIcon(R.drawable.home);

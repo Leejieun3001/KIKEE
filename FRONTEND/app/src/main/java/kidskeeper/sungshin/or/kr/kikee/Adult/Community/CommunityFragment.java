@@ -47,7 +47,6 @@ public class CommunityFragment extends Fragment {
     private ArrayList<board> itemList = new ArrayList<board>();
 
     public CommunityFragment() {
-
         super();
     }
 
@@ -117,7 +116,6 @@ public class CommunityFragment extends Fragment {
         });
 
     }
-
 
     public View.OnClickListener clickEvent = new View.OnClickListener() {
         public void onClick(View v) {
