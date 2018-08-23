@@ -128,7 +128,7 @@ public class ConnectActivity extends AppCompatActivity {
             mOutputStream = mSocket.getOutputStream();
             mInputStream = mSocket.getInputStream();
 
-            Intent intent = new Intent(ConnectActivity.this, PlayKidsMain.class);
+            Intent intent = new Intent(ConnectActivity.this, PlayKidsMainActivity.class);
             startActivity(intent);
 
         } catch (Exception e) { // 블루투스 연결 중 오류 발생

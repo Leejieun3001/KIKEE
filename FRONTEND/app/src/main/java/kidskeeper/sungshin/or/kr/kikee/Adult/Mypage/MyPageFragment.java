@@ -151,7 +151,6 @@ public class MyPageFragment extends Fragment {
                             setAdapter(itemList);
                             break;
                     }
-
                 }
 
             }
