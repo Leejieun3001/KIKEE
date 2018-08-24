@@ -34,7 +34,9 @@
         <activity android:name=".Kids.Connect.PlayKidsMainActivity" />
         <activity android:name=".Home.HomeActivity" />
         <activity android:name=".Home.JoinActivity" />
-        <activity android:name=".Home.SplashActivity">
+        <activity android:name=".Home.SplashActivity"
+            android:theme ="@style/SplashTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

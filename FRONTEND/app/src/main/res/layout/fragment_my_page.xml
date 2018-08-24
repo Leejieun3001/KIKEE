@@ -3,21 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FFF3F0"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Mypage.MyPageFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:paddingHorizontal="35dp"
+        android:paddingVertical="5dp"
         android:layout_margin="15dp"
-        android:text="내가 작성한 글"
-        android:textSize="15sp" />
+        android:text="MY BORDER"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:background="#FFE08C"
+        android:textSize="20dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mypage_recyvlerview_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_margin="20dp"
         android:background="@color/colorWhite"
         tools:listitem="@layout/item_my_board"></android.support.v7.widget.RecyclerView>
@@ -27,6 +33,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="로그아웃" />
+        android:background="@drawable/pink_round_bg"
+        android:textColor="@color/colorWhite"
+        android:text="LOGOUT" />
 
 </LinearLayout>

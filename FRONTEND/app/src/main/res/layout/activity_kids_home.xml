@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            tools:listitem="@layout/item_boardlist">
+            tools:listitem="@layout/item_to_do_list_kids">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="5dp"
+        android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/pink_round_bg"
         android:textColor="@color/colorWhite"

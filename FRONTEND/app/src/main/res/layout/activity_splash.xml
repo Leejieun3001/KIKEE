@@ -4,12 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF3F0"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Home.SplashActivity">
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerInParent="true">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
         android:src="@drawable/robot"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/kikee"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Kids Keeper"
+        android:layout_marginTop="5dp"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/colorWhite"
+        android:background="#ED9595"/>
+</LinearLayout>
 
 </RelativeLayout>

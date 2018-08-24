@@ -91,7 +91,7 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
         if (list.get(position).getIsdo().equals("0")) {
             holder.relativeLayout.setBackgroundColor(Color.WHITE);
         } else {
-            holder.relativeLayout.setBackgroundColor(Color.rgb(178,204,255));
+            holder.relativeLayout.setBackgroundColor(Color.rgb(255,224,140));
         }
         holder.itemView.setSelected(focusedItem == position);
     }

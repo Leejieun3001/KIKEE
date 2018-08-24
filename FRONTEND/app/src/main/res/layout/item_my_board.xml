@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itemreview_layout_layout"
     android:layout_width="match_parent"
     android:layout_height="55dp"
     android:layout_margin="15dp"
-    android:background="@color/colorWhite"
+    android:padding="10dp"
+    android:background="#FFF3F0"
     android:orientation="vertical">
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerVertical="true">
 
     <TextView
         android:id="@+id/my_board_textview_title"
@@ -14,7 +20,8 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="13dp" />
+        android:textStyle="bold"
+        android:textSize="14dp" />
 
 
     <TextView
@@ -24,7 +31,8 @@
         android:layout_marginStart="35dp"
         android:text="New Text"
         android:textColor="#694C46"
-        android:textSize="14dp" />
+        android:textSize="12dp" />
 </LinearLayout>
+</RelativeLayout>
 
 
