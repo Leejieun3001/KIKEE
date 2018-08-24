@@ -3,33 +3,40 @@
     android:layout_width="match_parent"
     android:background="#FFF3F0"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Community.CommunityFragment">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/community_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/community_title"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/community_recyclerview_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="30dp"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/community_title"
                 tools:listitem="@layout/item_boardlist">
 
             </android.support.v7.widget.RecyclerView>
-        </ScrollView>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/reviewlist_floatingbutton_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="#FFB3A4"
             android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginEnd="20dp"
+            android:src = "@drawable/add" />
     </RelativeLayout>
 </LinearLayout>

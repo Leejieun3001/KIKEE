@@ -4,17 +4,17 @@
     android:id="@+id/itemreview_layout_layout"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_margin="15dp"
-    android:background="@drawable/round_background2"
+    android:layout_margin="5dp"
+    android:background="@drawable/white_round_bg"
     android:orientation="horizontal"
-
-    android:padding="10dp">
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
 
         <TextView
             android:id="@+id/itemboard_textview_title"
@@ -42,8 +42,8 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="25dp"
-                android:layout_height="35dp"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
                 android:layout_margin="2dp"
                 android:background="@drawable/friends" />
 
@@ -63,8 +63,8 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
                 android:layout_margin="3dp"
                 android:background="@drawable/like" />
 

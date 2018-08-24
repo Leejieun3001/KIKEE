@@ -6,27 +6,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackground"
+    android:paddingVertical="10dp"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardDetailActivity">
 
     <TableLayout
         android:id="@+id/board_content_Penal"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="10dp">
+        android:layout_height="220dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <TableRow>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="제목  "
-                android:textColor="@color/colorPrimaryDark" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/pink_round_bg"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:text="제목"
+                android:textSize="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/board_detail_title"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:background="@drawable/textbox"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="3dp"
+                android:text="제목입니다"
+                android:textSize="10dp"
+                android:textColor="@color/colorPrimaryDark" />
         </TableRow>
 
         <TableRow>
@@ -34,13 +50,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="작성자  "
-                android:textColor="@color/colorPrimaryDark" />
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:background="@drawable/pink_round_bg"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp"
+                android:text="작성자"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="8dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/board_detail_nickname"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/textbox"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="3dp"
+                android:textSize="8dp"
+                android:text="작성자입니다" />
 
             <View
                 android:layout_width="0dp"
@@ -51,25 +81,28 @@
                 android:id="@+id/board_detail_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:text="2018-**-**"/>
         </TableRow>
 
         <TextView
             android:id="@+id/board_detail_content"
             android:layout_width="match_parent"
-            android:layout_height="130dp" />
+            android:layout_height="130dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/textbox" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right">
+            android:layout_height="25dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/friends"/>
+                android:src="@drawable/friends" />
 
             <TextView
                 android:id="@+id/board_detail_hits"
@@ -124,6 +157,8 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/pink_round_bg"
+            android:textColor="@color/colorWhite"
             android:text="ok" />
     </LinearLayout>
 </RelativeLayout>

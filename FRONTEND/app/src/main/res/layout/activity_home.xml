@@ -6,56 +6,41 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="#FFF3F0"
+    android:orientation="vertical"
     android:gravity="center"
     tools:context="kidskeeper.sungshin.or.kr.kikee.Home.HomeActivity">
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        android:layout_margin="40dp">
         <ImageButton
             android:id="@+id/home_button_go_adult"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:background="#FFF3F0"
-            app:srcCompat="@drawable/adult" />
-
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="@drawable/parent" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_gravity="center"
-            android:text="어른" />
-
+            android:layout_gravity="center_horizontal"
+            android:text="Adult"/>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="40dp">
 
         <ImageButton
             android:id="@+id/home_button_go_kids"
-            android:layout_width="102dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/home_button_go_adult"
-            android:layout_gravity="center_horizontal"
-            android:background="#FFF3F0"
-            app:srcCompat="@drawable/kids" />
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="@drawable/kid" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="아이" />
-
+            android:layout_gravity="center_horizontal"
+            android:text="Kids"/>
     </LinearLayout>
 </LinearLayout>

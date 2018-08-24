@@ -3,43 +3,51 @@
     android:id="@+id/itemreview_layout_layout"
     android:layout_width="match_parent"
     android:layout_height="55dp"
-    android:layout_margin="15dp"
+    android:layout_margin="10dp"
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:padding="5dp">
         <ImageView
+            android:id="@+id/comment_list_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
             android:src="@drawable/comment"/>
-        <TextView
-            android:id="@+id/comment_list_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="13dp"/>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="-7dp">
-
-        <TextView
-            android:id="@+id/comment_list_comment"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="New Text"
-            android:layout_marginStart="35dp"
-            android:textSize="14dp"
-            android:textColor="#694C46"/>
-    </LinearLayout>
+            android:layout_toRightOf="@+id/comment_list_image"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/comment_list_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Nick Name"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:id="@+id/comment_list_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="New Text"
+                android:layout_toRightOf="@+id/comment_list_image"
+                android:textSize="15dp"
+                android:textColor="#694C46"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
 </LinearLayout>
 

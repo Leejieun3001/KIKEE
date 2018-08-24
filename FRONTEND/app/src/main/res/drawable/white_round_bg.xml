@@ -3,11 +3,11 @@
     android:layout_height="match_parent">
     android:shape="rectangle"
     android:padding="10dp">
-    <solid android:color="#FFB3A4"/>
-    <corners android:bottomRightRadius="10dp"
-        android:bottomLeftRadius="10dp"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp"/>
+    <solid android:color="@color/colorWhite"/>
+    <corners android:bottomRightRadius="15dp"
+        android:bottomLeftRadius="15dp"
+        android:topLeftRadius="15dp"
+        android:topRightRadius="15dp"/>
     <stroke android:width="2dp"
         android:color="#FFFFFFFF"
         />

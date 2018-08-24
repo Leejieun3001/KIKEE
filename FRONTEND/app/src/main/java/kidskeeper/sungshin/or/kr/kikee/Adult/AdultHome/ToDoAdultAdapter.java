@@ -1,6 +1,7 @@
 package kidskeeper.sungshin.or.kr.kikee.Adult.AdultHome;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -76,7 +78,7 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_todolist, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_to_do_list_adult, parent, false);
         view.setOnClickListener(mOnClickListener);
         return new ItemViewHolder(view);
     }
@@ -87,15 +89,10 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
 
         holder.textViewTodo.setText(list.get(position).getTodo());
         if (list.get(position).getIsdo().equals("0")) {
-            holder.imageViewIsdo.setImageResource(R.drawable.unchecked);
+            holder.relativeLayout.setBackgroundColor(Color.WHITE);
         } else {
-            holder.imageViewIsdo.setImageResource(R.drawable.checked);
+            holder.relativeLayout.setBackgroundColor(Color.rgb(178,204,255));
         }
-        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
         holder.itemView.setSelected(focusedItem == position);
     }
 
@@ -106,14 +103,14 @@ public class ToDoAdultAdapter extends RecyclerView.Adapter<ToDoAdultAdapter.Item
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewTodo;
-        private ImageView imageViewIsdo;
-        private Button buttonDelete;
+        private RelativeLayout relativeLayout;
+
 
         public ItemViewHolder(View itemView) {
             super(itemView);
             textViewTodo = (TextView) itemView.findViewById(R.id.todo_list_todo);
-            imageViewIsdo = (ImageView) itemView.findViewById(R.id.todo_list_isdo);
-            buttonDelete = (Button) itemView.findViewById(R.id.todo_list_button_delete);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.todo_list_adult_relativelayout);
+
         }
     }
 }

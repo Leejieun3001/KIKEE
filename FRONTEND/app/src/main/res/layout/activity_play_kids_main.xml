@@ -5,52 +5,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Kids.PlayKidsMain">
-
+    tools:context=".Kids.Connect.PlayKidsMainActivity">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerInParent="true">
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:layout_marginTop="60dp">
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
 
         <ImageButton
             android:id="@+id/playWithRobot"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF3F0"
-            android:layout_margin="10dp"
-            app:srcCompat="@drawable/playrobot_icon" />
+            android:background="@drawable/joystick"
+            android:layout_margin="10dp" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:textStyle="bold"
             android:text="로봇과 놀기"
-            android:gravity="center"/>
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp">
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
 
         <ImageButton
             android:id="@+id/wordGame"
             android:layout_margin="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFF3F0"
-            app:srcCompat="@drawable/wordgame_icon" />
+            android:background="@drawable/wordgame"/>
         <TextView
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="단어 게임"/>
+            android:textStyle="bold"
+            android:text="단어 게임"
+            android:layout_gravity="center"/>
     </LinearLayout>
+</LinearLayout>
 </RelativeLayout>

@@ -36,10 +36,7 @@ public class KidsHomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     @BindView(R.id.todolist_floatingbutton_fab)
     FloatingActionButton floatingActionButtonAdd;
-
-
     AddTodoDialog addCateDialog;
-
 
     String user_idx;
 
@@ -83,6 +80,14 @@ public class KidsHomeActivity extends AppCompatActivity {
                 // 커스텀 다이얼로그를 호출한다.
                 // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
                 customDialog.callFunction(user_idx);
+            }
+        });
+
+        floatingActionButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddToDoList addToDoListDialog = new AddToDoList(getApplicationContext());
+                addToDoListDialog.show();
             }
         });
     }

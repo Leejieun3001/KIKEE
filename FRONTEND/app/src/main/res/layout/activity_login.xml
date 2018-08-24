@@ -18,8 +18,8 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-100dp"
-            app:srcCompat="@drawable/login" />
+            android:layout_margin="20dp"
+            app:srcCompat="@drawable/robot" />
 
         <EditText
             android:id="@+id/adult_login_edittext_id"
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@drawable/round_background"
+                android:background="@drawable/pink_round_bg"
                 android:text="로그인"
                 android:textColor="@color/colorWhite" />
 
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@drawable/round_background"
+                android:background="@drawable/pink_round_bg"
                 android:text="회원 등록"
                 android:textColor="@color/colorWhite" />
         </LinearLayout>

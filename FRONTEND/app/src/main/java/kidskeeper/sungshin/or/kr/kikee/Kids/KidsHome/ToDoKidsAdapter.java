@@ -106,8 +106,8 @@ public class ToDoKidsAdapter extends RecyclerView.Adapter<ToDoKidsAdapter.ItemVi
 
         public ItemViewHolder(View itemView) {
             super(itemView);
-            textViewTodo = (TextView) itemView.findViewById(R.id.todo_list_todo);
-            imageViewIsdo = (ImageView) itemView.findViewById(R.id.todo_list_isdo);
+            textViewTodo = (TextView) itemView.findViewById(R.id.to_do_conent);
+            imageViewIsdo = (ImageView) itemView.findViewById(R.id.to_do_isdo);
         }
     }
 

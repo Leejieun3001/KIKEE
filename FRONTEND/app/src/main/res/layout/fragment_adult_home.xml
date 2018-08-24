@@ -18,14 +18,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="30dp"
-            android:background="@drawable/camera" />
-
-        <Button
-            android:id="@+id/adultHome_button_voice"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="30dp"
-            android:background="@drawable/recorder" />
+            android:background="@drawable/cctv" />
     </LinearLayout>
 
     <LinearLayout

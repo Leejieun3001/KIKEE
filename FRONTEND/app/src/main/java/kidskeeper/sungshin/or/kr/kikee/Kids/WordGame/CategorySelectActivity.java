@@ -56,9 +56,10 @@ public class CategorySelectActivity extends AppCompatActivity {
                                 params.topMargin = 10;
                                 params.bottomMargin = 10;
 
-                                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                linearLayout.setOrientation(LinearLayout.VERTICAL);
                                 linearLayout.setLayoutParams(params);
                                 final Button btn = new Button(getBaseContext());
+                                btn.setPadding(10,10,10,10);
                                 btn.setGravity(View.TEXT_ALIGNMENT_CENTER);
                                 btn.setText(category[i]);
                                 btn.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);

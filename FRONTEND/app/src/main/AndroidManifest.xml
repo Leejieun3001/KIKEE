@@ -31,9 +31,9 @@
         <activity android:name=".Kids.WordGame.SuccessWord" />
         <activity android:name=".Adult.Community.BoardDetailActivity" />
         <activity android:name=".Adult.Community.BoardWriteActivity" />
+        <activity android:name=".Kids.Connect.PlayKidsMainActivity" />
         <activity android:name=".Home.HomeActivity" />
         <activity android:name=".Home.JoinActivity" />
-        <activity android:name=".Kids.HomeWork.HomeWork" />
         <activity android:name=".Home.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

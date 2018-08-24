@@ -17,7 +17,9 @@
         android:id="@+id/board_write_edittext_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:layout_margin="14dp"
+        android:background="@drawable/textbox"
         android:hint="제목을 입력해주세요" />
 
     <TextView
@@ -31,10 +33,11 @@
 
     <EditText
         android:id="@+id/board_write_edittext_content"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="230dp"
-        android:layout_margin="-10dp"
-        android:background="@color/colorAccent"
+        android:layout_margin="10dp"
+        android:padding="8dp"
+        android:background="@drawable/textbox"
         android:gravity="top|start"
         android:hint="내용을 입력해주세요" />
 
@@ -48,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/round_background"
+        android:background="@drawable/pink_round_bg"
         android:text="뒤로 가기"
         android:textColor="@color/colorWhite" />
 
@@ -57,7 +60,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/round_background"
+        android:background="@drawable/pink_round_bg"
         android:text="글 등록하기"
         android:textColor="@color/colorWhite" />
 

@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/todo_list_adult_relativelayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:padding="10dp"
     android:layout_margin="10dp"
-    android:background="@drawable/round_background2">
+    android:background="@drawable/white_round_bg">
 
     <TextView
         android:id="@+id/todo_list_todo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:textSize="15dp"
         android:text="NEW TITLE"/>
-
-    <ImageView
-        android:id="@+id/to_do_isdo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/unchecked"/>
 
 </RelativeLayout>
