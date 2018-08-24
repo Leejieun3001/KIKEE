@@ -1,6 +1,7 @@
 package kidskeeper.sungshin.or.kr.kikee.Kids.KidsHome;
 
 import android.app.ActionBar;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
@@ -36,7 +37,6 @@ public class KidsHomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     @BindView(R.id.todolist_floatingbutton_fab)
     FloatingActionButton floatingActionButtonAdd;
-    AddTodoDialog addCateDialog;
 
     String user_idx;
 
@@ -58,7 +58,6 @@ public class KidsHomeActivity extends AppCompatActivity {
         onClickEvent();
         initRecyclerView();
         getTodoList();
-        addCateDialog = new AddTodoDialog(getApplicationContext());
 
     }
 
@@ -75,19 +74,20 @@ public class KidsHomeActivity extends AppCompatActivity {
         floatingActionButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddTodoDialog customDialog = new AddTodoDialog(KidsHomeActivity.this);
-
-                // 커스텀 다이얼로그를 호출한다.
-                // 커스텀 다이얼로그의 결과를 출력할 TextView를 매개변수로 같이 넘겨준다.
-                customDialog.callFunction(user_idx);
-            }
-        });
-
-        floatingActionButtonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddToDoList addToDoListDialog = new AddToDoList(getApplicationContext());
+                AddDialog addToDoListDialog = new AddDialog(KidsHomeActivity.this);
                 addToDoListDialog.show();
+
+                addToDoListDialog.setOnDismissListener(
+                        new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialog) {
+                                initRecyclerView();
+                                getTodoList();
+                            }
+                        }
+                );
+
+
             }
         });
     }
