@@ -5,13 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardAdapter;
-import kidskeeper.sungshin.or.kr.kikee.Adult.Community.CommentListViewItem;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.board;
 import kidskeeper.sungshin.or.kr.kikee.R;
 
@@ -19,13 +16,13 @@ import kidskeeper.sungshin.or.kr.kikee.R;
  * Created by LG on 2018-08-24.
  */
 
-public class MineBoradAdpater extends RecyclerView.Adapter<MineBoradAdpater.ViewHolder> {
+public class MineBoardAdpater extends RecyclerView.Adapter<MineBoardAdpater.ViewHolder> {
     private final String TAG = "BoardAdapter";
     private Context context;
     private ArrayList<board> list;
     View.OnClickListener mOnClickListener;
 
-    public MineBoradAdpater(Context context, ArrayList<board> list, View.OnClickListener mOnClickListener) {
+    public MineBoardAdpater(Context context, ArrayList<board> list, View.OnClickListener mOnClickListener) {
         this.context = context;
         this.list = list;
         this.mOnClickListener = mOnClickListener;
@@ -42,15 +39,15 @@ public class MineBoradAdpater extends RecyclerView.Adapter<MineBoradAdpater.View
     }
 
     @Override
-    public MineBoradAdpater.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MineBoardAdpater.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_board, parent, false);
         view.setOnClickListener(mOnClickListener);
-        return new MineBoradAdpater.ViewHolder(view);
+        return new MineBoardAdpater.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(MineBoradAdpater.ViewHolder holder, int position) {
+    public void onBindViewHolder(MineBoardAdpater.ViewHolder holder, int position) {
         board item = list.get(position);
         holder.textViewMyTitle.setText(item.getTitle());
         holder.textViewMyContent.setText(item.getContent());

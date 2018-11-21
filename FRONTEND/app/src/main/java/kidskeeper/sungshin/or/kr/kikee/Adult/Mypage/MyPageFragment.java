@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardAdapter;
 import kidskeeper.sungshin.or.kr.kikee.Adult.Community.BoardDetailActivity;
 import kidskeeper.sungshin.or.kr.kikee.Home.LoginActivity;
 import kidskeeper.sungshin.or.kr.kikee.Model.response.BoardListReult;
@@ -44,7 +43,7 @@ public class MyPageFragment extends Fragment {
     private NetworkService service;
 
     private LinearLayoutManager layoutManager;
-    private MineBoradAdpater adapter;
+    private MineBoardAdpater adapter;
     private ArrayList<board> itemList = new ArrayList<board>();
 
 
@@ -80,7 +79,7 @@ public class MyPageFragment extends Fragment {
 
     private void initRecyclerView() {
         itemList = new ArrayList<>();
-        adapter = new MineBoradAdpater(getActivity().getApplicationContext(), itemList, clickEvent);
+        adapter = new MineBoardAdpater(getActivity().getApplicationContext(), itemList, clickEvent);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -88,7 +87,7 @@ public class MyPageFragment extends Fragment {
     }
 
     private void setAdapter(ArrayList<board> itemList) {
-        adapter = new MineBoradAdpater(getContext(), itemList, clickEvent);
+        adapter = new MineBoardAdpater(getContext(), itemList, clickEvent);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
